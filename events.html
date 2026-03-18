@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events｜トモスマ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ---- EVENTS ONLY ---- */
+
+    /* タブ（開催予定 / 過去） */
+    .tab-bar {
+      display: flex;
+      gap: 4px;
+      margin-top: 40px;
+      background: var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 4px;
+      width: fit-content;
+    }
+    .tab-btn {
+      padding: 10px 28px;
+      border-radius: var(--radius-lg);
+      border: none;
+      background: transparent;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-muted);
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .tab-btn.active {
+      background: var(--color-surface);
+      color: var(--color-text);
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
+
+    /* イベントグリッド */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    .event-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+      display: flex;
+      flex-direction: column;
+    }
+    .event-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,0,0,.1);
+    }
+
+    /* サムネイルプレースホルダー */
+    .event-thumb {
+      width: 100%;
+      height: 180px;
+      background: var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      /* 実際の画像は background-image で差し替え */
+    }
+    .event-thumb.color-1 { background: #FFE8DE; }
+    .event-thumb.color-2 { background: #FFF4D6; }
+    .event-thumb.color-3 { background: #E8F4FF; }
+
+    .event-body { padding: 24px; flex: 1; display: flex; flex-direction: column; gap: 12px; }
+
+    .event-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .event-title {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    .event-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--color-muted);
+    }
+    .event-meta span { display: flex; align-items: center; gap: 6px; }
+
+    .event-desc { font-size: 14px; color: var(--color-muted); line-height: 1.7; flex: 1; }
+
+    .event-footer {
+      padding: 16px 24px;
+      border-top: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .event-capacity { font-size: 13px; color: var(--color-muted); }
+    .event-link {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-accent);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap .2s;
+    }
+    .event-link:hover { gap: 8px; }
+
+    /* 過去イベントは少し暗く */
+    .event-card.past { opacity: .65; }
+    .event-card.past:hover { opacity: .85; }
+
+    /* 空状態 */
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 80px 0;
+      color: var(--color-muted);
+    }
+    .empty-state p { margin-top: 12px; font-size: 15px; }
+
+    @media (max-width: 640px) {
+      .events-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="container">
+        <p class="section-label">Events</p>
+        <h1 class="section-title">イベント情報</h1>
+        <p class="section-body">スポーツ大会・多文化交流会・体験会など、トモスマが開催するイベントをご紹介します。</p>
+
+        <!-- タブ -->
+        <div class="tab-bar">
+          <button class="tab-btn active" data-tab="upcoming">開催予定</button>
+          <button class="tab-btn"        data-tab="past">過去のイベント</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section class="section" style="padding-top: 56px;">
+      <div class="container">
+
+        <!-- 開催予定 -->
+        <div id="tab-upcoming" class="tab-content">
+          <div class="events-grid">
+
+            <!-- ▼▼▼ ここにイベントを追加していく ▼▼▼ -->
+
+            <div class="event-card">
+              <div class="event-thumb color-1">⚽</div>
+              <div class="event-body">
+                <div class="event-tags">
+                  <span class="tag tag-accent">募集中</span>
+                  <span class="tag">スポーツ</span>
+                </div>
+                <h2 class="event-title">第1回 トモスマ スポーツ交流大会</h2>
+                <div class="event-meta">
+                  <span>📅 2026年5月 予定（詳細は近日公開）</span>
+                  <span>📍 東京都内（会場調整中）</span>
+                </div>
+                <p class="event-desc">
+                  国籍・言語の壁を越えて、スポーツで繋がるイベント。技能実習生・学生・社会人、どなたでも参加歓迎です。エンジニア・運営メンバーの募集も同時開催予定。
+                </p>
+              </div>
+              <div class="event-footer">
+                <span class="event-capacity">👥 定員：調整中</span>
+                <a href="#" class="event-link">詳細・申込 →</a>
+              </div>
+            </div>
+
+            <div class="event-card">
+              <div class="event-thumb color-2">🌍</div>
+              <div class="event-body">
+                <div class="event-tags">
+                  <span class="tag tag-yellow">企画中</span>
+                  <span class="tag">交流会</span>
+                </div>
+                <h2 class="event-title">多文化交流ナイト Vol.1</h2>
+                <div class="event-meta">
+                  <span>📅 2026年5月〜6月 予定</span>
+                  <span>📍 東京都内（未定）</span>
+                </div>
+                <p class="event-desc">
+                  様々な国の文化・料理・音楽を楽しみながら交流するナイトイベント。「言葉がなくても笑顔はつながる」をテーマに、対等な友として関係を築く場を作ります。
+                </p>
+              </div>
+              <div class="event-footer">
+                <span class="event-capacity">👥 定員：未定</span>
+                <a href="#" class="event-link">詳細・申込 →</a>
+              </div>
+            </div>
+
+            <div class="event-card">
+              <div class="event-thumb color-3">💓</div>
+              <div class="event-body">
+                <div class="event-tags">
+                  <span class="tag tag-yellow">企画中</span>
+                  <span class="tag">体験会</span>
+                </div>
+                <h2 class="event-title">Heart-to-Heart Device 体験会</h2>
+                <div class="event-meta">
+                  <span>📅 2026年8月 予定</span>
+                  <span>📍 東京都内（未定）</span>
+                </div>
+                <p class="event-desc">
+                  開発中の五感同期デバイスのプロトタイプを実際に体験できるイベント。「スマホで鼓動が伝わる」感覚を、ぜひ体で感じてみてください。
+                </p>
+              </div>
+              <div class="event-footer">
+                <span class="event-capacity">👥 定員：少人数</span>
+                <a href="#" class="event-link">詳細・申込 →</a>
+              </div>
+            </div>
+
+            <!-- サンプル追加例（コメントアウト中）
+            <div class="event-card">
+              <div class="event-thumb color-1">🎉</div>
+              <div class="event-body">
+                <div class="event-tags">
+                  <span class="tag tag-accent">募集中</span>
+                  <span class="tag">カテゴリ</span>
+                </div>
+                <h2 class="event-title">イベント名</h2>
+                <div class="event-meta">
+                  <span>📅 YYYY年MM月DD日（曜）HH:MM〜</span>
+                  <span>📍 場所</span>
+                </div>
+                <p class="event-desc">イベントの説明文をここに入れる。</p>
+              </div>
+              <div class="event-footer">
+                <span class="event-capacity">👥 定員：XX名</span>
+                <a href="申込URL" class="event-link">詳細・申込 →</a>
+              </div>
+            </div>
+            -->
+
+          </div>
+        </div>
+
+        <!-- 過去のイベント -->
+        <div id="tab-past" class="tab-content" style="display:none;">
+          <div class="events-grid">
+            <div class="empty-state">
+              <span style="font-size:48px;">📸</span>
+              <p>過去のイベントはまだありません。<br>開催後にレポートを掲載します。</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div style="background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:48px;text-align:center;">
+          <p class="section-label" style="text-align:center;">Volunteer</p>
+          <h2 class="section-title" style="text-align:center;margin:0 auto 16px;">イベント運営ボランティア募集中</h2>
+          <p style="color:var(--color-muted);margin-bottom:32px;">単発参加OK。一緒にイベントを作り上げましょう。</p>
+          <a href="index.html#join" class="btn btn-primary">応募する</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="components.js"></script>
+  <script>
+    /* ---- タブ切り替え ---- */
+    const tabBtns     = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const target = btn.dataset.tab;
+        tabContents.forEach(content => {
+          content.style.display = content.id === `tab-${target}` ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

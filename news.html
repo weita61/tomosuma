@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>News｜トモスマ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ---- NEWS ONLY ---- */
+
+    /* フィルターバー */
+    .filter-bar {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+    .filter-btn {
+      padding: 8px 20px;
+      border-radius: 99px;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-muted);
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: #fff;
+    }
+
+    /* ニュース一覧 */
+    .news-list {
+      margin-top: 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .news-item {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 32px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--color-border);
+      align-items: start;
+      transition: background .2s;
+    }
+    .news-item:first-child { border-top: 1px solid var(--color-border); }
+    .news-item:hover { background: var(--color-surface); margin: 0 -24px; padding: 32px 24px; border-radius: var(--radius-sm); border-color: transparent; }
+
+    .news-meta { display: flex; flex-direction: column; gap: 8px; }
+    .news-date  { font-size: 13px; color: var(--color-muted); font-weight: 700; letter-spacing: .05em; }
+
+    .news-title {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .news-title a { transition: color .2s; }
+    .news-title a:hover { color: var(--color-accent); }
+
+    .news-excerpt { font-size: 14px; color: var(--color-muted); line-height: 1.7; }
+
+    /* ページネーション */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 64px;
+    }
+    .page-btn {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-muted);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .2s;
+    }
+    .page-btn:hover,
+    .page-btn.active {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: #fff;
+    }
+
+    @media (max-width: 640px) {
+      .news-item { grid-template-columns: 1fr; gap: 12px; }
+      .news-item:hover { margin: 0; padding: 32px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="container">
+        <p class="section-label">News</p>
+        <h1 class="section-title">最新情報</h1>
+        <p class="section-body">トモスマの活動・メディア掲載・お知らせをお届けします。</p>
+
+        <!-- フィルター -->
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">すべて</button>
+          <button class="filter-btn" data-filter="activity">活動報告</button>
+          <button class="filter-btn" data-filter="media">メディア</button>
+          <button class="filter-btn" data-filter="notice">お知らせ</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWS LIST -->
+    <section class="section" style="padding-top: 56px;">
+      <div class="container">
+        <div class="news-list" id="news-list">
+
+          <!-- ▼▼▼ ここにニュースを追加していく ▼▼▼
+               data-category には "activity" / "media" / "notice" のいずれかを指定
+          -->
+
+          <article class="news-item" data-category="notice">
+            <div class="news-meta">
+              <span class="news-date">2026.03.19</span>
+              <span class="tag tag-accent">お知らせ</span>
+            </div>
+            <div>
+              <h2 class="news-title"><a href="#">トモスマ公式サイトをオープンしました</a></h2>
+              <p class="news-excerpt">
+                2026年3月、トモスマの公式ウェブサイトをオープンしました。活動報告・イベント情報を随時更新していきます。
+              </p>
+            </div>
+          </article>
+
+          <article class="news-item" data-category="activity">
+            <div class="news-meta">
+              <span class="news-date">2026.03.15</span>
+              <span class="tag tag-yellow">活動報告</span>
+            </div>
+            <div>
+              <h2 class="news-title"><a href="#">技能実習生へのヒアリング調査を開始しました</a></h2>
+              <p class="news-excerpt">
+                東京都内の技能実習生の方々への初回ヒアリングを実施。孤独感や家族とのコミュニケーション課題について、リアルな声を集め始めました。
+              </p>
+            </div>
+          </article>
+
+          <article class="news-item" data-category="notice">
+            <div class="news-meta">
+              <span class="news-date">2026.03.01</span>
+              <span class="tag tag-accent">お知らせ</span>
+            </div>
+            <div>
+              <h2 class="news-title"><a href="#">トモスマ（With Smile & Beyond）を設立しました</a></h2>
+              <p class="news-excerpt">
+                「どこにいても、笑顔と『共にある』未来を創る。」というミッションのもと、トモスマを設立しました。代表・渡辺瑛太のビジョンをぜひご覧ください。
+              </p>
+            </div>
+          </article>
+
+          <!-- サンプル追加例（コメントアウト中）
+          <article class="news-item" data-category="media">
+            <div class="news-meta">
+              <span class="news-date">2026.XX.XX</span>
+              <span class="tag">メディア</span>
+            </div>
+            <div>
+              <h2 class="news-title"><a href="#">〇〇メディアに掲載されました</a></h2>
+              <p class="news-excerpt">掲載内容の概要をここに記入。</p>
+            </div>
+          </article>
+          -->
+
+        </div><!-- /news-list -->
+
+        <div class="pagination" id="pagination">
+          <button class="page-btn active">1</button>
+          <!-- ページが増えたら自動で追加 -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="components.js"></script>
+  <script>
+    /* ---- フィルター機能 ---- */
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const newsItems  = document.querySelectorAll('.news-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        newsItems.forEach(item => {
+          item.style.display =
+            filter === 'all' || item.dataset.category === filter
+              ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
