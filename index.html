@@ -545,7 +545,15 @@
         <h2 class="section-title">チームメンバー</h2>
         <div class="team-grid">
           <div class="team-card">
-            <div class="team-avatar"><img src="eitawatanabe_leader.jpeg"></div>
+            <div class="team-avatar"><img src="eitawatanabe_leader.jpeg" class="circle-image"></div>
+             <style>
+               .circle-image {
+         /* 幅と同じ高さ（正方形にする） */
+                 border-radius: 50%;  /* これで正円になる */
+                 object-fit: cover;   /* 画像が歪まないように調整 */
+               }
+
+             </style>
             <p class="team-name">渡辺 瑛太</p>
             <p class="team-role">代表</p>
           </div>
