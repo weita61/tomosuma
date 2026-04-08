@@ -398,7 +398,7 @@
 
           <!-- 送信完了メッセージ -->
           <div class="success-box" id="success-box">
-            <div class="success-icon">🎉</div>
+            <div class="success-icon"><i data-lucide="check-circle-2" style="width:64px;height:64px;color:var(--color-accent);"></i></div>
             <h2 class="success-title" data-i18n="form.success.title">送信完了！</h2>
             <p class="success-body" data-i18n="form.success.body">エントリーありがとうございます。担当者がInstagramまたはメールにてご連絡します。</p>
             <a href="index.html" class="btn btn-primary" data-i18n="form.back">← サイトに戻る</a>
@@ -428,8 +428,10 @@
     </div>
   </footer>
 
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script src="i18n.js"></script>
   <script>
+    document.addEventListener('DOMContentLoaded', () => { lucide.createIcons(); });
     // Formspree 送信成功処理
     const form = document.getElementById('entry-form');
     const successBox = document.getElementById('success-box');

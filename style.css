@@ -228,6 +228,9 @@ footer {
   pointer-events: none;
 }
 
+/* ---- LUCIDE ICONS ---- */
+i[data-lucide] { display: inline-block; vertical-align: -0.125em; }
+
 /* ---- RESPONSIVE ---- */
 @media (max-width: 768px) {
   :root { --section-gap: 80px; }
