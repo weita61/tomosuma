@@ -322,6 +322,23 @@
     .mobile-menu-cta .btn { width: 100%; justify-content: center; }
 
     /* ============================================================
+       LANG TOGGLE
+    ============================================================ */
+    .lang-toggle {
+      display: inline-flex; align-items: center; gap: 2px;
+      background: var(--color-border); border-radius: 99px; padding: 3px 6px; margin-left: 8px;
+    }
+    .lang-btn {
+      border: none; background: transparent; font-size: 11px; font-weight: 700;
+      letter-spacing: .06em; color: var(--color-muted); cursor: pointer;
+      padding: 4px 10px; border-radius: 99px; transition: all .2s; line-height: 1;
+      font-family: var(--font-body);
+    }
+    .lang-btn.active { background: var(--color-surface); color: var(--color-accent); box-shadow: 0 1px 4px rgba(0,0,0,.10); }
+    .lang-btn:hover:not(.active) { color: var(--color-text); }
+    .lang-sep { color: var(--color-border); font-size: 11px; user-select: none; pointer-events: none; }
+
+    /* ============================================================
        RESPONSIVE
     ============================================================ */
     @media (max-width: 768px) {
@@ -343,15 +360,20 @@
     <nav>
       <a href="index.html" class="nav-logo">トモスマ<span>.</span></a>
       <ul class="nav-links">
-        <li><a href="#philosophy">3つの哲学</a></li>
-        <li><a href="#service">メイン事業</a></li>
-        <li><a href="#roadmap">ロードマップ</a></li>
-        <li><a href="#team">チーム</a></li>
-        <li><a href="events.html">イベント</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="#join">参加する</a></li>
+        <li><a href="#philosophy" data-i18n="nav.philosophy">3つの哲学</a></li>
+        <li><a href="#service"    data-i18n="nav.service">メイン事業</a></li>
+        <li><a href="#roadmap"    data-i18n="nav.roadmap">ロードマップ</a></li>
+        <li><a href="#team"       data-i18n="nav.team">チーム</a></li>
+        <li><a href="events.html" data-i18n="nav.events">イベント</a></li>
+        <li><a href="news.html"   data-i18n="nav.news">News</a></li>
+        <li><a href="#join"       data-i18n="nav.join">参加する</a></li>
       </ul>
-      <a href="#join" class="btn btn-primary nav-cta">仲間になる</a>
+      <a href="#join" class="btn btn-primary nav-cta" data-i18n="nav.join_btn">仲間になる</a>
+      <div class="lang-toggle" role="group" aria-label="言語切り替え">
+        <button class="lang-btn" data-lang="ja">JP</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
       <!-- ハンバーガーボタン（スマホのみ表示） -->
       <button class="hamburger" id="hamburger-btn" aria-label="メニューを開く">
         <span></span><span></span><span></span>
@@ -364,16 +386,16 @@
     <div class="mobile-menu-overlay" id="mobile-overlay"></div>
     <div class="mobile-menu-panel">
       <ul class="mobile-menu-links">
-        <li><a href="#philosophy" class="mobile-link">3つの哲学</a></li>
-        <li><a href="#service"    class="mobile-link">メイン事業</a></li>
-        <li><a href="#roadmap"    class="mobile-link">ロードマップ</a></li>
-        <li><a href="#team"       class="mobile-link">チーム</a></li>
+        <li><a href="#philosophy" class="mobile-link" data-i18n="nav.philosophy">3つの哲学</a></li>
+        <li><a href="#service"    class="mobile-link" data-i18n="nav.service">メイン事業</a></li>
+        <li><a href="#roadmap"    class="mobile-link" data-i18n="nav.roadmap">ロードマップ</a></li>
+        <li><a href="#team"       class="mobile-link" data-i18n="nav.team">チーム</a></li>
         <hr class="mobile-menu-divider">
-        <li><a href="events.html" class="mobile-link">🗓 イベント</a></li>
-        <li><a href="news.html"   class="mobile-link">📰 News</a></li>
+        <li><a href="events.html" class="mobile-link">🗓 <span data-i18n="nav.events">イベント</span></a></li>
+        <li><a href="news.html"   class="mobile-link">📰 <span data-i18n="nav.news">News</span></a></li>
       </ul>
       <div class="mobile-menu-cta">
-        <a href="#join" class="btn btn-primary mobile-link">仲間になる</a>
+        <a href="#join" class="btn btn-primary mobile-link" data-i18n="nav.join_btn">仲間になる</a>
       </div>
     </div>
   </div>
@@ -382,45 +404,45 @@
     <!-- HERO -->
     <section id="hero">
       <div class="container">
-        <p class="hero-badge">🌍 With Smile &amp; Beyond — 2026年3月 設立</p>
-        <h1 class="hero-title">
+        <p class="hero-badge" data-i18n-html="hero.badge">🌍 With Smile &amp; Beyond — 2026年3月 設立</p>
+        <h1 class="hero-title" data-i18n-html="hero.title">
           どこにいても、<br>
           笑顔と<span class="accent">「共にある」</span><br>
           未来を創る。
         </h1>
-        <p class="hero-subtitle">テクノロジーと人のつながりで、世界中の笑顔を守り、未来を灯すプロジェクト。</p>
+        <p class="hero-subtitle" data-i18n="hero.subtitle">テクノロジーと人のつながりで、世界中の笑顔を守り、未来を灯すプロジェクト。</p>
         <div class="hero-actions">
-          <a href="#service" class="btn btn-primary">メイン事業を見る</a>
-          <a href="#join"    class="btn btn-outline">仲間になる</a>
+          <a href="#service" class="btn btn-primary" data-i18n="hero.btn.service">メイン事業を見る</a>
+          <a href="#join"    class="btn btn-outline"  data-i18n="hero.btn.join">仲間になる</a>
         </div>
-        <div class="hero-visual">[ Hero Image / Movie — 後で差し替え ]</div>
+        <div class="hero-visual" data-i18n="hero.visual">[ Hero Image / Movie — 後で差し替え ]</div>
       </div>
     </section>
 
     <!-- PHILOSOPHY -->
     <section id="philosophy" class="section">
       <div class="container">
-        <p class="section-label">Philosophy</p>
-        <h2 class="section-title">3つの定義・哲学</h2>
-        <p class="section-body">「友」「共に」「灯す」——3つのアプローチを並行して動かすことで、笑顔の総量を増やし、守り抜きます。</p>
+        <p class="section-label" data-i18n="phil.label">Philosophy</p>
+        <h2 class="section-title" data-i18n="phil.title">3つの定義・哲学</h2>
+        <p class="section-body" data-i18n="phil.body">「友」「共に」「灯す」——3つのアプローチを並行して動かすことで、笑顔の総量を増やし、守り抜きます。</p>
         <div class="philosophy-grid">
           <div class="philosophy-card">
             <div class="card-number">01</div>
-            <h3 class="card-title">友（トモ）× Smile</h3>
-            <span class="tag" style="margin-bottom:16px;">コミュニティ・アクション</span>
-            <p class="card-body">スポーツイベント・多文化交流会を通じ、言語や立場の壁を越えて「対等な友」としての一生モノの絆を築く場を提供します。</p>
+            <h3 class="card-title" data-i18n="phil.c1.title">友（トモ）× Smile</h3>
+            <span class="tag" style="margin-bottom:16px;" data-i18n="phil.c1.tag">コミュニティ・アクション</span>
+            <p class="card-body" data-i18n="phil.c1.body">スポーツイベント・多文化交流会を通じ、言語や立場の壁を越えて「対等な友」としての一生モノの絆を築く場を提供します。</p>
           </div>
           <div class="philosophy-card">
             <div class="card-number">02</div>
-            <h3 class="card-title">共に（トモに）× Smile</h3>
-            <span class="tag" style="margin-bottom:16px;">テクノロジー・イノベーション</span>
-            <p class="card-body">五感同期デバイス（Heart-to-Heart Device）で、鼓動・温もり・気配を届け、空間の壁を越えた日常共有を実現します。</p>
+            <h3 class="card-title" data-i18n="phil.c2.title">共に（トモに）× Smile</h3>
+            <span class="tag" style="margin-bottom:16px;" data-i18n="phil.c2.tag">テクノロジー・イノベーション</span>
+            <p class="card-body" data-i18n="phil.c2.body">五感同期デバイス（Heart-to-Heart Device）で、鼓動・温もり・気配を届け、空間の壁を越えた日常共有を実現します。</p>
           </div>
           <div class="philosophy-card">
             <div class="card-number">03</div>
-            <h3 class="card-title">灯す（トモす）× Smile</h3>
-            <span class="tag" style="margin-bottom:16px;">ソーシャル・デザイン</span>
-            <p class="card-body">政策提言・難民支援へと展開し、社会構造そのものを変えることで、より広範な笑顔を守り続けます。</p>
+            <h3 class="card-title" data-i18n="phil.c3.title">灯す（トモす）× Smile</h3>
+            <span class="tag" style="margin-bottom:16px;" data-i18n="phil.c3.tag">ソーシャル・デザイン</span>
+            <p class="card-body" data-i18n="phil.c3.body">政策提言・難民支援へと展開し、社会構造そのものを変えることで、より広範な笑顔を守り続けます。</p>
           </div>
         </div>
       </div>
@@ -429,74 +451,74 @@
     <!-- SERVICE -->
     <section id="service">
       <div class="container">
-        <p class="section-label">Main Service</p>
-        <h2 class="section-title">五感同期デバイス<br>Heart-to-Heart Device</h2>
-        <p class="section-body">技能実習生をはじめ「遠く離れた大切な人」をつなぐ、科学と五感テクノロジーの融合デバイス。</p>
+        <p class="section-label" data-i18n="svc.label">Main Service</p>
+        <h2 class="section-title" data-i18n-html="svc.title">五感同期デバイス<br>Heart-to-Heart Device</h2>
+        <p class="section-body" data-i18n="svc.body">技能実習生をはじめ「遠く離れた大切な人」をつなぐ、科学と五感テクノロジーの融合デバイス。</p>
         <div class="service-features">
           <div class="feature-item">
             <div class="feature-icon">💓</div>
-            <p class="feature-title">鼓動を届ける</p>
-            <p class="feature-body">リアルタイムで心拍を伝送し、遠くでも「そこにいる」感覚を実現</p>
+            <p class="feature-title" data-i18n="svc.f1.title">鼓動を届ける</p>
+            <p class="feature-body"  data-i18n="svc.f1.body">リアルタイムで心拍を伝送し、遠くでも「そこにいる」感覚を実現</p>
           </div>
           <div class="feature-item">
             <div class="feature-icon">🌡️</div>
-            <p class="feature-title">温もりを伝える</p>
-            <p class="feature-body">温度フィードバックで、触覚的なつながりを提供</p>
+            <p class="feature-title" data-i18n="svc.f2.title">温もりを伝える</p>
+            <p class="feature-body"  data-i18n="svc.f2.body">温度フィードバックで、触覚的なつながりを提供</p>
           </div>
           <div class="feature-item">
             <div class="feature-icon">✨</div>
-            <p class="feature-title">気配を感じる</p>
-            <p class="feature-body">相手の存在感を日常の空間に溶け込ませる環境センシング</p>
+            <p class="feature-title" data-i18n="svc.f3.title">気配を感じる</p>
+            <p class="feature-body"  data-i18n="svc.f3.body">相手の存在感を日常の空間に溶け込ませる環境センシング</p>
           </div>
           <div class="feature-item">
             <div class="feature-icon">📊</div>
-            <p class="feature-title">ESG対応</p>
-            <p class="feature-body">メンタルケアによる離職率低下・生産性向上をデータで可視化</p>
+            <p class="feature-title" data-i18n="svc.f4.title">ESG対応</p>
+            <p class="feature-body"  data-i18n="svc.f4.body">メンタルケアによる離職率低下・生産性向上をデータで可視化</p>
           </div>
         </div>
-        <div class="service-visual">[ Device Visual / Demo Movie — 後で差し替え ]</div>
+        <div class="service-visual" data-i18n="svc.visual">[ Device Visual / Demo Movie — 後で差し替え ]</div>
       </div>
     </section>
 
     <!-- ROADMAP -->
     <section id="roadmap" class="section">
       <div class="container">
-        <p class="section-label">Roadmap</p>
-        <h2 class="section-title">2026年 ロードマップ</h2>
+        <p class="section-label" data-i18n="road.label">Roadmap</p>
+        <h2 class="section-title" data-i18n="road.title">2026年 ロードマップ</h2>
         <div class="roadmap-list">
           <div class="roadmap-item">
-            <div class="roadmap-month"><div class="month-badge done">3月</div></div>
+            <div class="roadmap-month"><div class="month-badge done" data-i18n="road.m3.badge">3月</div></div>
             <div class="roadmap-content">
-              <h3 class="roadmap-title">実地調査</h3>
-              <p class="roadmap-desc">技能実習生をはじめとする人々へのヒアリング。真のニーズ抽出。</p>
+              <h3 class="roadmap-title" data-i18n="road.m3.title">実地調査</h3>
+              <p class="roadmap-desc"  data-i18n="road.m3.body">技能実習生をはじめとする人々へのヒアリング。真のニーズ抽出。</p>
             </div>
           </div>
           <div class="roadmap-item">
-            <div class="roadmap-month"><div class="month-badge">4月</div></div>
+            <div class="roadmap-month"><div class="month-badge" data-i18n="road.m4.badge">4月</div></div>
             <div class="roadmap-content">
-              <h3 class="roadmap-title">コンセプト実証</h3>
-              <p class="roadmap-desc">有識者によるメインデバイスの要件定義。</p>
+              <h3 class="roadmap-title" data-i18n="road.m4.title">コンセプト実証</h3>
+              <p class="roadmap-desc"  data-i18n="road.m4.body">有識者によるメインデバイスの要件定義。</p>
             </div>
           </div>
           <div class="roadmap-item">
-            <div class="roadmap-month"><div class="month-badge">5月</div></div>
+            <div class="roadmap-month"><div class="month-badge" data-i18n="road.m5.badge">5月</div></div>
             <div class="roadmap-content">
-              <h3 class="roadmap-title">ネットワーク構築</h3>
-              <p class="roadmap-desc">交流イベント開催。エンジニア・運営メンバーの正式募集。</p>
+              <h3 class="roadmap-title" data-i18n="road.m5.title">ネットワーク構築</h3>
+              <p class="roadmap-desc"  data-i18n="road.m5.body">交流イベント開催。エンジニア・運営メンバーの正式募集。</p>
             </div>
           </div>
           <div class="roadmap-item">
-            <div class="roadmap-month"><div class="month-badge">6–7月</div></div>
+            <div class="roadmap-month"><div class="month-badge" data-i18n="road.m67.badge">6–7月</div></div>
             <div class="roadmap-content">
-              <h3 class="roadmap-title">開発</h3>
-              <p class="roadmap-desc">メイン事業である五感同期デバイスのプロトタイプ制作。</p>
+              <h3 class="roadmap-title" data-i18n="road.m67.title">開発</h3>
+              <p class="roadmap-desc"  data-i18n="road.m67.body">メイン事業である五感同期デバイスのプロトタイプ制作。</p>
             </div>
           </div>
           <div class="roadmap-item">
-            <div class="roadmap-month"><div class="month-badge">8月</div></div>
+            <div class="roadmap-month"><div class="month-badge" data-i18n="road.m8.badge">8月</div></div>
             <div class="roadmap-content">
-              <h3 class="roadmap-title">社会実装</h3>
-              <p class="roadmap-desc">ビジコン出場、およびプロダクトローンチ。</p>
+              <h3 class="roadmap-title" data-i18n="road.m8.title">社会実装</h3>
+              <p class="roadmap-desc"  data-i18n="road.m8.body">ビジコン出場、およびプロダクトローンチ。</p>
             </div>
           </div>
         </div>
@@ -506,33 +528,33 @@
     <!-- STAKEHOLDERS -->
     <section id="stakeholders" class="section" style="background:var(--color-surface);">
       <div class="container">
-        <p class="section-label">Stakeholders</p>
-        <h2 class="section-title">仲間の4つのカタチ</h2>
-        <p class="section-body">関わり方に合わせて参加できます。</p>
+        <p class="section-label" data-i18n="stake.label">Stakeholders</p>
+        <h2 class="section-title" data-i18n="stake.title">仲間の4つのカタチ</h2>
+        <p class="section-body" data-i18n="stake.body">関わり方に合わせて参加できます。</p>
         <div class="stakeholder-grid">
           <div class="stakeholder-card">
             <div class="stakeholder-emoji">🛠️</div>
-            <p class="stakeholder-role">Core Member</p>
-            <h3 class="stakeholder-title">運営チーム</h3>
-            <p class="stakeholder-desc">エンジニア・デザイナー・PJメンバー。週1時間のMTGからでも参加OK。</p>
+            <p class="stakeholder-role"  data-i18n="stake.c1.role">Core Member</p>
+            <h3 class="stakeholder-title" data-i18n="stake.c1.title">運営チーム</h3>
+            <p class="stakeholder-desc"  data-i18n="stake.c1.desc">エンジニア・デザイナー・PJメンバー。週1時間のMTGからでも参加OK。</p>
           </div>
           <div class="stakeholder-card">
             <div class="stakeholder-emoji">❤️</div>
-            <p class="stakeholder-role">Supporter</p>
-            <h3 class="stakeholder-title">共感者・ファン</h3>
-            <p class="stakeholder-desc">SNSシェアや単発イベントボランティアとして活動を支援。</p>
+            <p class="stakeholder-role"  data-i18n="stake.c2.role">Supporter</p>
+            <h3 class="stakeholder-title" data-i18n="stake.c2.title">共感者・ファン</h3>
+            <p class="stakeholder-desc"  data-i18n="stake.c2.desc">SNSシェアや単発イベントボランティアとして活動を支援。</p>
           </div>
           <div class="stakeholder-card">
             <div class="stakeholder-emoji">🤝</div>
-            <p class="stakeholder-role">Partner / Sponsor</p>
-            <h3 class="stakeholder-title">協力・出資者</h3>
-            <p class="stakeholder-desc">企業CSR・管理団体。会場・物品・資金など多様な形で参加できます。</p>
+            <p class="stakeholder-role"  data-i18n="stake.c3.role">Partner / Sponsor</p>
+            <h3 class="stakeholder-title" data-i18n="stake.c3.title">協力・出資者</h3>
+            <p class="stakeholder-desc"  data-i18n="stake.c3.desc">企業CSR・管理団体。会場・物品・資金など多様な形で参加できます。</p>
           </div>
           <div class="stakeholder-card">
             <div class="stakeholder-emoji">🌏</div>
-            <p class="stakeholder-role">Beneficiary</p>
-            <h3 class="stakeholder-title">技能実習生など</h3>
-            <p class="stakeholder-desc">日本で働く実習生・母国の家族。体験会・スポーツ大会など楽しい入口から。</p>
+            <p class="stakeholder-role"  data-i18n="stake.c4.role">Beneficiary</p>
+            <h3 class="stakeholder-title" data-i18n="stake.c4.title">技能実習生など</h3>
+            <p class="stakeholder-desc"  data-i18n="stake.c4.desc">日本で働く実習生・母国の家族。体験会・スポーツ大会など楽しい入口から。</p>
           </div>
         </div>
       </div>
@@ -541,8 +563,8 @@
     <!-- TEAM -->
     <section id="team" class="section">
       <div class="container">
-        <p class="section-label">Team</p>
-        <h2 class="section-title">チームメンバー</h2>
+        <p class="section-label" data-i18n="team.label">Team</p>
+        <h2 class="section-title" data-i18n="team.title">チームメンバー</h2>
         <div class="team-grid">
           <div class="team-card">
             <div class="team-avatar"><img src="eitawatanabe_leader.jpeg" class="circle-image"></div>
@@ -554,8 +576,8 @@
                }
 
              </style>
-            <p class="team-name">渡辺 瑛太</p>
-            <p class="team-role">代表</p>
+            <p class="team-name" data-i18n="team.m1.name">渡辺 瑛太</p>
+            <p class="team-role" data-i18n="team.m1.role">代表</p>
           </div>
           <div class="team-card">
             <div class="team-avatar"><img src="akiyamatakahide_adviser.png" class="circle-image"></div>
@@ -565,13 +587,13 @@
                  border-radius: 50%;  /* これで正円になる */
                  object-fit: cover;   /* 画像が歪まないように調整 */
               </style>
-            <p class="team-name">秋山たかひで</p>
-            <p class="team-role">顧問</p>
+            <p class="team-name" data-i18n="team.m2.name">秋山たかひで</p>
+            <p class="team-role" data-i18n="team.m2.role">顧問</p>
           </div>
           <div class="team-card" style="border-style:dashed;background:transparent;">
             <div class="team-avatar" style="background:transparent;">＋</div>
-            <p class="team-name">You?</p>
-            <p class="team-role">エンジニア・デザイナー・運営メンバー 募集中</p>
+            <p class="team-name" data-i18n="team.m3.name">You?</p>
+            <p class="team-role" data-i18n="team.m3.role">エンジニア・デザイナー・運営メンバー 募集中</p>
           </div>
         </div>
       </div>
@@ -580,12 +602,12 @@
     <!-- CTA -->
     <section id="join" class="section" style="padding-bottom:0;">
       <div id="cta">
-        <p class="section-label">Join Us</p>
-        <h2 class="section-title">一緒に、笑顔を守ろう。</h2>
-        <p class="section-body">エンジニア・デザイナー・応援してくれる人、どんな形でもOKです。</p>
+        <p class="section-label" data-i18n="cta.label">Join Us</p>
+        <h2 class="section-title" data-i18n="cta.title">一緒に、笑顔を守ろう。</h2>
+        <p class="section-body" data-i18n="cta.body">エンジニア・デザイナー・応援してくれる人、どんな形でもOKです。</p>
         <div class="cta-buttons">
-          <a href="https://www.instagram.com/with_smile26?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" class="btn btn-white">📸 Instagram を見る</a>
-          <a href="/cdn-cgi/l/email-protection#b8d1d6ded7f8ccd7d5d7cbcdd5d996d2c8" class="btn btn-outline">✉️ メールで問い合わせ</a>
+          <a href="https://www.instagram.com/with_smile26?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" class="btn btn-white" data-i18n="cta.btn.ig">📸 Instagram を見る</a>
+          <a href="/cdn-cgi/l/email-protection#b8d1d6ded7f8ccd7d5d7cbcdd5d996d2c8" class="btn btn-outline" data-i18n="cta.btn.mail">✉️ メールで問い合わせ</a>
         </div>
       </div>
     </section>
@@ -596,7 +618,7 @@
     <div class="footer-inner">
       <div>
         <p class="footer-brand">トモスマ<span>.</span></p>
-        <p class="footer-tagline">どこにいても、笑顔と「共にある」未来を創る。</p>
+        <p class="footer-tagline" data-i18n="footer.tagline">どこにいても、笑顔と「共にある」未来を創る。</p>
       </div>
       <ul class="footer-links">
         <li><a href="#philosophy">3つの哲学</a></li>
@@ -609,11 +631,12 @@
       </ul>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 トモスマ（With Smile &amp; Beyond）</span>
-      <span>代表：渡辺 瑛太</span>
+      <span data-i18n="footer.copy">© 2026 トモスマ（With Smile & Beyond）</span>
+      <span data-i18n="footer.founder">代表：渡辺 瑛太</span>
     </div>
   </footer>
 
+  <script src="i18n.js"></script>
   <script>
     const hamburgerBtn = document.getElementById('hamburger-btn');
     const mobileMenu   = document.getElementById('mobile-menu');

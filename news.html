@@ -124,7 +124,12 @@
         <li><a href="news.html" class="active">News</a></li>
         <li><a href="index.html#join">参加する</a></li>
       </ul>
-      <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;padding:9px 20px;border-radius:99px;border:1.5px solid var(--color-border);font-size:13px;font-weight:700;color:var(--color-muted);transition:all .2s;white-space:nowrap;" onmouseover="this.style.borderColor='var(--color-accent)';this.style.color='var(--color-accent)'" onmouseout="this.style.borderColor='var(--color-border)';this.style.color='var(--color-muted)'">← トップへ</a>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;padding:9px 20px;border-radius:99px;border:1.5px solid var(--color-border);font-size:13px;font-weight:700;color:var(--color-muted);transition:all .2s;white-space:nowrap;" onmouseover="this.style.borderColor='var(--color-accent)';this.style.color='var(--color-accent)'" onmouseout="this.style.borderColor='var(--color-border)';this.style.color='var(--color-muted)'" data-i18n="nav.back">← トップへ</a>
+      <div class="lang-toggle" role="group" aria-label="言語切り替え">
+        <button class="lang-btn" data-lang="ja">JP</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
     </nav>
   </header>
 
@@ -134,20 +139,20 @@
     <div id="list-view">
       <section class="page-hero" style="padding:80px 0 64px; border-bottom:1px solid var(--color-border);">
         <div class="container">
-          <p class="section-label">News &amp; Blog</p>
-          <h1 class="section-title">活動レポート</h1>
-          <p class="section-body" style="margin-bottom:0;">トモスマの活動報告・開発の裏側・代表コラムをお届けします。</p>
+          <p class="section-label" data-i18n="news.label">News &amp; Blog</p>
+          <h1 class="section-title" data-i18n="news.title">活動レポート</h1>
+          <p class="section-body" style="margin-bottom:0;" data-i18n="news.body">トモスマの活動報告・開発の裏側・代表コラムをお届けします。</p>
         </div>
       </section>
 
       <section class="section">
         <div class="container">
           <div class="filter-bar">
-            <button class="filter-btn active" data-filter="all">すべて</button>
-            <button class="filter-btn" data-filter="お知らせ">お知らせ</button>
-            <button class="filter-btn" data-filter="活動報告">活動報告</button>
-            <button class="filter-btn" data-filter="開発">開発</button>
-            <button class="filter-btn" data-filter="メディア">メディア</button>
+            <button class="filter-btn active" data-filter="all"    data-i18n="news.filter.all">すべて</button>
+            <button class="filter-btn" data-filter="お知らせ"       data-i18n="news.filter.notice">お知らせ</button>
+            <button class="filter-btn" data-filter="活動報告"       data-i18n="news.filter.activity">活動報告</button>
+            <button class="filter-btn" data-filter="開発"           data-i18n="news.filter.dev">開発</button>
+            <button class="filter-btn" data-filter="メディア"       data-i18n="news.filter.media">メディア</button>
           </div>
           <p class="news-count" id="blog-count"></p>
           <div class="blog-grid" id="blog-grid"></div>
@@ -159,7 +164,7 @@
     <div id="article-view">
       <div class="container">
         <div class="article-header">
-          <div class="article-back" id="back-btn">← 一覧に戻る</div>
+          <div class="article-back" id="back-btn" data-i18n="news.back_list">← 一覧に戻る</div>
           <div class="article-meta" id="article-meta"></div>
           <h1 class="article-title" id="article-title"></h1>
           <div class="article-info" id="article-info"></div>
@@ -176,7 +181,7 @@
     <div class="footer-inner">
       <div>
         <p class="footer-brand">トモスマ<span>.</span></p>
-        <p class="footer-tagline">どこにいても、笑顔と「共にある」未来を創る。</p>
+        <p class="footer-tagline" data-i18n="footer.tagline">どこにいても、笑顔と「共にある」未来を創る。</p>
       </div>
       <ul class="footer-links">
         <li><a href="index.html#philosophy">3つの哲学</a></li>
@@ -193,6 +198,7 @@
   </footer>
 
   <script src="data.js"></script>
+  <script src="i18n.js"></script>
   <script>
     const listView    = document.getElementById('list-view');
     const articleView = document.getElementById('article-view');

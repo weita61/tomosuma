@@ -146,7 +146,12 @@
         <li><a href="news.html">News</a></li>
         <li><a href="index.html#join">参加する</a></li>
       </ul>
-      <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;padding:9px 20px;border-radius:99px;border:1.5px solid var(--color-border);font-size:13px;font-weight:700;color:var(--color-muted);transition:all .2s;white-space:nowrap;" onmouseover="this.style.borderColor='var(--color-accent)';this.style.color='var(--color-accent)'" onmouseout="this.style.borderColor='var(--color-border)';this.style.color='var(--color-muted)'">← トップへ</a>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;padding:9px 20px;border-radius:99px;border:1.5px solid var(--color-border);font-size:13px;font-weight:700;color:var(--color-muted);transition:all .2s;white-space:nowrap;" onmouseover="this.style.borderColor='var(--color-accent)';this.style.color='var(--color-accent)'" onmouseout="this.style.borderColor='var(--color-border)';this.style.color='var(--color-muted)'" data-i18n="nav.back">← トップへ</a>
+      <div class="lang-toggle" role="group" aria-label="言語切り替え">
+        <button class="lang-btn" data-lang="ja">JP</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
     </nav>
   </header>
 
@@ -154,14 +159,14 @@
     <!-- PAGE HERO -->
     <section class="page-hero">
       <div class="container">
-        <p class="section-label">Events</p>
-        <h1 class="section-title">イベント情報</h1>
-        <p class="section-body">スポーツ大会・多文化交流会・体験会など、トモスマが開催するイベントをご紹介します。</p>
+        <p class="section-label" data-i18n="ev.label">Events</p>
+        <h1 class="section-title" data-i18n="ev.title">イベント情報</h1>
+        <p class="section-body" data-i18n="ev.body">スポーツ大会・多文化交流会・体験会など、トモスマが開催するイベントをご紹介します。</p>
 
         <!-- タブ -->
         <div class="tab-bar">
-          <button class="tab-btn active" data-tab="upcoming">開催予定</button>
-          <button class="tab-btn"        data-tab="past">過去のイベント</button>
+          <button class="tab-btn active" data-tab="upcoming" data-i18n="ev.tab.upcoming">開催予定</button>
+          <button class="tab-btn"        data-tab="past"     data-i18n="ev.tab.past">過去のイベント</button>
         </div>
       </div>
     </section>
@@ -180,21 +185,21 @@
               <div class="event-thumb color-1">⚽</div>
               <div class="event-body">
                 <div class="event-tags">
-                  <span class="tag tag-accent">募集中</span>
-                  <span class="tag">スポーツ</span>
+                  <span class="tag tag-accent" data-i18n="ev.e1.tag1">募集中</span>
+                  <span class="tag"            data-i18n="ev.e1.tag2">スポーツ</span>
                 </div>
-                <h2 class="event-title">第1回 トモスマ スポーツ交流大会</h2>
+                <h2 class="event-title" data-i18n="ev.e1.title">第1回 トモスマ スポーツ交流大会</h2>
                 <div class="event-meta">
-                  <span>📅 2026年5月 予定（詳細は近日公開）</span>
-                  <span>📍 東京都内（会場調整中）</span>
+                  <span data-i18n="ev.e1.date">📅 2026年5月 予定（詳細は近日公開）</span>
+                  <span data-i18n="ev.e1.loc">📍 東京都内（会場調整中）</span>
                 </div>
-                <p class="event-desc">
+                <p class="event-desc" data-i18n="ev.e1.desc">
                   国籍・言語の壁を越えて、スポーツで繋がるイベント。技能実習生・学生・社会人、どなたでも参加歓迎です。エンジニア・運営メンバーの募集も同時開催予定。
                 </p>
               </div>
               <div class="event-footer">
-                <span class="event-capacity">👥 定員：調整中</span>
-                <a href="#" class="event-link">詳細・申込 →</a>
+                <span class="event-capacity" data-i18n="ev.e1.cap">👥 定員：調整中</span>
+                <a href="#" class="event-link" data-i18n="ev.e1.link">詳細・申込 →</a>
               </div>
             </div>
 
@@ -202,21 +207,21 @@
               <div class="event-thumb color-2">🌍</div>
               <div class="event-body">
                 <div class="event-tags">
-                  <span class="tag tag-yellow">企画中</span>
-                  <span class="tag">交流会</span>
+                  <span class="tag tag-yellow" data-i18n="ev.e2.tag1">企画中</span>
+                  <span class="tag"            data-i18n="ev.e2.tag2">交流会</span>
                 </div>
-                <h2 class="event-title">多文化交流ナイト Vol.1</h2>
+                <h2 class="event-title" data-i18n="ev.e2.title">多文化交流ナイト Vol.1</h2>
                 <div class="event-meta">
-                  <span>📅 2026年5月〜6月 予定</span>
-                  <span>📍 東京都内（未定）</span>
+                  <span data-i18n="ev.e2.date">📅 2026年5月〜6月 予定</span>
+                  <span data-i18n="ev.e2.loc">📍 東京都内（未定）</span>
                 </div>
-                <p class="event-desc">
+                <p class="event-desc" data-i18n="ev.e2.desc">
                   様々な国の文化・料理・音楽を楽しみながら交流するナイトイベント。「言葉がなくても笑顔はつながる」をテーマに、対等な友として関係を築く場を作ります。
                 </p>
               </div>
               <div class="event-footer">
-                <span class="event-capacity">👥 定員：未定</span>
-                <a href="#" class="event-link">詳細・申込 →</a>
+                <span class="event-capacity" data-i18n="ev.e2.cap">👥 定員：未定</span>
+                <a href="#" class="event-link" data-i18n="ev.e2.link">詳細・申込 →</a>
               </div>
             </div>
 
@@ -224,21 +229,21 @@
               <div class="event-thumb color-3">💓</div>
               <div class="event-body">
                 <div class="event-tags">
-                  <span class="tag tag-yellow">企画中</span>
-                  <span class="tag">体験会</span>
+                  <span class="tag tag-yellow" data-i18n="ev.e3.tag1">企画中</span>
+                  <span class="tag"            data-i18n="ev.e3.tag2">体験会</span>
                 </div>
-                <h2 class="event-title">Heart-to-Heart Device 体験会</h2>
+                <h2 class="event-title" data-i18n="ev.e3.title">Heart-to-Heart Device 体験会</h2>
                 <div class="event-meta">
-                  <span>📅 2026年8月 予定</span>
-                  <span>📍 東京都内（未定）</span>
+                  <span data-i18n="ev.e3.date">📅 2026年8月 予定</span>
+                  <span data-i18n="ev.e3.loc">📍 東京都内（未定）</span>
                 </div>
-                <p class="event-desc">
+                <p class="event-desc" data-i18n="ev.e3.desc">
                   開発中の五感同期デバイスのプロトタイプを実際に体験できるイベント。「スマホで鼓動が伝わる」感覚を、ぜひ体で感じてみてください。
                 </p>
               </div>
               <div class="event-footer">
-                <span class="event-capacity">👥 定員：少人数</span>
-                <a href="#" class="event-link">詳細・申込 →</a>
+                <span class="event-capacity" data-i18n="ev.e3.cap">👥 定員：少人数</span>
+                <a href="#" class="event-link" data-i18n="ev.e3.link">詳細・申込 →</a>
               </div>
             </div>
 
@@ -284,16 +289,16 @@
     <section class="section" style="padding-top: 0;">
       <div class="container">
         <div style="background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:48px;text-align:center;">
-          <p class="section-label" style="text-align:center;">Volunteer</p>
-          <h2 class="section-title" style="text-align:center;margin:0 auto 16px;">イベント運営ボランティア募集中</h2>
-          <p style="color:var(--color-muted);margin-bottom:32px;">単発参加OK。一緒にイベントを作り上げましょう。</p>
-          <a href="index.html#join" class="btn btn-primary">応募する</a>
+          <p class="section-label" style="text-align:center;" data-i18n="ev.vol.label">Volunteer</p>
+          <h2 class="section-title" style="text-align:center;margin:0 auto 16px;" data-i18n="ev.vol.title">イベント運営ボランティア募集中</h2>
+          <p style="color:var(--color-muted);margin-bottom:32px;" data-i18n="ev.vol.body">単発参加OK。一緒にイベントを作り上げましょう。</p>
+          <a href="index.html#join" class="btn btn-primary" data-i18n="ev.vol.btn">応募する</a>
         </div>
       </div>
     </section>
   </main>
 
-  <script src="components.js"></script>
+  <script src="i18n.js"></script>
   <script>
     /* ---- タブ切り替え ---- */
     const tabBtns     = document.querySelectorAll('.tab-btn');
