@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>エントリーフォーム｜トモスマ</title>
+  <!-- fonts: Zen Maru Gothic + Noto Sans JP + Noto Sans Khmer -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+Khmer:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       CSS VARIABLES（index.html と同じ #fbae17 を使用）
+    ============================================================ */
+    :root {
+      --color-bg:      #FAFAF7;
+      --color-text:    #1C1C1C;
+      --color-muted:   #6B6B6B;
+      --color-accent:  #fbae17;
+      --color-accent2: #FFD166;
+      --color-surface: #FFFFFF;
+      --color-border:  #E8E8E4;
+      --font-heading:  'Zen Maru Gothic', sans-serif;
+      --font-body:     'Noto Sans JP', 'Noto Sans Khmer', sans-serif;
+      --radius-sm:  8px;
+      --radius-md:  16px;
+      --radius-lg:  32px;
+      --max-width:    1080px;
+      --section-gap:  100px;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+    img { max-width: 100%; display: block; }
+    a   { color: inherit; text-decoration: none; }
+
+    /* ============================================================
+       UTILITY
+    ============================================================ */
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+    .section { padding: var(--section-gap) 0; }
+    .section-label {
+      font-size: 12px; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--color-accent); font-weight: 700; margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(24px, 4vw, 40px);
+      line-height: 1.3; margin-bottom: 16px;
+    }
+    .section-body {
+      color: var(--color-muted); max-width: 640px;
+      font-size: 17px; margin-bottom: 56px;
+    }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 32px; border-radius: var(--radius-lg);
+      font-weight: 700; font-family: var(--font-heading);
+      cursor: pointer; border: none; font-size: 15px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+    .btn-primary { background: var(--color-accent); color: #fff; }
+    .btn-outline  { border: 2px solid var(--color-text); color: var(--color-text); background: transparent; }
+
+    /* ============================================================
+       HEADER / NAV
+    ============================================================ */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,250,247,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+    }
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: var(--max-width); margin: 0 auto;
+      padding: 0 24px; height: 64px; gap: 24px;
+    }
+    .nav-logo {
+      font-family: var(--font-heading); font-size: 22px; font-weight: 700;
+      white-space: nowrap;
+    }
+    .nav-logo span { color: var(--color-accent); }
+    .nav-links {
+      display: flex; gap: 32px; list-style: none;
+      flex: 1;
+    }
+    .nav-links a {
+      font-size: 14px; font-weight: 700; color: var(--color-muted);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--color-accent); }
+
+    /* lang toggle */
+    .lang-toggle {
+      display: flex; align-items: center; gap: 4px;
+      background: var(--color-surface);
+      border: 1.5px solid var(--color-border);
+      border-radius: 99px; padding: 4px 10px;
+    }
+    .lang-btn {
+      background: none; border: none; cursor: pointer;
+      font-size: 12px; font-weight: 700; color: var(--color-muted);
+      padding: 2px 4px; border-radius: 99px;
+      transition: background .15s, color .15s;
+    }
+    .lang-btn.active,
+    .lang-btn:hover { background: var(--color-accent); color: #fff; }
+    .lang-sep { color: var(--color-border); font-size: 12px; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer { border-top: 1px solid var(--color-border); padding: 48px 24px 32px; }
+    .footer-inner {
+      max-width: var(--max-width); margin: 0 auto;
+      display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between;
+      margin-bottom: 40px;
+    }
+    .footer-brand { font-family: var(--font-heading); font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .footer-brand span { color: var(--color-accent); }
+    .footer-tagline { color: var(--color-muted); font-size: 14px; }
+    .footer-links { list-style: none; display: flex; flex-wrap: wrap; gap: 16px 32px; }
+    .footer-links a { font-size: 14px; color: var(--color-muted); transition: color .2s; }
+    .footer-links a:hover { color: var(--color-accent); }
+    .footer-bottom {
+      max-width: var(--max-width); margin: 0 auto;
+      display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between;
+      font-size: 13px; color: var(--color-muted);
+      border-top: 1px solid var(--color-border); padding-top: 24px;
+    }
+
+    /* ============================================================
+       PAGE HERO
+    ============================================================ */
+    .page-hero { padding: 80px 0 64px; border-bottom: 1px solid var(--color-border); }
+
+    /* ============================================================
+       FORM STYLES
+    ============================================================ */
+    .form-wrap { max-width: 680px; margin: 0 auto; }
+
+    .form-group { margin-bottom: 32px; }
+    .form-label {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--color-text);
+    }
+    .form-label .badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 99px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    .badge-required { background: var(--color-accent); color: #fff; }
+    .badge-optional  { background: var(--color-border); color: var(--color-muted); }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-md);
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--color-text);
+      background: var(--color-surface);
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+    }
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px rgba(251,174,23,.15);
+    }
+    .form-textarea { resize: vertical; min-height: 120px; line-height: 1.7; }
+    .form-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B6B6B' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 18px;
+      background: var(--color-accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-lg);
+      font-family: var(--font-heading);
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+      margin-top: 8px;
+    }
+    .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(251,174,23,.35); }
+
+    /* 送信完了 */
+    .success-box {
+      text-align: center;
+      padding: 80px 40px;
+      display: none;
+    }
+    .success-icon { font-size: 64px; margin-bottom: 24px; }
+    .success-title { font-family: var(--font-heading); font-size: 32px; margin-bottom: 16px; color: var(--color-accent); }
+    .success-body { font-size: 17px; color: var(--color-muted); margin-bottom: 40px; }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .page-hero { padding: 56px 0 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="index.html" class="nav-logo">トモスマ<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#philosophy" data-i18n="nav.philosophy">3つの哲学</a></li>
+        <li><a href="index.html#service"    data-i18n="nav.service">メイン事業</a></li>
+        <li><a href="events.html"           data-i18n="nav.events">イベント</a></li>
+        <li><a href="news.html"             data-i18n="nav.news">News</a></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;padding:9px 20px;border-radius:99px;border:1.5px solid var(--color-border);font-size:13px;font-weight:700;color:var(--color-muted);transition:all .2s;white-space:nowrap;" onmouseover="this.style.borderColor='var(--color-accent)';this.style.color='var(--color-accent)'" onmouseout="this.style.borderColor='var(--color-border)';this.style.color='var(--color-muted)'" data-i18n="nav.back">← トップへ</a>
+        <div class="lang-toggle" role="group" aria-label="言語切り替え">
+          <button class="lang-btn" data-lang="ja">JP</button>
+          <span class="lang-sep">|</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <span class="lang-sep">|</span>
+          <button class="lang-btn" data-lang="km">KH</button>
+          <span class="lang-sep">|</span>
+          <button class="lang-btn" data-lang="vi">VI</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <p class="section-label">Join Us</p>
+        <h1 class="section-title" data-i18n="form.title">メンバー募集エントリーフォーム</h1>
+        <p class="section-body" style="margin-bottom:0;" data-i18n="form.subtitle">以下の項目を入力してご応募ください。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="form-wrap">
+
+          <!-- ▼ Formspree セットアップ方法:
+               1. https://formspree.io で無料アカウントを作成
+               2. New Form → メールアドレスに info@tomosuma.jp を入力
+               3. 発行された endpoint ID（例: xpwzabcd）を下の REPLACE_WITH_YOUR_ID と差し替える
+               4. このコメントは削除してOK
+          -->
+
+          <!-- フォーム -->
+          <form id="entry-form" action="https://formspree.io/f/REPLACE_WITH_YOUR_ID" method="POST">
+            <input type="hidden" name="_subject" value="[トモスマ] メンバーエントリー" />
+
+            <!-- ① 名前 -->
+            <div class="form-group">
+              <label class="form-label" for="f-name">
+                <span data-i18n="form.label.name">① 名前</span>
+                <span class="badge badge-required" data-i18n="form.required">必須</span>
+              </label>
+              <input class="form-input" id="f-name" name="name" type="text" required
+                     data-i18n-placeholder="form.placeholder.name" placeholder="例：山田 太郎" />
+            </div>
+
+            <!-- ② 学校名 -->
+            <div class="form-group">
+              <label class="form-label" for="f-school">
+                <span data-i18n="form.label.school">② 学校名</span>
+                <span class="badge badge-required" data-i18n="form.required">必須</span>
+              </label>
+              <input class="form-input" id="f-school" name="school" type="text" required
+                     data-i18n-placeholder="form.placeholder.school" placeholder="例：○○高等学校" />
+            </div>
+
+            <!-- ③ 学年 -->
+            <div class="form-group">
+              <label class="form-label" for="f-grade">
+                <span data-i18n="form.label.grade">③ 学年</span>
+                <span class="badge badge-required" data-i18n="form.required">必須</span>
+              </label>
+              <select class="form-select" id="f-grade" name="grade" required>
+                <option value="" disabled selected>---</option>
+                <option value="j1" data-i18n-option="form.grade.j1">中1</option>
+                <option value="j2" data-i18n-option="form.grade.j2">中2</option>
+                <option value="j3" data-i18n-option="form.grade.j3">中3</option>
+                <option value="h1" data-i18n-option="form.grade.h1">高1</option>
+                <option value="h2" data-i18n-option="form.grade.h2">高2</option>
+                <option value="h3" data-i18n-option="form.grade.h3">高3</option>
+                <option value="u1" data-i18n-option="form.grade.u1">大1</option>
+                <option value="u2" data-i18n-option="form.grade.u2">大2</option>
+                <option value="u3" data-i18n-option="form.grade.u3">大3</option>
+                <option value="u4" data-i18n-option="form.grade.u4">大4</option>
+              </select>
+            </div>
+
+            <!-- ④ Instagram ID -->
+            <div class="form-group">
+              <label class="form-label" for="f-instagram">
+                <span data-i18n="form.label.instagram">④ Instagram ID</span>
+                <span class="badge badge-required" data-i18n="form.required">必須</span>
+              </label>
+              <input class="form-input" id="f-instagram" name="instagram" type="text" required
+                     data-i18n-placeholder="form.placeholder.instagram" placeholder="例：@username" />
+            </div>
+
+            <!-- ⑤ メールアドレス -->
+            <div class="form-group">
+              <label class="form-label" for="f-email">
+                <span data-i18n="form.label.email">⑤ メールアドレス</span>
+                <span class="badge badge-required" data-i18n="form.required">必須</span>
+              </label>
+              <input class="form-input" id="f-email" name="email" type="email" required
+                     data-i18n-placeholder="form.placeholder.email" placeholder="例：example@email.com" />
+            </div>
+
+            <!-- ⑥ きっかけ -->
+            <div class="form-group">
+              <label class="form-label" for="f-source">
+                <span data-i18n="form.label.source">⑥ トモスマを知ったきっかけ</span>
+                <span class="badge badge-required" data-i18n="form.required">必須</span>
+              </label>
+              <input class="form-input" id="f-source" name="source" type="text" required
+                     data-i18n-placeholder="form.placeholder.source" placeholder="Instagram、友人の紹介、など" />
+            </div>
+
+            <!-- ⑦ 参加理由 -->
+            <div class="form-group">
+              <label class="form-label" for="f-reason">
+                <span data-i18n="form.label.reason">⑦ 参加したい理由・やってみたいこと</span>
+                <span class="badge badge-required" data-i18n="form.required">必須</span>
+              </label>
+              <textarea class="form-textarea" id="f-reason" name="reason" required rows="4"
+                        data-i18n-placeholder="form.placeholder.reason" placeholder="自由に書いてください"></textarea>
+            </div>
+
+            <!-- ⑧ 自己紹介 -->
+            <div class="form-group">
+              <label class="form-label" for="f-about">
+                <span data-i18n="form.label.about">⑧ 自分のことを教えてください</span>
+                <span class="badge badge-required" data-i18n="form.required">必須</span>
+              </label>
+              <textarea class="form-textarea" id="f-about" name="about" required rows="4"
+                        data-i18n-placeholder="form.placeholder.about" placeholder="自由に書いてください"></textarea>
+            </div>
+
+            <!-- ⑨ 備考 -->
+            <div class="form-group">
+              <label class="form-label" for="f-notes">
+                <span data-i18n="form.label.notes">⑨ 備考・質問があれば</span>
+                <span class="badge badge-optional" data-i18n="form.optional">任意</span>
+              </label>
+              <textarea class="form-textarea" id="f-notes" name="notes" rows="3"
+                        data-i18n-placeholder="form.placeholder.notes" placeholder="任意記入"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" data-i18n="form.submit">送信する</button>
+          </form>
+
+          <!-- 送信完了メッセージ -->
+          <div class="success-box" id="success-box">
+            <div class="success-icon">🎉</div>
+            <h2 class="success-title" data-i18n="form.success.title">送信完了！</h2>
+            <p class="success-body" data-i18n="form.success.body">エントリーありがとうございます。担当者がInstagramまたはメールにてご連絡します。</p>
+            <a href="index.html" class="btn btn-primary" data-i18n="form.back">← サイトに戻る</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <p class="footer-brand">トモスマ<span>.</span></p>
+        <p class="footer-tagline" data-i18n="footer.tagline">どこにいても、笑顔と「共にある」未来を創る。</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="index.html#philosophy" data-i18n="nav.philosophy">3つの哲学</a></li>
+        <li><a href="index.html#service"    data-i18n="nav.service">メイン事業</a></li>
+        <li><a href="events.html"           data-i18n="nav.events">イベント</a></li>
+        <li><a href="news.html"             data-i18n="nav.news">News</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer.copy">© 2026 トモスマ（With Smile & Beyond）</span>
+      <span data-i18n="footer.founder">代表：渡辺 瑛太</span>
+    </div>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script>
+    // Formspree 送信成功処理
+    const form = document.getElementById('entry-form');
+    const successBox = document.getElementById('success-box');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        successBox.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        alert('送信に失敗しました。もう一度お試しください。');
+      }
+    });
+  </script>
+</body>
+</html>
