@@ -19,7 +19,7 @@ const I18N = {
     'nav.back':       '← トップへ',
 
     /* ─── index.html — ヒーロー ─── */
-    'hero.badge':    'With Smile &amp; Beyond — 2026年3月 設立',
+    'hero.badge':    'With Smile & Beyond — 2026年3月 設立',
     'hero.title':    'どこにいても、<br>笑顔と<span class="accent">「共にある」</span><br>未来を創る。',
     'hero.subtitle': 'テクノロジーと人のつながりで、世界中の笑顔を守り、未来を灯すプロジェクト。',
     'hero.btn.service': 'メイン事業を見る',
@@ -221,7 +221,7 @@ const I18N = {
     'nav.back':       '← Back to Top',
 
     /* ─── index.html — ヒーロー ─── */
-    'hero.badge':    'With Smile &amp; Beyond — Founded March 2026',
+    'hero.badge':    'With Smile & Beyond — Founded March 2026',
     'hero.title':    'Wherever you are,<br>a future full of smiles<br>and <span class="accent">"being together."</span>',
     'hero.subtitle': 'A project that uses technology and human connection to protect smiles and light the future worldwide.',
     'hero.btn.service': 'See Our Main Service',
