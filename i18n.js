@@ -97,6 +97,8 @@ const I18N = {
     'team.m1.role': '代表',
     'team.m2.name': '秋山たかひで',
     'team.m2.role': '顧問',
+    'team.m4.name': '大曲 弘太朗',
+    'team.m4.role': '副代表',
     'team.m3.name': 'You?',
     'team.m3.role': 'エンジニア・デザイナー・運営メンバー 募集中',
 
@@ -296,6 +298,8 @@ const I18N = {
     'team.m1.role': 'Founder',
     'team.m2.name': 'Takahide Akiyama',
     'team.m2.role': 'Advisor',
+    'team.m4.name': 'Kotaro Okamachi',
+    'team.m4.role': 'Vice President',
     'team.m3.name': 'You?',
     'team.m3.role': 'Engineers, Designers & Ops Members Wanted',
 
@@ -495,6 +499,8 @@ const I18N = {
     'team.m1.role': 'ស្ថាបនិក',
     'team.m2.name': 'Takahide Akiyama',
     'team.m2.role': 'ទីប្រឹក្សា',
+    'team.m4.name': 'Kotaro Okamachi',
+    'team.m4.role': 'អនុប្រធាន',
     'team.m3.name': 'You?',
     'team.m3.role': 'ជ្រើសរើសវិស្វករ អ្នករចនា សមាជិក',
 
@@ -694,6 +700,8 @@ const I18N = {
     'team.m1.role': 'Người sáng lập',
     'team.m2.name': 'Takahide Akiyama',
     'team.m2.role': 'Cố vấn',
+    'team.m4.name': 'Kotaro Okamachi',
+    'team.m4.role': 'Phó Đại diện',
     'team.m3.name': 'You?',
     'team.m3.role': 'Tuyển kỹ sư, thiết kế viên & thành viên vận hành',
 
