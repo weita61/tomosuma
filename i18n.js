@@ -101,6 +101,7 @@ const I18N = {
     'team.m4.role': '副代表',
     'team.m3.name': 'You?',
     'team.m3.role': 'エンジニア・デザイナー・運営メンバー 募集中',
+    'team.others':  '他にも、高校生・大学生を中心に約10名が活動しています。',
 
     /* ─── CTA ─── */
     'cta.label':    'Join Us',
@@ -302,6 +303,7 @@ const I18N = {
     'team.m4.role': 'Vice President',
     'team.m3.name': 'You?',
     'team.m3.role': 'Engineers, Designers & Ops Members Wanted',
+    'team.others':  'Beyond our core members, around 10 high school and university students are actively involved.',
 
     /* ─── CTA ─── */
     'cta.label':    'Join Us',
@@ -503,6 +505,7 @@ const I18N = {
     'team.m4.role': 'អនុប្រធាន',
     'team.m3.name': 'You?',
     'team.m3.role': 'ជ្រើសរើសវិស្វករ អ្នករចនា សមាជិក',
+    'team.others':  'លើសពីនេះ សមាជិកនិស្សិតវិទ្យាល័យ និងសកលវិទ្យាល័យប្រមាណ ១០ នាក់ កំពុងសកម្ម។',
 
     /* ─── CTA ─── */
     'cta.label':    'Join Us',
@@ -704,6 +707,7 @@ const I18N = {
     'team.m4.role': 'Phó Đại diện',
     'team.m3.name': 'You?',
     'team.m3.role': 'Tuyển kỹ sư, thiết kế viên & thành viên vận hành',
+    'team.others':  'Ngoài ra, khoảng 10 thành viên là học sinh cấp 3 và sinh viên đại học đang hoạt động tích cực.',
 
     /* ─── CTA ─── */
     'cta.label':    'Join Us',
