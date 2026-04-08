@@ -141,11 +141,10 @@
     .hero-subtitle { font-size: 18px; color: var(--color-muted); max-width: 560px; margin: 0 auto 48px; }
     .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
     .hero-visual {
-      margin-top: 80px; width: 100%; height: 400px;
-      background: var(--color-border); border-radius: var(--radius-md);
+      margin-top: 64px; width: 100%;
       display: flex; align-items: center; justify-content: center;
-      color: var(--color-muted); font-size: 14px;
     }
+    .hero-visual img { width: 100%; max-width: 640px; height: auto; }
 
     /* ============================================================
        PHILOSOPHY
@@ -421,16 +420,25 @@
           <a href="#service" class="btn btn-primary" data-i18n="hero.btn.service">メイン事業を見る</a>
           <a href="form.html" class="btn btn-outline"  data-i18n="hero.btn.join">仲間になる</a>
         </div>
-        <div class="hero-visual" data-i18n="hero.visual">[ Hero Image / Movie — 後で差し替え ]</div>
+        <div class="hero-visual">
+          <img src="assets/illust/1128.svg" alt="世界中の人々がつながるイラスト" loading="lazy" />
+        </div>
       </div>
     </section>
 
     <!-- PHILOSOPHY -->
     <section id="philosophy" class="section">
       <div class="container">
-        <p class="section-label" data-i18n="phil.label">Philosophy</p>
-        <h2 class="section-title" data-i18n="phil.title">3つの定義・哲学</h2>
-        <p class="section-body" data-i18n="phil.body">「友」「共に」「灯す」——3つのアプローチを並行して動かすことで、笑顔の総量を増やし、守り抜きます。</p>
+        <div style="display:flex;align-items:flex-start;gap:40px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:280px;">
+            <p class="section-label" data-i18n="phil.label">Philosophy</p>
+            <h2 class="section-title" data-i18n="phil.title">3つの定義・哲学</h2>
+            <p class="section-body" data-i18n="phil.body">「友」「共に」「灯す」——3つのアプローチを並行して動かすことで、笑顔の総量を増やし、守り抜きます。</p>
+          </div>
+          <div style="flex:0 0 200px;display:flex;align-items:center;justify-content:center;">
+            <img src="assets/illust/1124.svg" alt="" loading="lazy" style="width:180px;height:auto;" />
+          </div>
+        </div>
         <div class="philosophy-grid">
           <div class="philosophy-card">
             <div class="card-number">01</div>
