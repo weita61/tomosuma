@@ -11,6 +11,24 @@
   <style>
     /* ---- CONTACT ONLY ---- */
 
+    /* ヒーローレイアウト（テキスト＋イラスト横並び） */
+    .page-hero .hero-inner {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
+    .page-hero .hero-text { flex: 1; }
+    .page-hero .hero-illust {
+      flex: 0 0 220px;
+      display: flex;
+      justify-content: center;
+    }
+    .page-hero .hero-illust img {
+      width: 200px;
+      height: auto;
+    }
+
+    /* カードグリッド */
     .contact-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -34,7 +52,23 @@
       box-shadow: 0 16px 48px rgba(0,0,0,.08);
     }
 
-    .contact-icon { font-size: 40px; }
+    /* ロゴエリア */
+    .contact-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-logo svg { width: 52px; height: 52px; }
+
+    /* メールロゴ背景 */
+    .contact-logo-mail {
+      background: var(--color-accent);
+      border-radius: 14px;
+    }
 
     .contact-service {
       font-size: 11px;
@@ -46,7 +80,7 @@
 
     .contact-id {
       font-family: var(--font-heading);
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
       word-break: break-all;
     }
@@ -64,8 +98,20 @@
       color: var(--color-muted);
     }
 
+    /* カード下イラスト */
+    .contact-illust-row {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 48px;
+      max-width: 720px;
+      opacity: .85;
+    }
+    .contact-illust-row img { width: 160px; height: auto; }
+
     @media (max-width: 640px) {
       .contact-grid { grid-template-columns: 1fr; }
+      .page-hero .hero-inner { flex-direction: column; gap: 24px; }
+      .page-hero .hero-illust { flex: none; }
     }
   </style>
 </head>
@@ -98,9 +144,17 @@
     <!-- PAGE HERO -->
     <section class="page-hero">
       <div class="container">
-        <p class="section-label" data-i18n="contact.label">Contact</p>
-        <h1 class="section-title" data-i18n="contact.title">お問い合わせ</h1>
-        <p class="section-body" data-i18n="contact.body">ご質問・取材・コラボレーションのご提案など、お気軽にご連絡ください。</p>
+        <div class="hero-inner">
+          <div class="hero-text">
+            <p class="section-label" data-i18n="contact.label">Contact</p>
+            <h1 class="section-title" data-i18n="contact.title">お問い合わせ</h1>
+            <p class="section-body" style="margin-bottom:0;" data-i18n="contact.body">ご質問・取材・コラボレーションのご提案など、お気軽にご連絡ください。</p>
+          </div>
+          <!-- loosedrawing.com イラスト（スマホで話す女性） -->
+          <div class="hero-illust">
+            <img src="https://loosedrawing.com/assets/media/illustrations/png/1170.png" alt="" loading="lazy" />
+          </div>
+        </div>
       </div>
     </section>
 
@@ -111,7 +165,24 @@
 
           <!-- Instagram -->
           <div class="contact-card">
-            <div class="contact-icon">📸</div>
+            <!-- Instagram 公式グリフロゴ（SVGインライン） -->
+            <div class="contact-logo">
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-label="Instagram">
+                <defs>
+                  <radialGradient id="ig-bg" cx="30%" cy="107%" r="150%">
+                    <stop offset="0%"  stop-color="#fdf497"/>
+                    <stop offset="5%"  stop-color="#fdf497"/>
+                    <stop offset="45%" stop-color="#fd5949"/>
+                    <stop offset="60%" stop-color="#d6249f"/>
+                    <stop offset="90%" stop-color="#285AEB"/>
+                  </radialGradient>
+                </defs>
+                <rect width="32" height="32" rx="8" fill="url(#ig-bg)"/>
+                <rect x="7" y="7" width="18" height="18" rx="5" fill="none" stroke="white" stroke-width="1.5"/>
+                <circle cx="16" cy="16" r="5" fill="none" stroke="white" stroke-width="1.5"/>
+                <circle cx="22.5" cy="9.5" r="1.3" fill="white"/>
+              </svg>
+            </div>
             <p class="contact-service" data-i18n="contact.ig.label">Instagram</p>
             <p class="contact-id">@with_smile26</p>
             <p class="contact-desc" data-i18n="contact.ig.desc">DMでのお問い合わせはこちら。最も早く返信できます。</p>
@@ -120,7 +191,13 @@
 
           <!-- Email -->
           <div class="contact-card">
-            <div class="contact-icon">✉️</div>
+            <div class="contact-logo contact-logo-mail">
+              <svg viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg" aria-label="メール">
+                <rect width="52" height="52" rx="14" fill="#fbae17"/>
+                <rect x="10" y="16" width="32" height="22" rx="3" fill="none" stroke="white" stroke-width="2"/>
+                <polyline points="10,17 26,29 42,17" fill="none" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+            </div>
             <p class="contact-service" data-i18n="contact.mail.label">メール</p>
             <p class="contact-id">tomosuma.smile@gmail.com</p>
             <p class="contact-desc" data-i18n="contact.mail.desc">メールでのお問い合わせはこちら。</p>
@@ -130,6 +207,11 @@
         </div>
 
         <p class="contact-note" data-i18n="contact.note">※ お返事は通常2〜3営業日以内を目安にしております。</p>
+
+        <!-- loosedrawing.com イラスト（スマホ操作の男性） -->
+        <div class="contact-illust-row">
+          <img src="https://loosedrawing.com/assets/media/illustrations/png/1169.png" alt="" loading="lazy" />
+        </div>
       </div>
     </section>
   </main>
@@ -137,7 +219,7 @@
   <footer>
     <div class="footer-inner">
       <div>
-        <p class="footer-brand">トモスマ<span class="accent">.</span></p>
+        <p class="footer-brand">トモスマ<span>.</span></p>
         <p class="footer-tagline" data-i18n="footer.tagline">どこにいても、笑顔と「共にある」未来を創る。</p>
       </div>
       <ul class="footer-links">
