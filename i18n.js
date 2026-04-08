@@ -15,6 +15,7 @@ const I18N = {
     'nav.news':       'News',
     'nav.join':       '参加する',
     'nav.join_btn':   '仲間になる',
+    'nav.contact':    'Contact',
     'nav.back':       '← トップへ',
 
     /* ─── index.html — ヒーロー ─── */
@@ -189,6 +190,18 @@ const I18N = {
     'form.success.title': '送信完了！',
     'form.success.body': 'エントリーありがとうございます。担当者がInstagramまたはメールにてご連絡します。',
     'form.back': '← サイトに戻る',
+
+    /* ─── contact.html ─── */
+    'contact.label':       'Contact',
+    'contact.title':       'お問い合わせ',
+    'contact.body':        'ご質問・取材・コラボレーションのご提案など、お気軽にご連絡ください。',
+    'contact.ig.label':    'Instagram',
+    'contact.ig.desc':     'DMでのお問い合わせはこちら。最も早く返信できます。',
+    'contact.ig.btn':      'DMを送る',
+    'contact.mail.label':  'メール',
+    'contact.mail.desc':   'メールでのお問い合わせはこちら。',
+    'contact.mail.btn':    'メールを送る',
+    'contact.note':        '※ お返事は通常2〜3営業日以内を目安にしております。',
   },
 
   en: {
@@ -201,6 +214,7 @@ const I18N = {
     'nav.news':       'News',
     'nav.join':       'Join Us',
     'nav.join_btn':   'Join Us',
+    'nav.contact':    'Contact',
     'nav.back':       '← Back to Top',
 
     /* ─── index.html — ヒーロー ─── */
@@ -375,6 +389,18 @@ const I18N = {
     'form.success.title': 'Submitted!',
     'form.success.body': 'Thank you for your application. We will contact you via Instagram or email.',
     'form.back': '← Back to Site',
+
+    /* ─── contact.html ─── */
+    'contact.label':       'Contact',
+    'contact.title':       'Contact Us',
+    'contact.body':        'For inquiries, media, or collaboration proposals, feel free to reach out.',
+    'contact.ig.label':    'Instagram',
+    'contact.ig.desc':     'Send us a DM — fastest way to get a reply.',
+    'contact.ig.btn':      'Send a DM',
+    'contact.mail.label':  'Email',
+    'contact.mail.desc':   'You can also reach us by email.',
+    'contact.mail.btn':    'Send Email',
+    'contact.note':        '* We typically reply within 2–3 business days.',
   },
 
   km: {
@@ -387,6 +413,7 @@ const I18N = {
     'nav.news':       'ព័ត៌មាន',
     'nav.join':       'ចូលរួម',
     'nav.join_btn':   'ក្លាយជាសមាជិក',
+    'nav.contact':    'ទំនាក់ទំនង',
     'nav.back':       '← ត្រឡប់ទៅទំព័រដើម',
 
     /* ─── ហេរ៉ូ ─── */
@@ -561,6 +588,18 @@ const I18N = {
     'form.success.title': 'បានផ្ញើ!',
     'form.success.body': 'អរគុណ! យើងនឹងទំនាក់ទំនងតាម Instagram ឬអ៊ីម៉ែល',
     'form.back': '← ត្រឡប់ទៅគេហទំព័រ',
+
+    /* ─── contact.html ─── */
+    'contact.label':       'Contact',
+    'contact.title':       'ទំនាក់ទំនងយើង',
+    'contact.body':        'សម្រាប់សំណួរ ការផ្សព្វផ្សាយ ឬការស្នើសុំសហការ សូមទំនាក់ទំនងយើង។',
+    'contact.ig.label':    'Instagram',
+    'contact.ig.desc':     'ផ្ញើ DM មកយើង — វិធីលឿនបំផុតទទួលបានការឆ្លើយ។',
+    'contact.ig.btn':      'ផ្ញើ DM',
+    'contact.mail.label':  'អ៊ីម៉ែល',
+    'contact.mail.desc':   'អ្នកអាចទំនាក់ទំនងតាមអ៊ីម៉ែលផងដែរ។',
+    'contact.mail.btn':    'ផ្ញើអ៊ីម៉ែល',
+    'contact.note':        '* ជាទូទៅយើងឆ្លើយក្នុងរយៈពេល 2–3 ថ្ងៃធ្វើការ។',
   },
 
   vi: {
@@ -573,6 +612,7 @@ const I18N = {
     'nav.news':       'Tin tức',
     'nav.join':       'Tham gia',
     'nav.join_btn':   'Trở thành thành viên',
+    'nav.contact':    'Liên hệ',
     'nav.back':       '← Về trang chủ',
 
     /* ─── Hero ─── */
@@ -747,6 +787,18 @@ const I18N = {
     'form.success.title': 'Đã gửi thành công!',
     'form.success.body': 'Cảm ơn bạn đã đăng ký. Chúng tôi sẽ liên lạc qua Instagram hoặc email.',
     'form.back': '← Quay lại trang web',
+
+    /* ─── contact.html ─── */
+    'contact.label':       'Contact',
+    'contact.title':       'Liên hệ với chúng tôi',
+    'contact.body':        'Mọi câu hỏi, hợp tác truyền thông hoặc đề xuất hợp tác, hãy liên hệ với chúng tôi.',
+    'contact.ig.label':    'Instagram',
+    'contact.ig.desc':     'Gửi DM cho chúng tôi — cách nhanh nhất để nhận phản hồi.',
+    'contact.ig.btn':      'Gửi DM',
+    'contact.mail.label':  'Email',
+    'contact.mail.desc':   'Bạn cũng có thể liên hệ qua email.',
+    'contact.mail.btn':    'Gửi Email',
+    'contact.note':        '* Chúng tôi thường phản hồi trong vòng 2–3 ngày làm việc.',
   }
 };
 

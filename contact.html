@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact｜トモスマ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+Khmer:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ---- CONTACT ONLY ---- */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 56px;
+      max-width: 720px;
+    }
+
+    .contact-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .contact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,.08);
+    }
+
+    .contact-icon { font-size: 40px; }
+
+    .contact-service {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+    }
+
+    .contact-id {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      word-break: break-all;
+    }
+
+    .contact-desc {
+      font-size: 14px;
+      color: var(--color-muted);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .contact-note {
+      margin-top: 40px;
+      font-size: 13px;
+      color: var(--color-muted);
+    }
+
+    @media (max-width: 640px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="index.html" class="nav-logo">トモスマ<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#philosophy" data-i18n="nav.philosophy">3つの哲学</a></li>
+        <li><a href="index.html#service"    data-i18n="nav.service">メイン事業</a></li>
+        <li><a href="events.html"           data-i18n="nav.events">イベント</a></li>
+        <li><a href="news.html"             data-i18n="nav.news">News</a></li>
+        <li><a href="contact.html" class="active" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;padding:9px 20px;border-radius:99px;border:1.5px solid var(--color-border);font-size:13px;font-weight:700;color:var(--color-muted);transition:all .2s;white-space:nowrap;" onmouseover="this.style.borderColor='var(--color-accent)';this.style.color='var(--color-accent)'" onmouseout="this.style.borderColor='var(--color-border)';this.style.color='var(--color-muted)'" data-i18n="nav.back">← トップへ</a>
+      <div class="lang-toggle" role="group" aria-label="言語切り替え">
+        <button class="lang-btn" data-lang="ja">JP</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="km">KH</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="vi">VI</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="container">
+        <p class="section-label" data-i18n="contact.label">Contact</p>
+        <h1 class="section-title" data-i18n="contact.title">お問い合わせ</h1>
+        <p class="section-body" data-i18n="contact.body">ご質問・取材・コラボレーションのご提案など、お気軽にご連絡ください。</p>
+      </div>
+    </section>
+
+    <!-- CONTACT CARDS -->
+    <section class="section" style="padding-top: 56px;">
+      <div class="container">
+        <div class="contact-grid">
+
+          <!-- Instagram -->
+          <div class="contact-card">
+            <div class="contact-icon">📸</div>
+            <p class="contact-service" data-i18n="contact.ig.label">Instagram</p>
+            <p class="contact-id">@with_smile26</p>
+            <p class="contact-desc" data-i18n="contact.ig.desc">DMでのお問い合わせはこちら。最も早く返信できます。</p>
+            <a href="https://www.instagram.com/with_smile26" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="contact.ig.btn">DMを送る</a>
+          </div>
+
+          <!-- Email -->
+          <div class="contact-card">
+            <div class="contact-icon">✉️</div>
+            <p class="contact-service" data-i18n="contact.mail.label">メール</p>
+            <p class="contact-id">tomosuma.smile@gmail.com</p>
+            <p class="contact-desc" data-i18n="contact.mail.desc">メールでのお問い合わせはこちら。</p>
+            <a href="mailto:tomosuma.smile@gmail.com" class="btn btn-outline" data-i18n="contact.mail.btn">メールを送る</a>
+          </div>
+
+        </div>
+
+        <p class="contact-note" data-i18n="contact.note">※ お返事は通常2〜3営業日以内を目安にしております。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <p class="footer-brand">トモスマ<span class="accent">.</span></p>
+        <p class="footer-tagline" data-i18n="footer.tagline">どこにいても、笑顔と「共にある」未来を創る。</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="index.html#philosophy" data-i18n="nav.philosophy">3つの哲学</a></li>
+        <li><a href="index.html#service"    data-i18n="nav.service">メイン事業</a></li>
+        <li><a href="events.html"           data-i18n="nav.events">イベント</a></li>
+        <li><a href="news.html"             data-i18n="nav.news">News</a></li>
+        <li><a href="contact.html"          data-i18n="nav.contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer.copy">© 2026 トモスマ（With Smile & Beyond）</span>
+      <span data-i18n="footer.founder">代表：渡辺 瑛太</span>
+    </div>
+  </footer>
+
+  <script src="i18n.js"></script>
+</body>
+</html>
