@@ -196,10 +196,12 @@
       width: 56px; height: 56px; border-radius: 50%; background: var(--color-accent); color: #fff;
       font-family: var(--font-heading); font-weight: 700; font-size: 14px; position: relative; z-index: 1;
     }
-    .month-badge.done { background: var(--color-text); }
+    .month-badge.done    { background: var(--color-text); }
+    .month-badge.current { background: var(--color-accent); box-shadow: 0 0 0 4px var(--color-accent2); }
     .roadmap-content { padding-top: 12px; }
     .roadmap-title   { font-family: var(--font-heading); font-size: 18px; margin-bottom: 6px; }
-    .roadmap-desc    { color: var(--color-muted); font-size: 15px; }
+    .roadmap-desc    { color: var(--color-muted); font-size: 15px; line-height: 1.75; }
+    .roadmap-tags    { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
 
     /* ============================================================
        STAKEHOLDERS
@@ -503,36 +505,61 @@
           <div class="roadmap-item">
             <div class="roadmap-month"><div class="month-badge done" data-i18n="road.m3.badge">3月</div></div>
             <div class="roadmap-content">
-              <h3 class="roadmap-title" data-i18n="road.m3.title">実地調査</h3>
-              <p class="roadmap-desc"  data-i18n="road.m3.body">技能実習生をはじめとする人々へのヒアリング。真のニーズ抽出。</p>
+              <h3 class="roadmap-title" data-i18n="road.m3.title">設立・フィールドワーク開始</h3>
+              <p class="roadmap-desc"  data-i18n="road.m3.body">トモスマ設立。外国人技能実習生へのヒアリングを実施し、活動の核となるニーズを抽出。</p>
+              <div class="roadmap-tags">
+                <span class="tag">組織</span>
+                <span class="tag">リサーチ</span>
+              </div>
             </div>
           </div>
           <div class="roadmap-item">
-            <div class="roadmap-month"><div class="month-badge" data-i18n="road.m4.badge">4月</div></div>
+            <div class="roadmap-month"><div class="month-badge current" data-i18n="road.m4.badge">4月</div></div>
             <div class="roadmap-content">
-              <h3 class="roadmap-title" data-i18n="road.m4.title">コンセプト実証</h3>
-              <p class="roadmap-desc"  data-i18n="road.m4.body">有識者によるメインデバイスの要件定義。</p>
+              <h3 class="roadmap-title" data-i18n="road.m4.title">活動本格始動</h3>
+              <p class="roadmap-desc"  data-i18n="road.m4.body">HP・SNS公開。メンバー募集スタート。デバイス要件定義と世田谷学園 自主研究会の申請。</p>
+              <div class="roadmap-tags">
+                <span class="tag tag-accent">NOW</span>
+                <span class="tag">SNS</span>
+                <span class="tag">採用</span>
+                <span class="tag">開発</span>
+                <span class="tag">研究</span>
+              </div>
             </div>
           </div>
           <div class="roadmap-item">
             <div class="roadmap-month"><div class="month-badge" data-i18n="road.m5.badge">5月</div></div>
             <div class="roadmap-content">
-              <h3 class="roadmap-title" data-i18n="road.m5.title">ネットワーク構築</h3>
-              <p class="roadmap-desc"  data-i18n="road.m5.body">交流イベント開催。エンジニア・運営メンバーの正式募集。</p>
+              <h3 class="roadmap-title" data-i18n="road.m5.title">コミュニティ拡大</h3>
+              <p class="roadmap-desc"  data-i18n="road.m5.body">フットサル交流会などの接触型イベントを開催。SNSで認知を広げながらデバイス設計を本格化。</p>
+              <div class="roadmap-tags">
+                <span class="tag">イベント</span>
+                <span class="tag">SNS</span>
+                <span class="tag">開発</span>
+              </div>
             </div>
           </div>
           <div class="roadmap-item">
             <div class="roadmap-month"><div class="month-badge" data-i18n="road.m67.badge">6–7月</div></div>
             <div class="roadmap-content">
-              <h3 class="roadmap-title" data-i18n="road.m67.title">開発</h3>
-              <p class="roadmap-desc"  data-i18n="road.m67.body">メイン事業である五感同期デバイスのプロトタイプ制作。</p>
+              <h3 class="roadmap-title" data-i18n="road.m67.title">制作・現場検証</h3>
+              <p class="roadmap-desc"  data-i18n="road.m67.body">Heart-to-Heart Deviceプロトタイプ制作。外国人支援施設でのフィールドワーク実施。</p>
+              <div class="roadmap-tags">
+                <span class="tag">開発</span>
+                <span class="tag">フィールドワーク</span>
+              </div>
             </div>
           </div>
           <div class="roadmap-item">
             <div class="roadmap-month"><div class="month-badge" data-i18n="road.m8.badge">8月</div></div>
             <div class="roadmap-content">
-              <h3 class="roadmap-title" data-i18n="road.m8.title">社会実装</h3>
-              <p class="roadmap-desc"  data-i18n="road.m8.body">ビジコン出場、およびプロダクトローンチ。</p>
+              <h3 class="roadmap-title" data-i18n="road.m8.title">発表・ローンチ</h3>
+              <p class="roadmap-desc"  data-i18n="road.m8.body">ビジコン出場・プロダクトローンチ。自主研究会での研究発表。活動報告会の実施。</p>
+              <div class="roadmap-tags">
+                <span class="tag">開発</span>
+                <span class="tag">研究</span>
+                <span class="tag">イベント</span>
+              </div>
             </div>
           </div>
         </div>
