@@ -223,6 +223,64 @@
     .team-name { font-family: var(--font-heading); font-size: 18px; margin-bottom: 4px; }
     .team-role { font-size: 13px; color: var(--color-muted); }
     .team-others { margin-top: 32px; font-size: 14px; color: var(--color-muted); text-align: center; }
+    .team-card.clickable { cursor: pointer; transition: transform .22s, box-shadow .22s, border-color .22s; }
+    .team-card.clickable:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.07); border-color: var(--color-accent); }
+    .team-card.clickable .team-role-hint { font-size: 11px; color: var(--color-accent); font-weight: 700; margin-top: 8px; letter-spacing: .06em; }
+
+    /* ---- PROFILE MODAL ---- */
+    .prof-overlay {
+      position: fixed; inset: 0; z-index: 300;
+      background: rgba(0,0,0,.55);
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+      opacity: 0; pointer-events: none;
+      transition: opacity .25s;
+    }
+    .prof-overlay.open { opacity: 1; pointer-events: auto; }
+    .prof-modal {
+      background: var(--color-bg);
+      border-radius: var(--radius-lg);
+      max-width: 740px; width: 100%;
+      max-height: 90vh; overflow-y: auto;
+      padding: 52px 48px;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform .25s;
+    }
+    .prof-overlay.open .prof-modal { transform: translateY(0); }
+    .prof-close {
+      position: absolute; top: 18px; right: 18px;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--color-surface); border: 1px solid var(--color-border);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: var(--color-muted); transition: all .2s;
+    }
+    .prof-close:hover { background: var(--color-text); color: #fff; border-color: var(--color-text); }
+    .prof-close svg { width: 16px; height: 16px; }
+    .prof-inner { display: flex; gap: 44px; align-items: flex-start; }
+    .prof-photo {
+      width: 168px; height: 168px; border-radius: 16px;
+      overflow: hidden; flex-shrink: 0;
+    }
+    .prof-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .prof-body { flex: 1; }
+    .prof-label { font-size: 11px; font-weight: 700; letter-spacing: .14em; color: var(--color-accent); margin-bottom: 8px; }
+    .prof-name { font-family: var(--font-heading); font-size: 28px; line-height: 1.2; margin-bottom: 4px; }
+    .prof-name-en { font-size: 13px; color: var(--color-muted); margin-bottom: 20px; }
+    .prof-section { margin-bottom: 20px; }
+    .prof-section h4 {
+      font-family: var(--font-heading); font-size: 13px; font-weight: 700;
+      color: var(--color-accent); letter-spacing: .08em;
+      border-left: 3px solid var(--color-accent); padding-left: 10px;
+      margin-bottom: 10px;
+    }
+    .prof-section p { font-size: 14px; color: var(--color-muted); line-height: 1.85; }
+    .prof-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    @media (max-width: 580px) {
+      .prof-modal { padding: 40px 24px; }
+      .prof-inner { flex-direction: column; align-items: center; }
+      .prof-body { width: 100%; }
+    }
 
     /* ============================================================
        CTA
@@ -607,10 +665,11 @@
         <p class="section-label" data-i18n="team.label">Team</p>
         <h2 class="section-title" data-i18n="team.title">チームメンバー</h2>
         <div class="team-grid">
-          <div class="team-card">
+          <div class="team-card clickable" id="watanabe-card" role="button" tabindex="0" aria-label="渡辺瑛太のプロフィールを見る">
             <div class="team-avatar"><img src="assets/_KUB8466.jpg" class="circle-image" alt="渡辺 瑛太"></div>
             <p class="team-name" data-i18n="team.m1.name">渡辺 瑛太</p>
             <p class="team-role" data-i18n="team.m1.role">代表</p>
+            <p class="team-role-hint">プロフィールを見る →</p>
           </div>
           <div class="team-card">
             <div class="team-avatar"><img src="assets/okamachi_kotaro.jpg" alt="大曲 弘太朗"></div>
@@ -666,6 +725,41 @@
     </div>
   </footer>
 
+  <!-- PROFILE MODAL -->
+  <div class="prof-overlay" id="prof-overlay" role="dialog" aria-modal="true" aria-labelledby="prof-name">
+    <div class="prof-modal">
+      <button class="prof-close" id="prof-close" aria-label="閉じる"><i data-lucide="x"></i></button>
+      <div class="prof-inner">
+        <div class="prof-photo">
+          <img src="assets/_KUB8466.jpg" alt="渡辺 瑛太">
+        </div>
+        <div class="prof-body">
+          <p class="prof-label">FOUNDER &amp; REPRESENTATIVE</p>
+          <h3 class="prof-name" id="prof-name">渡辺 瑛太</h3>
+          <p class="prof-name-en">Eita Watanabe</p>
+
+          <div class="prof-section">
+            <h4>トモスマについて</h4>
+            <p>2026年3月、「孤独を解消しピュアな笑顔を守ることで、争いのない世界をつくる」という信念のもとトモスマを設立。7名のメンバーを率い、Heart-to-Heart Deviceの開発・SNS広報・交流イベントの3軸で活動している。外国人技能実習生が直面する「孤立」という社会課題の解消を、テクノロジーとコミュニティの力で実現することを目指す。</p>
+          </div>
+
+          <div class="prof-section">
+            <h4>生い立ち</h4>
+            <p>東京・目黒生まれの高校生。5歳でスキー、7歳からサッカーを始め、体を動かすことが好きだった。東南アジアへの旅をきっかけに、外国人技能実習生が直面する「孤立」という問題と出会い、その解決に向けて行動を開始。「高校生だから」と言い訳せず、本気で社会と向き合うことを大切にしている。</p>
+          </div>
+
+          <div class="prof-tags">
+            <span class="tag tag-yellow">多文化共生</span>
+            <span class="tag">テクノロジー</span>
+            <span class="tag">孤独解消</span>
+            <span class="tag">社会課題</span>
+            <span class="tag">高校生起業家</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script src="i18n.js"></script>
   <script>
@@ -696,6 +790,25 @@
     document.querySelectorAll('.mobile-link').forEach(a => {
       a.addEventListener('click', closeMenu);
     });
+
+    // プロフィールモーダル
+    const profOverlay = document.getElementById('prof-overlay');
+    const watanabeCard = document.getElementById('watanabe-card');
+
+    function openProf() {
+      profOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeProf() {
+      profOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    watanabeCard.addEventListener('click', openProf);
+    watanabeCard.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') openProf(); });
+    document.getElementById('prof-close').addEventListener('click', closeProf);
+    profOverlay.addEventListener('click', (e) => { if (e.target === profOverlay) closeProf(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeProf(); });
   </script>
 
 </body>
