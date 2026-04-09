@@ -232,11 +232,53 @@
     .success-title { font-family: var(--font-heading); font-size: 32px; margin-bottom: 16px; color: var(--color-accent); }
     .success-body { font-size: 17px; color: var(--color-muted); margin-bottom: 40px; }
 
+    /* ---- HAMBURGER ---- */
+    .hamburger {
+      display: none; flex-direction: column; justify-content: center;
+      gap: 5px; width: 40px; height: 40px; padding: 6px;
+      cursor: pointer; background: none; border: none; border-radius: 8px;
+      transition: background .2s; flex-shrink: 0;
+    }
+    .hamburger:hover { background: var(--color-border); }
+    .hamburger span {
+      display: block; width: 100%; height: 2px;
+      background: var(--color-text); border-radius: 2px;
+      transition: transform .3s, opacity .3s; transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    /* ---- MOBILE MENU ---- */
+    .mobile-menu { display: none; position: fixed; inset: 0; z-index: 199; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.4); backdrop-filter: blur(2px); }
+    .mobile-menu-panel {
+      position: absolute; top: 0; right: 0;
+      width: min(280px, 80vw); height: 100%;
+      background: var(--color-surface); padding: 80px 0 40px;
+      display: flex; flex-direction: column;
+      transform: translateX(100%);
+      transition: transform .3s cubic-bezier(.4,0,.2,1); overflow-y: auto;
+    }
+    .mobile-menu.open .mobile-menu-panel { transform: translateX(0); }
+    .mobile-menu-links { list-style: none; display: flex; flex-direction: column; padding: 0 8px; }
+    .mobile-menu-links a {
+      display: block; padding: 14px 20px; font-size: 16px; font-weight: 700;
+      font-family: var(--font-heading); color: var(--color-text);
+      border-radius: 10px; transition: background .15s, color .15s;
+    }
+    .mobile-menu-links a:hover { background: var(--color-bg); color: var(--color-accent); }
+    .mobile-menu-divider { border: none; border-top: 1px solid var(--color-border); margin: 12px 20px; }
+    .mobile-menu-cta { padding: 0 20px; margin-top: 8px; }
+    .mobile-menu-cta .btn { width: 100%; justify-content: center; font-size: 15px; }
     /* ============================================================
        RESPONSIVE
     ============================================================ */
+    @media (max-width: 1024px) {
+      .nav-links, .nav-back { display: none; }
+      .hamburger { display: flex; }
+    }
     @media (max-width: 768px) {
-      .nav-links { display: none; }
       .page-hero { padding: 56px 0 40px; }
     }
   </style>
@@ -255,7 +297,7 @@
         <li><a href="contact.html"          data-i18n="nav.contact">Contact</a></li>
       </ul>
       <div style="display:flex;align-items:center;gap:8px;">
-        <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;padding:9px 20px;border-radius:99px;border:1.5px solid var(--color-border);font-size:13px;font-weight:700;color:var(--color-muted);transition:all .2s;white-space:nowrap;" onmouseover="this.style.borderColor='var(--color-accent)';this.style.color='var(--color-accent)'" onmouseout="this.style.borderColor='var(--color-border)';this.style.color='var(--color-muted)'" data-i18n="nav.back">← トップへ</a>
+        <a href="index.html" class="nav-back" style="display:inline-flex;align-items:center;gap:6px;padding:9px 20px;border-radius:99px;border:1.5px solid var(--color-border);font-size:13px;font-weight:700;color:var(--color-muted);transition:all .2s;white-space:nowrap;" onmouseover="this.style.borderColor='var(--color-accent)';this.style.color='var(--color-accent)'" onmouseout="this.style.borderColor='var(--color-border)';this.style.color='var(--color-muted)'" data-i18n="nav.back">← トップへ</a>
         <div class="lang-toggle" role="group" aria-label="言語切り替え">
           <button class="lang-btn" data-lang="ja">JP</button>
           <span class="lang-sep">|</span>
@@ -265,9 +307,30 @@
           <span class="lang-sep">|</span>
           <button class="lang-btn" data-lang="vi">VI</button>
         </div>
+        <button class="hamburger" id="hamburger-btn" aria-label="メニューを開く">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </nav>
   </header>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-overlay" id="mobile-overlay"></div>
+    <div class="mobile-menu-panel">
+      <ul class="mobile-menu-links">
+        <li><a href="index.html#philosophy" class="mobile-link" data-i18n="nav.philosophy">3つの哲学</a></li>
+        <li><a href="index.html#service"    class="mobile-link" data-i18n="nav.service">メイン事業</a></li>
+        <li><a href="events.html"           class="mobile-link" data-i18n="nav.events">イベント</a></li>
+        <li><a href="news.html"             class="mobile-link" data-i18n="nav.news">News</a></li>
+        <li><a href="contact.html"          class="mobile-link" data-i18n="nav.contact">Contact</a></li>
+        <hr class="mobile-menu-divider">
+        <li><a href="index.html"            class="mobile-link" data-i18n="nav.back">← トップへ</a></li>
+      </ul>
+      <div class="mobile-menu-cta">
+        <a href="recruit.html" class="btn btn-primary mobile-link" data-i18n="nav.join_btn">メンバー募集</a>
+      </div>
+    </div>
+  </div>
 
   <main>
     <section class="page-hero">
@@ -453,6 +516,17 @@
         alert('送信に失敗しました。もう一度お試しください。');
       }
     });
+
+    /* ---- ハンバーガーメニュー ---- */
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu   = document.getElementById('mobile-menu');
+    const overlay      = document.getElementById('mobile-overlay');
+    function openMenu()  { mobileMenu.classList.add('open'); hamburgerBtn.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeMenu() { mobileMenu.classList.remove('open'); hamburgerBtn.classList.remove('open'); document.body.style.overflow = ''; }
+    hamburgerBtn.addEventListener('click', () => { mobileMenu.classList.contains('open') ? closeMenu() : openMenu(); });
+    overlay.addEventListener('click', closeMenu);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+    document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMenu));
   </script>
 </body>
 </html>

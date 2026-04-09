@@ -404,10 +404,12 @@
     /* ============================================================
        RESPONSIVE
     ============================================================ */
-    @media (max-width: 768px) {
-      :root { --section-gap: 72px; }
+    @media (max-width: 1024px) {
       .nav-links, .nav-cta { display: none; }
       .hamburger { display: flex; }
+    }
+    @media (max-width: 768px) {
+      :root { --section-gap: 72px; }
       #service, #cta { margin: 0 12px; padding: 56px 28px; }
       .roadmap-item { grid-template-columns: 80px 1fr; gap: 16px; }
       .roadmap-item:not(:last-child)::after { left: 28px; }
