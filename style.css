@@ -313,7 +313,7 @@ i[data-lucide] { display: inline-block; vertical-align: -0.125em; }
 .mobile-menu-cta .btn { width: 100%; justify-content: center; font-size: 15px; }
 
 /* ---- RESPONSIVE ---- */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .nav-links, .nav-cta, .nav-back { display: none; }
   .hamburger { display: flex; }
 }

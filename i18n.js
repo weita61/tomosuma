@@ -103,6 +103,13 @@ const I18N = {
     'team.m3.role': 'エンジニア・デザイナー・運営メンバー 募集中',
     'team.others':  '他にも、高校生・大学生を中心に約10名が活動しています。',
 
+    /* ─── プロフィールモーダル ─── */
+    'prof.name':           '渡辺 瑛太',
+    'prof.s1.title':       'トモスマについて',
+    'prof.s1.body':        '2026年3月、「孤独を解消しピュアな笑顔を守ることで、争いのない世界をつくる」という信念のもとトモスマを設立。7名のメンバーを率い、Heart-to-Heart Deviceの開発・SNS広報・交流イベントの3軸で活動している。外国人技能実習生が直面する「孤立」という社会課題の解消を、テクノロジーとコミュニティの力で実現することを目指す。',
+    'prof.s2.title':       '生い立ち',
+    'prof.s2.body':        '東京・目黒生まれの高校生。5歳でスキー、7歳からサッカーを始め、体を動かすことが好きだった。東南アジアへの旅をきっかけに、外国人技能実習生が直面する「孤立」という問題と出会い、その解決に向けて行動を開始。「高校生だから」と言い訳せず、本気で社会と向き合うことを大切にしている。',
+
     /* ─── CTA ─── */
     'cta.label':    'Join Us',
     'cta.title':    '一緒に、笑顔を守ろう。',
@@ -304,6 +311,13 @@ const I18N = {
     'team.m3.name': 'You?',
     'team.m3.role': 'Engineers, Designers & Ops Members Wanted',
     'team.others':  'Beyond our core members, around 10 high school and university students are actively involved.',
+
+    /* ─── Profile Modal ─── */
+    'prof.name':     'Eita Watanabe',
+    'prof.s1.title': 'About Tomosuma',
+    'prof.s1.body':  'Founded Tomosuma in March 2026 with the belief that "by eliminating loneliness and protecting pure smiles, we can create a world without conflict." Leading 7 members across three pillars: Heart-to-Heart Device development, SNS outreach, and community events. Aims to solve the isolation faced by migrant workers through technology and community.',
+    'prof.s2.title': 'Background',
+    'prof.s2.body':  'A high school student born in Meguro, Tokyo. Started skiing at 5 and soccer at 7. A trip to Southeast Asia led to an encounter with the isolation faced by migrant workers, prompting action. Committed to facing society seriously — no excuses about being a high schooler.',
 
     /* ─── CTA ─── */
     'cta.label':    'Join Us',
@@ -507,6 +521,13 @@ const I18N = {
     'team.m3.role': 'ជ្រើសរើសវិស្វករ អ្នករចនា សមាជិក',
     'team.others':  'លើសពីនេះ សមាជិកនិស្សិតវិទ្យាល័យ និងសកលវិទ្យាល័យប្រមាណ ១០ នាក់ កំពុងសកម្ម។',
 
+    /* ─── Profile Modal ─── */
+    'prof.name':     'Eita Watanabe',
+    'prof.s1.title': 'អំពី Tomosuma',
+    'prof.s1.body':  'បង្កើត Tomosuma នៅខែមីនា ២០២៦ ក្នុងជំនឿថា «ការលុបបំបាត់ភាពឯកោ ការពារស្នាមញញឹម អាចបង្កើតពិភពគ្មានជម្លោះ»។ ដឹកនាំ ៧ នាក់ ក្នុង ៣ សសរ: ការអភិវឌ្ឍ Heart-to-Heart Device ការផ្សព្វផ្សាយ SNS និងព្រឹត្តិការណ៍សហគមន៍។',
+    'prof.s2.title': 'ប្រវត្តិ',
+    'prof.s2.body':  'សិស្សវិទ្យាល័យ កើតនៅ Meguro ទីក្រុងតូក្យូ។ ចាប់ផ្ដើមស្គី ពេលអាយុ ៥ ឆ្នាំ និងបាល់ទាត់ ពេលអាយុ ៧ ឆ្នាំ។ ការធ្វើដំណើរទៅអាស៊ីអាគ្នេយ៍ បាននាំឱ្យជួបបញ្ហាភាពឯកោ ហើយចាប់ផ្ដើមចាត់វិធានការ។',
+
     /* ─── CTA ─── */
     'cta.label':    'Join Us',
     'cta.title':    'តោះការពារស្នាមជាមួយគ្នា',
@@ -708,6 +729,13 @@ const I18N = {
     'team.m3.name': 'You?',
     'team.m3.role': 'Tuyển kỹ sư, thiết kế viên & thành viên vận hành',
     'team.others':  'Ngoài ra, khoảng 10 thành viên là học sinh cấp 3 và sinh viên đại học đang hoạt động tích cực.',
+
+    /* ─── Profile Modal ─── */
+    'prof.name':     'Eita Watanabe',
+    'prof.s1.title': 'Về Tomosuma',
+    'prof.s1.body':  'Thành lập Tomosuma vào tháng 3 năm 2026 với niềm tin rằng "bằng cách xóa bỏ sự cô đơn và bảo vệ nụ cười thuần khiết, chúng ta có thể tạo ra một thế giới không xung đột." Lãnh đạo 7 thành viên theo 3 trụ cột: phát triển Heart-to-Heart Device, truyền thông SNS và sự kiện cộng đồng.',
+    'prof.s2.title': 'Tiểu sử',
+    'prof.s2.body':  'Học sinh trung học sinh ra ở Meguro, Tokyo. Bắt đầu trượt tuyết năm 5 tuổi và bóng đá năm 7 tuổi. Chuyến du lịch Đông Nam Á đã dẫn đến cuộc gặp gỡ với vấn đề cô lập của lao động nhập cư và thúc đẩy hành động. Quyết tâm đối mặt với xã hội nghiêm túc — không lý do "vì còn là học sinh."',
 
     /* ─── CTA ─── */
     'cta.label':    'Join Us',
