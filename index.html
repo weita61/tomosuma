@@ -410,6 +410,12 @@
     }
     @media (max-width: 768px) {
       :root { --section-gap: 72px; }
+      #hero { padding: 56px 0 40px; }
+      .hero-title { font-size: clamp(28px, 9vw, 42px); margin-bottom: 16px; }
+      .hero-subtitle { font-size: 15px; margin-bottom: 28px; }
+      .hero-actions { gap: 10px; }
+      .hero-actions .btn { padding: 12px 24px; font-size: 14px; }
+      .phil-illust { display: none; }
       #service, #cta { margin: 0 12px; padding: 56px 28px; }
       .roadmap-item { grid-template-columns: 80px 1fr; gap: 16px; }
       .roadmap-item:not(:last-child)::after { left: 28px; }
@@ -497,7 +503,7 @@
             <h2 class="section-title" data-i18n="phil.title">3つの定義・哲学</h2>
             <p class="section-body" data-i18n="phil.body">「友」「共に」「灯す」——3つのアプローチを並行して動かすことで、笑顔の総量を増やし、守り抜きます。</p>
           </div>
-          <div style="flex:0 0 200px;display:flex;align-items:center;justify-content:center;">
+          <div class="phil-illust" style="flex:0 0 200px;display:flex;align-items:center;justify-content:center;">
             <img src="assets/illust/1124.svg" alt="" loading="lazy" style="width:180px;height:auto;" />
           </div>
         </div>
@@ -553,6 +559,33 @@
           </div>
         </div>
         <div class="service-visual" data-i18n="svc.visual">[ Device Visual / Demo Movie — 後で差し替え ]</div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section id="team" class="section">
+      <div class="container">
+        <p class="section-label" data-i18n="team.label">Team</p>
+        <h2 class="section-title" data-i18n="team.title">チームメンバー</h2>
+        <div class="team-grid">
+          <div class="team-card clickable" id="watanabe-card" role="button" tabindex="0" aria-label="渡辺瑛太のプロフィールを見る">
+            <div class="team-avatar"><img src="assets/_KUB8466.jpg" class="circle-image" alt="渡辺 瑛太"></div>
+            <p class="team-name" data-i18n="team.m1.name">渡辺 瑛太</p>
+            <p class="team-role" data-i18n="team.m1.role">代表</p>
+            <p class="team-role-hint">プロフィールを見る →</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar"><img src="assets/okamachi_kotaro.jpg" alt="大曲 弘太朗"></div>
+            <p class="team-name" data-i18n="team.m4.name">大曲 弘太朗</p>
+            <p class="team-role" data-i18n="team.m4.role">副代表</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar"><img src="assets/akiyamatakahide_adviser.png" alt="秋山たかひで"></div>
+            <p class="team-name" data-i18n="team.m2.name">秋山たかひで</p>
+            <p class="team-role" data-i18n="team.m2.role">顧問</p>
+          </div>
+        </div>
+        <p class="team-others" data-i18n="team.others">他にも、高校生・大学生を中心に約10名が活動しています。</p>
       </div>
     </section>
 
@@ -658,33 +691,6 @@
             <p class="stakeholder-desc"  data-i18n="stake.c4.desc">日本で働く実習生・母国の家族。体験会・スポーツ大会など楽しい入口から。</p>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- TEAM -->
-    <section id="team" class="section">
-      <div class="container">
-        <p class="section-label" data-i18n="team.label">Team</p>
-        <h2 class="section-title" data-i18n="team.title">チームメンバー</h2>
-        <div class="team-grid">
-          <div class="team-card clickable" id="watanabe-card" role="button" tabindex="0" aria-label="渡辺瑛太のプロフィールを見る">
-            <div class="team-avatar"><img src="assets/_KUB8466.jpg" class="circle-image" alt="渡辺 瑛太"></div>
-            <p class="team-name" data-i18n="team.m1.name">渡辺 瑛太</p>
-            <p class="team-role" data-i18n="team.m1.role">代表</p>
-            <p class="team-role-hint">プロフィールを見る →</p>
-          </div>
-          <div class="team-card">
-            <div class="team-avatar"><img src="assets/okamachi_kotaro.jpg" alt="大曲 弘太朗"></div>
-            <p class="team-name" data-i18n="team.m4.name">大曲 弘太朗</p>
-            <p class="team-role" data-i18n="team.m4.role">副代表</p>
-          </div>
-          <div class="team-card">
-            <div class="team-avatar"><img src="assets/akiyamatakahide_adviser.png" alt="秋山たかひで"></div>
-            <p class="team-name" data-i18n="team.m2.name">秋山たかひで</p>
-            <p class="team-role" data-i18n="team.m2.role">顧問</p>
-          </div>
-        </div>
-        <p class="team-others" data-i18n="team.others">他にも、高校生・大学生を中心に約10名が活動しています。</p>
       </div>
     </section>
 
