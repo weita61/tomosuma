@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JapanLife｜トモスマ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ===== Hero ===== */
+    .jl-hero {
+      padding: 100px 0 80px;
+      background: linear-gradient(160deg, var(--color-surface) 0%, var(--color-bg) 100%);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .jl-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .jl-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      color: var(--color-accent);
+      background: rgba(251,174,23,.1);
+      border: 1px solid rgba(251,174,23,.3);
+      border-radius: 99px;
+      padding: 5px 14px;
+      margin-bottom: 20px;
+    }
+    .jl-hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.3;
+      margin-bottom: 20px;
+    }
+    .jl-hero-subtitle {
+      font-size: 16px;
+      line-height: 1.9;
+      color: var(--color-muted);
+      margin-bottom: 32px;
+    }
+    .jl-hero-btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 99px;
+      border: 1.5px solid var(--color-border);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-muted);
+      transition: all .2s;
+      white-space: nowrap;
+      font-family: var(--font-body);
+    }
+    .btn-outline:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+    .jl-hero-visual {
+      display: flex;
+      justify-content: center;
+    }
+    .jl-phone-mockup {
+      width: 220px;
+      height: 440px;
+      background: #1c1c1e;
+      border-radius: 36px;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.10), 0 32px 80px rgba(0,0,0,0.20);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .jl-phone-mockup::before {
+      content: '';
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 6px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 99px;
+    }
+    .jl-phone-inner {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, #fbae17 0%, #f77f00 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 40px 20px;
+    }
+    .jl-phone-logo {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: .05em;
+    }
+    .jl-phone-logo span {
+      opacity: .8;
+      font-size: 14px;
+      display: block;
+      text-align: center;
+      margin-top: 4px;
+    }
+    .jl-phone-cats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      width: 100%;
+      margin-top: 12px;
+    }
+    .jl-phone-cat {
+      background: rgba(255,255,255,0.2);
+      border-radius: 12px;
+      padding: 10px 8px;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .jl-phone-cat i {
+      display: block;
+      margin: 0 auto 4px;
+      width: 20px;
+      height: 20px;
+    }
+
+    /* ===== Features ===== */
+    .feat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin-top: 48px;
+    }
+    .feat-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .feat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,.07);
+    }
+    .feat-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(251,174,23,.12);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--color-accent);
+    }
+    .feat-icon i { width: 24px; height: 24px; }
+    .feat-title {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    .feat-body {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--color-muted);
+    }
+
+    /* ===== Languages ===== */
+    .lang-section {
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .lang-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .lang-badges {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .lang-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+    }
+    .lang-badge-flag {
+      font-size: 24px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .lang-badge-info { flex: 1; }
+    .lang-badge-name {
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 2px;
+    }
+    .lang-badge-desc {
+      font-size: 12px;
+      color: var(--color-muted);
+    }
+    .lang-badge-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 99px;
+      background: rgba(251,174,23,.12);
+      color: var(--color-accent);
+      border: 1px solid rgba(251,174,23,.3);
+      white-space: nowrap;
+    }
+
+    /* ===== Quiz Section ===== */
+    .quiz-section {
+      background: var(--color-bg);
+    }
+    .quiz-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .quiz-demo {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 28px;
+    }
+    .quiz-demo-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      color: var(--color-muted);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+    .quiz-demo-q {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .quiz-demo-choices {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .quiz-demo-choice {
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: 1.5px solid var(--color-border);
+      font-size: 13px;
+      font-weight: 700;
+      background: var(--color-bg);
+    }
+    .quiz-demo-choice.correct {
+      border-color: var(--color-accent);
+      background: rgba(251,174,23,.1);
+      color: var(--color-accent);
+    }
+    .badge-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .badge-item {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(251,174,23,.15);
+      border: 2px solid rgba(251,174,23,.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-accent);
+    }
+    .badge-item.locked {
+      background: var(--color-surface);
+      border-color: var(--color-border);
+      color: var(--color-border);
+    }
+    .badge-item i { width: 22px; height: 22px; }
+
+    /* ===== CTA ===== */
+    .jl-cta {
+      background: linear-gradient(160deg, rgba(251,174,23,.08) 0%, transparent 100%);
+      border-top: 1px solid var(--color-border);
+    }
+    .jl-cta-inner {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .jl-cta-btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      .jl-hero-inner,
+      .lang-inner,
+      .quiz-inner { grid-template-columns: 1fr; gap: 40px; }
+      .feat-grid   { grid-template-columns: 1fr; }
+      .jl-hero-visual { display: none; }
+      .jl-cta-btns { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="index.html" class="nav-logo">トモスマ<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#philosophy" data-i18n="nav.about">トモスマについて</a></li>
+        <li><a href="products.html"         data-i18n="nav.products">プロダクト</a></li>
+        <li><a href="events.html"           data-i18n="nav.events">イベント</a></li>
+        <li><a href="news.html"             data-i18n="nav.news">News</a></li>
+        <li><a href="contact.html"          data-i18n="nav.contact">Contact</a></li>
+      </ul>
+      <a href="products.html" class="nav-back" style="display:inline-flex;align-items:center;gap:6px;padding:9px 20px;border-radius:99px;border:1.5px solid var(--color-border);font-size:13px;font-weight:700;color:var(--color-muted);transition:all .2s;white-space:nowrap;" onmouseover="this.style.borderColor='var(--color-accent)';this.style.color='var(--color-accent)'" onmouseout="this.style.borderColor='var(--color-border)';this.style.color='var(--color-muted)'" data-i18n="jl.back">← プロダクト一覧へ</a>
+      <div class="lang-toggle" role="group" aria-label="言語切り替え">
+        <button class="lang-btn" data-lang="ja">JP</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="km">KH</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="vi">VI</button>
+      </div>
+      <button class="hamburger" id="hamburger-btn" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-overlay" id="mobile-overlay"></div>
+    <div class="mobile-menu-panel">
+      <ul class="mobile-menu-links">
+        <li><a href="index.html#philosophy" class="mobile-link" data-i18n="nav.about">トモスマについて</a></li>
+        <li><a href="products.html"         class="mobile-link" data-i18n="nav.products">プロダクト</a></li>
+        <hr class="mobile-menu-divider">
+        <li><a href="events.html"           class="mobile-link" data-i18n="nav.events">イベント</a></li>
+        <li><a href="news.html"             class="mobile-link" data-i18n="nav.news">News</a></li>
+        <li><a href="contact.html"          class="mobile-link" data-i18n="nav.contact">Contact</a></li>
+        <hr class="mobile-menu-divider">
+        <li><a href="products.html" class="mobile-link" data-i18n="jl.back">← プロダクト一覧へ</a></li>
+      </ul>
+      <div class="mobile-menu-cta">
+        <a href="recruit.html" class="btn btn-primary mobile-link" data-i18n="nav.join_btn">仲間になる</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ===== Hero ===== -->
+    <section class="jl-hero">
+      <div class="container">
+        <div class="jl-hero-inner">
+          <div>
+            <p class="jl-hero-badge">
+              <i data-lucide="smartphone" style="width:14px;height:14px;"></i>
+              <span data-i18n="jl.hero.badge">App — iOS 近日公開</span>
+            </p>
+            <h1 class="jl-hero-title" data-i18n-html="jl.hero.title">技能実習生のための<br>日本生活ガイドアプリ</h1>
+            <p class="jl-hero-subtitle" data-i18n="jl.hero.subtitle">ゴミ分別・職場ルール・あいさつ・安全——日本語＋ベトナム語で、いつでも・どこでも確認できます。</p>
+            <div class="jl-hero-btns">
+              <a href="#" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:8px;">
+                <i data-lucide="globe" style="width:16px;height:16px;"></i>
+                <span data-i18n="jl.hero.btn.try">Web版を試す</span>
+              </a>
+              <span class="btn-outline" style="cursor:default;opacity:.65;">
+                <i data-lucide="apple" style="width:16px;height:16px;"></i>
+                <span data-i18n="jl.hero.btn.dl">iOS App（近日公開）</span>
+              </span>
+            </div>
+          </div>
+          <div class="jl-hero-visual">
+            <div class="jl-phone-mockup">
+              <div class="jl-phone-inner">
+                <div class="jl-phone-logo">
+                  JapanLife
+                  <span>日本生活ガイド</span>
+                </div>
+                <div class="jl-phone-cats">
+                  <div class="jl-phone-cat">
+                    <i data-lucide="trash-2" style="width:20px;height:20px;display:block;margin:0 auto 4px;"></i>
+                    ゴミ分別
+                  </div>
+                  <div class="jl-phone-cat">
+                    <i data-lucide="briefcase" style="width:20px;height:20px;display:block;margin:0 auto 4px;"></i>
+                    職場ルール
+                  </div>
+                  <div class="jl-phone-cat">
+                    <i data-lucide="hand-metal" style="width:20px;height:20px;display:block;margin:0 auto 4px;"></i>
+                    あいさつ
+                  </div>
+                  <div class="jl-phone-cat">
+                    <i data-lucide="shield-alert" style="width:20px;height:20px;display:block;margin:0 auto 4px;"></i>
+                    安全・緊急
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Features ===== -->
+    <section class="section" style="background:var(--color-bg);">
+      <div class="container">
+        <p class="section-label" data-i18n="jl.feat.label">Features</p>
+        <h2 class="section-title" data-i18n-html="jl.feat.title">4つのカテゴリで<br>日本生活をナビゲート</h2>
+        <div class="feat-grid">
+          <div class="feat-card">
+            <div class="feat-icon"><i data-lucide="trash-2"></i></div>
+            <h3 class="feat-title" data-i18n="jl.feat.c1.title">ゴミの分別</h3>
+            <p class="feat-body" data-i18n="jl.feat.c1.body">燃えるゴミ・ペットボトル・粗大ゴミの捨て方を、地域ルールとともに解説。</p>
+          </div>
+          <div class="feat-card">
+            <div class="feat-icon"><i data-lucide="briefcase"></i></div>
+            <h3 class="feat-title" data-i18n="jl.feat.c2.title">職場のルール</h3>
+            <p class="feat-body" data-i18n="jl.feat.c2.body">ほうれんそう・あいさつ・ミスの対応など、職場で必要なマナーをわかりやすく。</p>
+          </div>
+          <div class="feat-card">
+            <div class="feat-icon"><i data-lucide="message-circle"></i></div>
+            <h3 class="feat-title" data-i18n="jl.feat.c3.title">あいさつ・敬語</h3>
+            <p class="feat-body" data-i18n="jl.feat.c3.body">基本フレーズ5選・お辞儀の角度など、日常と職場で使える表現を網羅。</p>
+          </div>
+          <div class="feat-card">
+            <div class="feat-icon"><i data-lucide="shield-alert"></i></div>
+            <h3 class="feat-title" data-i18n="jl.feat.c4.title">安全・緊急対応</h3>
+            <p class="feat-body" data-i18n="jl.feat.c4.body">119番・110番の使い方、地震のときの行動など、いざというときの対応を確認。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Languages ===== -->
+    <section class="section lang-section">
+      <div class="container">
+        <div class="lang-inner">
+          <div>
+            <p class="section-label" data-i18n="jl.lang.label">Languages</p>
+            <h2 class="section-title" style="font-size:clamp(24px,3.5vw,36px);" data-i18n="jl.lang.title">4つの言語で学べる</h2>
+            <p class="section-body" data-i18n="jl.lang.body">やさしい日本語・日本語・ベトナム語・Englishの4言語に対応。学習レベルや母語に合わせて切り替えられます。</p>
+          </div>
+          <div class="lang-badges">
+            <div class="lang-badge-row">
+              <span class="lang-badge-flag">JP</span>
+              <div class="lang-badge-info">
+                <p class="lang-badge-name">やさしい日本語</p>
+                <p class="lang-badge-desc">ふりがな付き・短い文体で読みやすい</p>
+              </div>
+              <span class="lang-badge-tag">やさしい</span>
+            </div>
+            <div class="lang-badge-row">
+              <span class="lang-badge-flag">JP</span>
+              <div class="lang-badge-info">
+                <p class="lang-badge-name">日本語</p>
+                <p class="lang-badge-desc">標準的な日本語で詳しく学べる</p>
+              </div>
+              <span class="lang-badge-tag">日本語</span>
+            </div>
+            <div class="lang-badge-row">
+              <span class="lang-badge-flag">VN</span>
+              <div class="lang-badge-info">
+                <p class="lang-badge-name">Tiếng Việt</p>
+                <p class="lang-badge-desc">ベトナム語で内容を確認</p>
+              </div>
+              <span class="lang-badge-tag">Vietnamese</span>
+            </div>
+            <div class="lang-badge-row">
+              <span class="lang-badge-flag">EN</span>
+              <div class="lang-badge-info">
+                <p class="lang-badge-name">English</p>
+                <p class="lang-badge-desc">Explanations in easy English</p>
+              </div>
+              <span class="lang-badge-tag">English</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Quiz & Badge ===== -->
+    <section class="section quiz-section">
+      <div class="container">
+        <div class="quiz-inner">
+          <div class="quiz-demo">
+            <p class="quiz-demo-label">Quiz — ゴミ分別</p>
+            <p class="quiz-demo-q">ペットボトルを捨てるとき、どうするのが正しいですか？</p>
+            <div class="quiz-demo-choices">
+              <div class="quiz-demo-choice correct">
+                <i data-lucide="check-circle" style="width:14px;height:14px;vertical-align:middle;margin-right:4px;"></i>
+                キャップをはずして、ラベルをとってから捨てる
+              </div>
+              <div class="quiz-demo-choice">そのまま燃えるゴミに捨てる</div>
+              <div class="quiz-demo-choice">ビンと一緒に捨てる</div>
+              <div class="quiz-demo-choice">水で洗わずに捨てる</div>
+            </div>
+            <div class="badge-row">
+              <div class="badge-item"><i data-lucide="award"></i></div>
+              <div class="badge-item"><i data-lucide="award"></i></div>
+              <div class="badge-item locked"><i data-lucide="award"></i></div>
+              <div class="badge-item locked"><i data-lucide="award"></i></div>
+            </div>
+          </div>
+          <div>
+            <p class="section-label" data-i18n="jl.quiz.label">Quiz & Badge</p>
+            <h2 class="section-title" style="font-size:clamp(24px,3.5vw,36px);" data-i18n="jl.quiz.title">クイズとバッジで続けられる</h2>
+            <p class="section-body" data-i18n="jl.quiz.body">カテゴリごとのクイズでその日の学びを確認。バッジを集めながら、毎日少しずつ続けられる設計です。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="section jl-cta">
+      <div class="container">
+        <div class="jl-cta-inner">
+          <p class="section-label" data-i18n="jl.cta.label">Download</p>
+          <h2 class="section-title" data-i18n="jl.cta.title">無料で使えます</h2>
+          <p class="section-body" data-i18n="jl.cta.body">インストール不要のWebアプリ版で今すぐ体験できます。iOSネイティブアプリは近日公開予定。</p>
+          <div class="jl-cta-btns">
+            <a href="#" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:8px;padding:14px 32px;font-size:16px;">
+              <i data-lucide="globe" style="width:18px;height:18px;"></i>
+              <span data-i18n="jl.cta.btn.try">Web版を今すぐ試す</span>
+            </a>
+            <span class="btn-outline" style="cursor:default;opacity:.55;padding:14px 32px;font-size:16px;">
+              <i data-lucide="apple" style="width:18px;height:18px;"></i>
+              <span data-i18n="jl.cta.btn.ios">iOS App Store（近日公開）</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <p class="footer-brand">トモスマ<span>.</span></p>
+        <p class="footer-tagline" data-i18n="footer.tagline">どこにいても、笑顔と「共にある」未来を創る。</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="products.html" data-i18n="nav.products">プロダクト</a></li>
+        <li><a href="events.html"   data-i18n="nav.events">イベント</a></li>
+        <li><a href="news.html"     data-i18n="nav.news">News</a></li>
+        <li><a href="recruit.html"  data-i18n="nav.join">参加する</a></li>
+        <li><a href="contact.html"  data-i18n="nav.contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer.copy">© 2026 トモスマ（With Smile & Beyond）</span>
+      <span data-i18n="footer.founder">代表：渡辺 瑛太</span>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="i18n.js"></script>
+  <script>
+    lucide.createIcons();
+
+    /* ---- ハンバーガーメニュー ---- */
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu   = document.getElementById('mobile-menu');
+    const overlay      = document.getElementById('mobile-overlay');
+    function openMenu()  { mobileMenu.classList.add('open'); hamburgerBtn.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeMenu() { mobileMenu.classList.remove('open'); hamburgerBtn.classList.remove('open'); document.body.style.overflow = ''; }
+    hamburgerBtn.addEventListener('click', () => { mobileMenu.classList.contains('open') ? closeMenu() : openMenu(); });
+    overlay.addEventListener('click', closeMenu);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+    document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMenu));
+  </script>
+
+</body>
+</html>
