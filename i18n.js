@@ -86,6 +86,8 @@ const I18N = {
     'svc.f1.body':  '外国人労働者の日本生活を支える「JapanLife」、自己発見・ウェルビーイングを届ける「WithSmile App」を開発中。',
     'svc.f2.title': 'イベント開催',
     'svc.f2.body':  'スポーツ交流会・多文化交流イベントを企画・運営。言語や立場の壁を越えたリアルな場をつくります。',
+    'svc.f2.tag1':  'スポーツ交流',
+    'svc.f2.tag2':  '多文化交流',
 
     /* ─── ロードマップ ─── */
     'road.label':     'Roadmap',
@@ -328,6 +330,8 @@ const I18N = {
     'svc.f1.body':  'Building JapanLife to support foreign workers in Japan, and WithSmile App for self-discovery and wellbeing.',
     'svc.f2.title': 'Events',
     'svc.f2.body':  'Organizing sports and multicultural exchange events — real spaces where connections are made across language and background.',
+    'svc.f2.tag1':  'Sports Exchange',
+    'svc.f2.tag2':  'Multicultural',
 
     /* ─── ロードマップ ─── */
     'road.label':     'Roadmap',
@@ -568,6 +572,8 @@ const I18N = {
     'svc.f1.body':  'JapanLife ជួយកម្មករបរទេស និង WithSmile App សម្រាប់ការរកឃើញខ្លួនឯង',
     'svc.f2.title': 'ព្រឹត្តិការណ៍',
     'svc.f2.body':  'ព្រឹត្តិការណ៍ផ្លាស់ប្ដូរវប្បធម៌ ដើម្បីសាងទំនាក់ទំនង',
+    'svc.f2.tag1':  'កីឡា',
+    'svc.f2.tag2':  'ពហុវប្បធម៌',
 
     /* ─── ផែនការ ─── */
     'road.label':     'Roadmap',
@@ -808,6 +814,8 @@ const I18N = {
     'svc.f1.body':  'JapanLife hỗ trợ lao động nước ngoài tại Nhật, WithSmile App cho khám phá bản thân và wellbeing.',
     'svc.f2.title': 'Tổ chức sự kiện',
     'svc.f2.body':  'Tổ chức sự kiện giao lưu thể thao và văn hóa đa sắc tộc — không gian thực để kết nối.',
+    'svc.f2.tag1':  'Giao lưu thể thao',
+    'svc.f2.tag2':  'Đa văn hóa',
 
     /* ─── Roadmap ─── */
     'road.label':     'Roadmap',
