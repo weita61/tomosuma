@@ -19,8 +19,8 @@ const NEWS_DATA = [
     id: 2,
     date: "2026-03-15",
     category: "開発",
-    title: "Heart-to-Heart Device の要件定義を開始",
-    body: "医師・カウンセラーの協力のもと、五感同期デバイスの要件定義フェーズに入りました。4月中の完了を目指します。",
+    title: "アプリ開発チームが本格始動",
+    body: "JapanLife・WithSmile Appの開発チームが始動。6〜7月のビジコンに向けてMVP開発を進めています。",
     link: null
   },
   {
