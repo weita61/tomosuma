@@ -8,7 +8,7 @@ const I18N = {
   ja: {
     /* ─── 共通ナビ ─── */
     'nav.philosophy': '3つの哲学',
-    'nav.service':    'メイン事業',
+    'nav.service':    '活動内容',
     'nav.roadmap':    'ロードマップ',
     'nav.team':       'チーム',
     'nav.events':     'イベント',
@@ -60,7 +60,7 @@ const I18N = {
     'hero.badge':    'With Smile & Beyond — 2026年3月 設立',
     'hero.title':    'どこにいても、<br>笑顔と<span class="accent">「共にある」</span><br>未来を創る。',
     'hero.subtitle': 'テクノロジーと人のつながりで、世界中の笑顔を守り、未来を灯すプロジェクト。',
-    'hero.btn.service': 'メイン事業を見る',
+    'hero.btn.service': '活動を見る',
     'hero.btn.join':    '仲間になる',
     'hero.visual':      '[ Hero Image / Movie — 後で差し替え ]',
 
@@ -73,24 +73,19 @@ const I18N = {
     'phil.c1.body':  'スポーツイベント・多文化交流会を通じ、言語や立場の壁を越えて「対等な友」としての一生モノの絆を築く場を提供します。',
     'phil.c2.title': '共に（トモに）× Smile',
     'phil.c2.tag':   'テクノロジー・イノベーション',
-    'phil.c2.body':  '五感同期デバイス（Heart-to-Heart Device）で、鼓動・温もり・気配を届け、空間の壁を越えた日常共有を実現します。',
+    'phil.c2.body':  'アプリ開発を通じて、言語・文化・距離の壁を越えたつながりをテクノロジーで実現します。',
     'phil.c3.title': '灯す（トモす）× Smile',
     'phil.c3.tag':   'ソーシャル・デザイン',
     'phil.c3.body':  '政策提言・難民支援へと展開し、社会構造そのものを変えることで、より広範な笑顔を守り続けます。',
 
     /* ─── サービス ─── */
-    'svc.label':    'Main Service',
-    'svc.title':    '五感同期デバイス<br>Heart-to-Heart Device',
-    'svc.body':     '技能実習生をはじめ「遠く離れた大切な人」をつなぐ、科学と五感テクノロジーの融合デバイス。',
-    'svc.f1.title': '鼓動を届ける',
-    'svc.f1.body':  'リアルタイムで心拍を伝送し、遠くでも「そこにいる」感覚を実現',
-    'svc.f2.title': '温もりを伝える',
-    'svc.f2.body':  '温度フィードバックで、触覚的なつながりを提供',
-    'svc.f3.title': '気配を感じる',
-    'svc.f3.body':  '相手の存在感を日常の空間に溶け込ませる環境センシング',
-    'svc.f4.title': 'ESG対応',
-    'svc.f4.body':  'メンタルケアによる離職率低下・生産性向上をデータで可視化',
-    'svc.visual':   '[ Device Visual / Demo Movie — 後で差し替え ]',
+    'svc.label':    'Our Activities',
+    'svc.title':    'アプリ開発 × イベント開催',
+    'svc.body':     '2つの活動を並行して動かし、テクノロジーとリアルな場の両面から笑顔の総量を増やします。',
+    'svc.f1.title': 'アプリ開発',
+    'svc.f1.body':  '外国人労働者の日本生活を支える「JapanLife」、自己発見・ウェルビーイングを届ける「WithSmile App」を開発中。',
+    'svc.f2.title': 'イベント開催',
+    'svc.f2.body':  'スポーツ交流会・多文化交流イベントを企画・運営。言語や立場の壁を越えたリアルな場をつくります。',
 
     /* ─── ロードマップ ─── */
     'road.label':     'Roadmap',
@@ -255,7 +250,7 @@ const I18N = {
   en: {
     /* ─── 共通ナビ ─── */
     'nav.philosophy': 'Philosophy',
-    'nav.service':    'Main Service',
+    'nav.service':    'Activities',
     'nav.roadmap':    'Roadmap',
     'nav.team':       'Team',
     'nav.events':     'Events',
@@ -307,7 +302,7 @@ const I18N = {
     'hero.badge':    'With Smile & Beyond — Founded March 2026',
     'hero.title':    'Wherever you are,<br>a future full of smiles<br>and <span class="accent">"being together."</span>',
     'hero.subtitle': 'A project that uses technology and human connection to protect smiles and light the future worldwide.',
-    'hero.btn.service': 'See Our Main Service',
+    'hero.btn.service': 'See Our Activities',
     'hero.btn.join':    'Join Us',
     'hero.visual':      '[ Hero Image / Movie — Coming Soon ]',
 
@@ -320,24 +315,19 @@ const I18N = {
     'phil.c1.body':  'Through sports events and multicultural gatherings, we build lifelong bonds as equals — transcending language and background.',
     'phil.c2.title': 'Together (Tomoni) × Smile',
     'phil.c2.tag':   'Technology & Innovation',
-    'phil.c2.body':  'The Heart-to-Heart Device syncs heartbeats, warmth, and presence so loved ones feel close across any distance.',
+    'phil.c2.body':  'Through app development, we use technology to create connections that transcend language, culture, and distance.',
     'phil.c3.title': 'Light (Tomosu) × Smile',
     'phil.c3.tag':   'Social Design',
     'phil.c3.body':  'By advocating for policy change and supporting refugees, we reshape social structures to protect smiles on a wider scale.',
 
     /* ─── サービス ─── */
-    'svc.label':    'Main Service',
-    'svc.title':    'Five-Sense Sync Device<br>Heart-to-Heart Device',
-    'svc.body':     'A device merging science and sensory technology to connect migrant workers and loved ones separated by distance.',
-    'svc.f1.title': 'Transmit Heartbeat',
-    'svc.f1.body':  'Real-time heartbeat streaming so distant loved ones truly feel present',
-    'svc.f2.title': 'Share Warmth',
-    'svc.f2.body':  'Thermal feedback for a tactile sense of connection',
-    'svc.f3.title': 'Feel Presence',
-    'svc.f3.body':  "Ambient sensing that weaves a person's presence into everyday surroundings",
-    'svc.f4.title': 'ESG Ready',
-    'svc.f4.body':  'Data-driven visibility: mental health care that reduces turnover and boosts productivity',
-    'svc.visual':   '[ Device Visual / Demo Movie — Coming Soon ]',
+    'svc.label':    'Our Activities',
+    'svc.title':    'App Development × Events',
+    'svc.body':     'Two activities running in parallel — technology and real-world spaces to maximize smiles.',
+    'svc.f1.title': 'App Development',
+    'svc.f1.body':  'Building JapanLife to support foreign workers in Japan, and WithSmile App for self-discovery and wellbeing.',
+    'svc.f2.title': 'Events',
+    'svc.f2.body':  'Organizing sports and multicultural exchange events — real spaces where connections are made across language and background.',
 
     /* ─── ロードマップ ─── */
     'road.label':     'Roadmap',
@@ -502,7 +492,7 @@ const I18N = {
   km: {
     /* ─── ナビ ─── */
     'nav.philosophy': 'ទស្សនវិជ្ជា',
-    'nav.service':    'សេវាចម្បង',
+    'nav.service':    'សកម្មភាព',
     'nav.roadmap':    'ផែនការ',
     'nav.team':       'ក្រុម',
     'nav.events':     'ព្រឹត្តិការណ៍',
@@ -552,7 +542,7 @@ const I18N = {
     'hero.badge':    'With Smile & Beyond — បង្កើតឡើងខែមីនា ២០២៦',
     'hero.title':    'គ្រប់ទីកន្លែង<br>អនាគតពោរពេញដោយស្នាម<br>និង<span class="accent">«ការរួបរួម»</span>',
     'hero.subtitle': 'គម្រោងប្រើបច្ចេកវិទ្យា និងទំនាក់ទំនងមនុស្ស ដើម្បីការពារស្នាម និងបំភ្លឺអនាគតពេញពិភពលោក',
-    'hero.btn.service': 'មើលសេវាចម្បង',
+    'hero.btn.service': 'មើលសកម្មភាព',
     'hero.btn.join':    'ក្លាយជាសមាជិក',
     'hero.visual':      '[ រូបភាព / វីដេអូ — នឹងដាក់ក្រោយ ]',
 
@@ -565,24 +555,19 @@ const I18N = {
     'phil.c1.body':  'តាមរយៈព្រឹត្តិការណ៍កីឡា និងការប្រជុំពហុវប្បធម៌ យើងបង្កើតចំណងជើងមិត្តភាពពេញមួយជីវិត ហួសពីរបាំងភាសា',
     'phil.c2.title': 'រួមគ្នា (Tomoni) × Smile',
     'phil.c2.tag':   'បច្ចេកវិទ្យា & នវានុវត្តន៍',
-    'phil.c2.body':  'ឧបករណ៍ Heart-to-Heart Device ផ្ញើចង្វាក់បេះដូង និងសីតុណ្ហភាព ដើម្បីភ្ជាប់អ្នកជាទីស្រឡាញ់ ក្នុងចម្ងាយ',
+    'phil.c2.body':  'តាមរយៈការអភិវឌ្ឍន៍កម្មវិធី យើងប្រើប្រាស់បច្ចេកវិទ្យា ដើម្បីភ្ជាប់មនុស្សឆ្លងកាត់ភាសា វប្បធម៌ និងចម្ងាយ',
     'phil.c3.title': 'ភ្លឺ (Tomosu) × Smile',
     'phil.c3.tag':   'ការរចនាសង្គម',
     'phil.c3.body':  'តាមរយៈការតស៊ូមតិ និងជំនួយជនភៀសខ្លួន យើងផ្លាស់ប្តូររចនាសម្ព័ន្ធសង្គម ដើម្បីការពារស្នាមកាន់តែទូលំទូលាយ',
 
     /* ─── សេវា ─── */
-    'svc.label':    'Main Service',
-    'svc.title':    'ឧបករណ៍សម្របសម្រួលប្រសាទ<br>Heart-to-Heart Device',
-    'svc.body':     'ឧបករណ៍ផ្ដុំបច្ចេកវិទ្យា ដើម្បីភ្ជាប់កម្មករទៅនឹងគ្រួសារ ដែលនៅឆ្ងាយ',
-    'svc.f1.title': 'បញ្ជូនចង្វាក់បេះដូង',
-    'svc.f1.body':  'ផ្ញើចង្វាក់បេះដូងពេលជាក់ស្តែង ឱ្យមានអារម្មណ៍ «នៅទីនោះ»',
-    'svc.f2.title': 'ចែករំលែកភាពក្តៅ',
-    'svc.f2.body':  'មតិត្រលប់សីតុណ្ហភាព ដើម្បីចំណងស្ទង់ក្នុងអារម្មណ៍',
-    'svc.f3.title': 'ចំណងវត្តមាន',
-    'svc.f3.body':  'ការយល់ដឹងបរិស្ថាន ដែលបញ្ចូលវត្តមាននរណាម្នាក់ចូលក្នុងពិភពប្រចាំថ្ងៃ',
-    'svc.f4.title': 'ESG Ready',
-    'svc.f4.body':  'ទិន្នន័យបង្ហាញការថែទាំសុខភាពផ្លូវចិត្ត កាត់បន្ថយការចាកចេញ ពង្រឹងផលិតភាព',
-    'svc.visual':   '[ រូបភាព / វីដេអូ — នឹងដាក់ក្រោយ ]',
+    'svc.label':    'សកម្មភាព',
+    'svc.title':    'ការអភិវឌ្ឍន៍កម្មវិធី × ព្រឹត្តិការណ៍',
+    'svc.body':     'សកម្មភាពពីរដំណើរការស្របគ្នា — បច្ចេកវិទ្យា និងកន្លែងជួបប្រជុំ',
+    'svc.f1.title': 'ការអភិវឌ្ឍន៍កម្មវិធី',
+    'svc.f1.body':  'JapanLife ជួយកម្មករបរទេស និង WithSmile App សម្រាប់ការរកឃើញខ្លួនឯង',
+    'svc.f2.title': 'ព្រឹត្តិការណ៍',
+    'svc.f2.body':  'ព្រឹត្តិការណ៍ផ្លាស់ប្ដូរវប្បធម៌ ដើម្បីសាងទំនាក់ទំនង',
 
     /* ─── ផែនការ ─── */
     'road.label':     'Roadmap',
@@ -747,7 +732,7 @@ const I18N = {
   vi: {
     /* ─── Nav ─── */
     'nav.philosophy': 'Triết lý',
-    'nav.service':    'Dịch vụ chính',
+    'nav.service':    'Hoạt động',
     'nav.roadmap':    'Lộ trình',
     'nav.team':       'Đội ngũ',
     'nav.events':     'Sự kiện',
@@ -797,7 +782,7 @@ const I18N = {
     'hero.badge':    'With Smile & Beyond — Thành lập tháng 3/2026',
     'hero.title':    'Dù bạn ở đâu,<br>tương lai tràn đầy nụ cười<br>và <span class="accent">«cùng nhau»</span>',
     'hero.subtitle': 'Dự án dùng công nghệ và kết nối con người để bảo vệ nụ cười và thắp sáng tương lai toàn cầu',
-    'hero.btn.service': 'Xem dịch vụ chính',
+    'hero.btn.service': 'Xem hoạt động',
     'hero.btn.join':    'Trở thành thành viên',
     'hero.visual':      '[ Hình ảnh / Video — Sẽ cập nhật sau ]',
 
@@ -810,24 +795,19 @@ const I18N = {
     'phil.c1.body':  'Qua các sự kiện thể thao và giao lưu đa văn hóa, chúng tôi xây dựng tình bạn bền vững vượt rào cản ngôn ngữ',
     'phil.c2.title': 'Cùng nhau (Tomoni) × Smile',
     'phil.c2.tag':   'Công nghệ & Đổi mới',
-    'phil.c2.body':  'Thiết bị Heart-to-Heart Device truyền nhịp tim, hơi ấm để người thân cảm nhận sự hiện diện dù cách xa',
+    'phil.c2.body':  'Thông qua phát triển ứng dụng, chúng tôi dùng công nghệ tạo ra kết nối vượt qua rào cản ngôn ngữ, văn hóa và khoảng cách.',
     'phil.c3.title': 'Thắp sáng (Tomosu) × Smile',
     'phil.c3.tag':   'Thiết kế Xã hội',
     'phil.c3.body':  'Qua vận động chính sách và hỗ trợ người tị nạn, chúng tôi thay đổi cấu trúc xã hội để bảo vệ nụ cười rộng rãi hơn',
 
     /* ─── Service ─── */
-    'svc.label':    'Main Service',
-    'svc.title':    'Thiết bị đồng bộ 5 giác quan<br>Heart-to-Heart Device',
-    'svc.body':     'Thiết bị kết hợp khoa học và công nghệ cảm giác để kết nối lao động di cư với gia đình xa cách',
-    'svc.f1.title': 'Truyền nhịp tim',
-    'svc.f1.body':  'Phát nhịp tim thời gian thực để cảm nhận sự hiện diện dù ở xa',
-    'svc.f2.title': 'Chia sẻ hơi ấm',
-    'svc.f2.body':  'Phản hồi nhiệt độ tạo cảm giác kết nối xúc giác',
-    'svc.f3.title': 'Cảm nhận sự hiện diện',
-    'svc.f3.body':  'Cảm biến môi trường tích hợp sự hiện diện vào không gian sống hàng ngày',
-    'svc.f4.title': 'Sẵn sàng ESG',
-    'svc.f4.body':  'Dữ liệu minh bạch: chăm sóc sức khỏe tinh thần giảm tỷ lệ nghỉ việc và tăng năng suất',
-    'svc.visual':   '[ Hình ảnh thiết bị / Video — Sẽ cập nhật sau ]',
+    'svc.label':    'Hoạt động',
+    'svc.title':    'Phát triển ứng dụng × Tổ chức sự kiện',
+    'svc.body':     'Hai hoạt động song song — công nghệ và không gian thực tế để nhân lên nụ cười.',
+    'svc.f1.title': 'Phát triển ứng dụng',
+    'svc.f1.body':  'JapanLife hỗ trợ lao động nước ngoài tại Nhật, WithSmile App cho khám phá bản thân và wellbeing.',
+    'svc.f2.title': 'Tổ chức sự kiện',
+    'svc.f2.body':  'Tổ chức sự kiện giao lưu thể thao và văn hóa đa sắc tộc — không gian thực để kết nối.',
 
     /* ─── Roadmap ─── */
     'road.label':     'Roadmap',
