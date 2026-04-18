@@ -484,7 +484,7 @@
         </h1>
         <p class="hero-subtitle" data-i18n="hero.subtitle">テクノロジーと人のつながりで、世界中の笑顔を守り、未来を灯すプロジェクト。</p>
         <div class="hero-actions">
-          <a href="#activities" class="btn btn-primary" data-i18n="hero.btn.service">活動を見る</a>
+          <a href="#service" class="btn btn-primary" data-i18n="hero.btn.service">活動を見る</a>
           <a href="recruit.html" class="btn btn-outline" data-i18n="hero.btn.join">メンバー募集</a>
         </div>
       </div>
@@ -527,22 +527,44 @@
     </section>
 
     <!-- ACTIVITIES -->
-    <section id="activities">
+    <section id="service">
       <div class="container">
         <p class="section-label" data-i18n="svc.label">Our Activities</p>
         <h2 class="section-title" data-i18n="svc.title">アプリ開発 × イベント開催</h2>
         <p class="section-body" data-i18n="svc.body">2つの活動を並行して動かし、テクノロジーとリアルな場の両面から笑顔の総量を増やします。</p>
-        <div class="service-features" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-top: 48px;">
-          <div class="feature-item" style="text-align:left;">
-            <div class="feature-icon" style="margin:0 0 20px;"><i data-lucide="smartphone" style="width:24px;height:24px;color:#fff;"></i></div>
-            <p class="feature-title" style="font-size:18px; margin-bottom:12px;" data-i18n="svc.f1.title">アプリ開発</p>
-            <p class="feature-body" style="line-height:1.75;" data-i18n="svc.f1.body">外国人労働者の日本生活を支える「JapanLife」、自己発見・ウェルビーイングを届ける「WithSmile App」を開発中。テクノロジーで、言語・文化の壁を越えたつながりを実現します。</p>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:48px;">
+
+          <!-- アプリ開発カード -->
+          <div style="background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12); border-radius:20px; padding:36px 32px; display:flex; flex-direction:column; gap:20px;">
+            <div style="display:flex; align-items:center; gap:14px;">
+              <div style="width:48px; height:48px; border-radius:12px; background:rgba(251,174,23,.18); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <i data-lucide="smartphone" style="width:24px;height:24px;color:#fbae17;"></i>
+              </div>
+              <p style="font-family:'Zen Maru Gothic',sans-serif; font-size:22px; font-weight:700; color:#fff;" data-i18n="svc.f1.title">アプリ開発</p>
+            </div>
+            <p style="font-size:14px; color:rgba(255,255,255,.65); line-height:1.85;" data-i18n="svc.f1.body">外国人労働者の日本生活を支える「JapanLife」、自己発見・ウェルビーイングを届ける「WithSmile App」を開発中。テクノロジーで、言語・文化の壁を越えたつながりを実現します。</p>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:auto;">
+              <span style="font-size:12px; font-weight:700; padding:4px 12px; border-radius:99px; background:rgba(251,174,23,.15); color:#fbae17;">JapanLife</span>
+              <span style="font-size:12px; font-weight:700; padding:4px 12px; border-radius:99px; background:rgba(251,174,23,.15); color:#fbae17;">WithSmile App</span>
+            </div>
           </div>
-          <div class="feature-item" style="text-align:left;">
-            <div class="feature-icon" style="margin:0 0 20px;"><i data-lucide="users" style="width:24px;height:24px;color:#fff;"></i></div>
-            <p class="feature-title" style="font-size:18px; margin-bottom:12px;" data-i18n="svc.f2.title">イベント開催</p>
-            <p class="feature-body" style="line-height:1.75;" data-i18n="svc.f2.body">スポーツ交流会・多文化交流イベントを企画・運営。言語や立場の壁を越えて「対等な友」としての絆を築く、リアルな場をつくります。</p>
+
+          <!-- イベント開催カード -->
+          <div style="background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12); border-radius:20px; padding:36px 32px; display:flex; flex-direction:column; gap:20px;">
+            <div style="display:flex; align-items:center; gap:14px;">
+              <div style="width:48px; height:48px; border-radius:12px; background:rgba(251,174,23,.18); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <i data-lucide="users" style="width:24px;height:24px;color:#fbae17;"></i>
+              </div>
+              <p style="font-family:'Zen Maru Gothic',sans-serif; font-size:22px; font-weight:700; color:#fff;" data-i18n="svc.f2.title">イベント開催</p>
+            </div>
+            <p style="font-size:14px; color:rgba(255,255,255,.65); line-height:1.85;" data-i18n="svc.f2.body">スポーツ交流会・多文化交流イベントを企画・運営。言語や立場の壁を越えて「対等な友」としての絆を築く、リアルな場をつくります。</p>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:auto;">
+              <span style="font-size:12px; font-weight:700; padding:4px 12px; border-radius:99px; background:rgba(251,174,23,.15); color:#fbae17;">スポーツ交流</span>
+              <span style="font-size:12px; font-weight:700; padding:4px 12px; border-radius:99px; background:rgba(251,174,23,.15); color:#fbae17;">多文化交流</span>
+            </div>
           </div>
+
         </div>
       </div>
     </section>
