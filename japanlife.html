@@ -6,14 +6,50 @@
   <title>JapanLife｜トモスマ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* ===== Hero ===== */
+
+    /* =========================================
+       SCROLL ANIMATION SYSTEM
+    ========================================= */
+    .js-ready [data-animate] {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity .75s cubic-bezier(.22,1,.36,1),
+                  transform .75s cubic-bezier(.22,1,.36,1);
+    }
+    .js-ready [data-animate].is-visible {
+      opacity: 1;
+      transform: none;
+    }
+    .js-ready [data-animate][data-delay="1"] { transition-delay: .1s; }
+    .js-ready [data-animate][data-delay="2"] { transition-delay: .2s; }
+    .js-ready [data-animate][data-delay="3"] { transition-delay: .3s; }
+    .js-ready [data-animate][data-delay="4"] { transition-delay: .4s; }
+
+    /* hero load animation */
+    .hero-reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      animation: hero-in .9s cubic-bezier(.22,1,.36,1) forwards;
+    }
+    .hero-reveal-d1 { animation-delay: .1s; }
+    .hero-reveal-d2 { animation-delay: .25s; }
+    .hero-reveal-d3 { animation-delay: .4s; }
+    .hero-reveal-d4 { animation-delay: .55s; }
+    @keyframes hero-in {
+      to { opacity: 1; transform: none; }
+    }
+
+    /* =========================================
+       HERO
+    ========================================= */
     .jl-hero {
       padding: 100px 0 80px;
       background: linear-gradient(160deg, var(--color-surface) 0%, var(--color-bg) 100%);
       border-bottom: 1px solid var(--color-border);
+      overflow: hidden;
     }
     .jl-hero-inner {
       display: grid;
@@ -25,9 +61,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .08em;
+      font-size: 12px; font-weight: 700; letter-spacing: .08em;
       color: var(--color-accent);
       background: rgba(251,174,23,.1);
       border: 1px solid rgba(251,174,23,.3);
@@ -38,304 +72,401 @@
     .jl-hero-title {
       font-family: var(--font-heading);
       font-size: clamp(28px, 4vw, 44px);
-      line-height: 1.3;
-      margin-bottom: 20px;
+      line-height: 1.3; margin-bottom: 20px;
     }
     .jl-hero-subtitle {
-      font-size: 16px;
-      line-height: 1.9;
-      color: var(--color-muted);
-      margin-bottom: 32px;
+      font-size: 16px; line-height: 1.9;
+      color: var(--color-muted); margin-bottom: 32px;
     }
-    .jl-hero-btns {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+    .jl-hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
     .btn-outline {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border-radius: 99px;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px; border-radius: 99px;
       border: 1.5px solid var(--color-border);
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--color-muted);
-      transition: all .2s;
-      white-space: nowrap;
-      font-family: var(--font-body);
+      font-size: 14px; font-weight: 700; color: var(--color-muted);
+      transition: all .2s; white-space: nowrap; font-family: var(--font-body);
     }
-    .btn-outline:hover {
-      border-color: var(--color-accent);
-      color: var(--color-accent);
-    }
+    .btn-outline:hover { border-color: var(--color-accent); color: var(--color-accent); }
     .jl-hero-visual {
-      display: flex;
-      justify-content: center;
+      display: flex; justify-content: center; align-items: center;
+    }
+
+    /* =========================================
+       PHONE MOCKUP — fixed structure
+    ========================================= */
+    .jl-phone-wrap {
+      position: relative;
+      will-change: transform; /* for parallax */
+    }
+    .jl-phone-bg-blob {
+      position: absolute;
+      width: 360px; height: 360px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(251,174,23,.18) 0%, transparent 68%);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      pointer-events: none; z-index: 0;
+      animation: blob-pulse 4s ease-in-out infinite;
+    }
+    @keyframes blob-pulse {
+      0%, 100% { transform: translate(-50%,-50%) scale(1); }
+      50%       { transform: translate(-50%,-50%) scale(1.08); }
     }
     .jl-phone-mockup {
-      width: 220px;
-      height: 440px;
+      width: 252px; height: 504px;
       background: #1c1c1e;
-      border-radius: 36px;
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.10), 0 32px 80px rgba(0,0,0,0.20);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
+      border-radius: 44px;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.12),
+        0 0 0 8px #2c2c2e,
+        0 40px 90px rgba(0,0,0,.36);
+      padding: 12px;
+      position: relative; z-index: 1;
+      transition: transform .6s cubic-bezier(.22,1,.36,1);
     }
+    .jl-phone-mockup:hover {
+      transform: perspective(1000px) rotateY(4deg) rotateX(-2deg) scale(1.02);
+    }
+    /* Dynamic island notch */
     .jl-phone-mockup::before {
       content: '';
       position: absolute;
-      top: 12px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 6px;
-      background: rgba(255,255,255,0.15);
-      border-radius: 99px;
+      top: 12px; left: 50%; transform: translateX(-50%);
+      width: 88px; height: 6px;
+      background: #3a3a3c; border-radius: 99px; z-index: 10;
     }
-    .jl-phone-inner {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(180deg, #fbae17 0%, #f77f00 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      padding: 40px 20px;
-    }
-    .jl-phone-logo {
-      font-family: var(--font-heading);
-      font-size: 20px;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: .05em;
-    }
-    .jl-phone-logo span {
-      opacity: .8;
-      font-size: 14px;
-      display: block;
-      text-align: center;
-      margin-top: 4px;
-    }
-    .jl-phone-cats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      width: 100%;
-      margin-top: 12px;
-    }
-    .jl-phone-cat {
-      background: rgba(255,255,255,0.2);
-      border-radius: 12px;
-      padding: 10px 8px;
-      text-align: center;
-      font-size: 11px;
-      font-weight: 700;
-      color: #fff;
-    }
-    .jl-phone-cat i {
-      display: block;
-      margin: 0 auto 4px;
-      width: 20px;
-      height: 20px;
+    .jl-phone-screen {
+      width: 100%; height: 100%;
+      border-radius: 34px;
+      background: #f9f8f5;
+      overflow: hidden;
+      display: flex; flex-direction: column;
     }
 
-    /* ===== Features ===== */
+    /* status bar — always visible */
+    .ps-statusbar {
+      height: 26px; background: #fff;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 16px 0 20px; flex-shrink: 0;
+    }
+    .ps-sb-time { font-size: 9px; font-weight: 700; color: #111; }
+    .ps-sb-icons { display: flex; gap: 4px; align-items: center; }
+    .ps-sb-icons i { width: 11px; height: 11px; color: #111; }
+
+    /* app header — always visible */
+    .ps-header {
+      background: #fff;
+      border-bottom: 1px solid #f0ede8;
+      padding: 8px 12px; flex-shrink: 0;
+    }
+    .ps-header-row {
+      display: flex; align-items: center;
+      justify-content: space-between; margin-bottom: 7px;
+    }
+    .ps-logo {
+      font-family: var(--font-heading);
+      font-size: 14px; font-weight: 700; color: var(--color-accent);
+    }
+    .ps-logo-sub { font-size: 7px; color: #999; margin-left: 4px; }
+    .ps-lang-row { display: flex; gap: 3px; }
+    .ps-lang-btn {
+      font-size: 7.5px; font-weight: 700;
+      padding: 2px 6px; border-radius: 99px;
+      background: #f3f1ec; color: #888; border: none;
+    }
+    .ps-lang-btn.active { background: var(--color-accent); color: #fff; }
+
+    /* ---- SCREENS WRAPPER: panels live here only ---- */
+    .ps-screens {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      min-height: 0;
+    }
+    .ps-panel {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      display: flex; flex-direction: column;
+      overflow: hidden;
+    }
+    .ps-panel-a { animation: jl-show-a 8s ease-in-out infinite; }
+    .ps-panel-b { animation: jl-show-b 8s ease-in-out infinite; opacity: 0; }
+    @keyframes jl-show-a {
+      0%, 42%  { opacity: 1; }
+      50%, 92% { opacity: 0; }
+      100%     { opacity: 1; }
+    }
+    @keyframes jl-show-b {
+      0%, 42%  { opacity: 0; }
+      50%, 92% { opacity: 1; }
+      100%     { opacity: 0; }
+    }
+
+    /* home panel content */
+    .ps-home-content { flex: 1; overflow: hidden; padding: 12px 10px 6px; min-height: 0; }
+    .ps-welcome { font-size: 9px; color: #666; margin-bottom: 10px; line-height: 1.5; }
+    .ps-welcome strong { color: #1a1a1a; font-weight: 700; }
+    .ps-cats { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .ps-cat {
+      background: #fff; border: 1px solid #ece9e3;
+      border-radius: 10px; padding: 10px 6px 8px; text-align: center;
+    }
+    .ps-cat-icon {
+      width: 26px; height: 26px;
+      background: rgba(251,174,23,.14); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 5px; color: var(--color-accent);
+    }
+    .ps-cat-icon i { width: 14px; height: 14px; }
+    .ps-cat-label { font-size: 8.5px; font-weight: 700; color: #1a1a1a; }
+    .ps-cat-sub { font-size: 7px; color: #999; margin-top: 1px; }
+
+    /* quiz panel content */
+    .ps-quiz-content { flex: 1; overflow: hidden; padding: 12px 10px 6px; min-height: 0; }
+    .ps-quiz-chip {
+      display: inline-block; font-size: 7px; font-weight: 700;
+      color: var(--color-accent); background: rgba(251,174,23,.12);
+      border-radius: 99px; padding: 2px 8px; margin-bottom: 8px; letter-spacing: .06em;
+    }
+    .ps-quiz-q { font-size: 9.5px; font-weight: 700; color: #1a1a1a; line-height: 1.5; margin-bottom: 10px; }
+    .ps-quiz-choices { display: flex; flex-direction: column; gap: 5px; }
+    .ps-quiz-choice {
+      padding: 7px 10px; border-radius: 8px;
+      border: 1.5px solid #ece9e3;
+      font-size: 8.5px; font-weight: 700; background: #fff; color: #444;
+    }
+    .ps-quiz-choice.correct {
+      border-color: var(--color-accent);
+      background: rgba(251,174,23,.1); color: var(--color-accent);
+    }
+    .ps-quiz-badges { display: flex; gap: 4px; margin-top: 10px; }
+    .ps-badge {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(251,174,23,.18);
+      border: 1.5px solid rgba(251,174,23,.4);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-accent);
+    }
+    .ps-badge i { width: 10px; height: 10px; }
+    .ps-badge.locked { background: #f3f1ec; border-color: #dedad2; color: #ccc; }
+
+    /* bottom nav — inside each panel */
+    .ps-nav {
+      background: #fff; border-top: 1px solid #f0ede8;
+      display: flex; padding: 5px 0 8px; flex-shrink: 0;
+    }
+    .ps-nav-item {
+      flex: 1; text-align: center;
+      font-size: 7px; color: #bbb; font-weight: 700;
+    }
+    .ps-nav-item.active { color: var(--color-accent); }
+    .ps-nav-item i { display: block; width: 15px; height: 15px; margin: 0 auto 2px; }
+
+    /* =========================================
+       STATS STRIP
+    ========================================= */
+    .jl-stats { display: flex; background: var(--color-text); }
+    .jl-stat {
+      flex: 1; padding: 26px 0; text-align: center;
+      border-right: 1px solid rgba(255,255,255,.08);
+    }
+    .jl-stat:last-child { border-right: none; }
+    .jl-stat-num {
+      font-family: var(--font-heading);
+      font-size: 28px; font-weight: 700;
+      color: var(--color-accent);
+      line-height: 1; margin-bottom: 6px;
+    }
+    .jl-stat-label {
+      font-size: 11px; font-weight: 700;
+      color: rgba(255,255,255,.5); letter-spacing: .06em;
+    }
+
+    /* =========================================
+       FEATURES
+    ========================================= */
     .feat-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 28px;
-      margin-top: 48px;
+      display: grid; grid-template-columns: repeat(2,1fr);
+      gap: 24px; margin-top: 48px;
     }
     .feat-card {
       background: var(--color-surface);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-md);
       padding: 32px;
-      transition: transform .25s, box-shadow .25s;
+      transition: transform .35s cubic-bezier(.22,1,.36,1),
+                  box-shadow .35s ease;
+      position: relative; overflow: hidden;
     }
-    .feat-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0,0,0,.07);
+    .feat-card::before {
+      content: '';
+      position: absolute; top: 0; left: 28px; right: 28px; height: 3px;
+      background: rgba(251,174,23,.25);
+      border-radius: 0 0 3px 3px;
+      transition: background .3s;
     }
+    .feat-card:hover { transform: translateY(-6px); box-shadow: 0 20px 56px rgba(0,0,0,.1); }
+    .feat-card:hover::before { background: var(--color-accent); }
     .feat-icon {
-      width: 48px;
-      height: 48px;
+      width: 52px; height: 52px;
       background: rgba(251,174,23,.12);
       border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-      color: var(--color-accent);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px; color: var(--color-accent);
+      transition: background .3s, transform .3s;
     }
+    .feat-card:hover .feat-icon { background: rgba(251,174,23,.22); transform: scale(1.1); }
     .feat-icon i { width: 24px; height: 24px; }
-    .feat-title {
-      font-family: var(--font-heading);
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-    .feat-body {
-      font-size: 14px;
-      line-height: 1.8;
-      color: var(--color-muted);
-    }
+    .feat-title { font-family: var(--font-heading); font-size: 18px; margin-bottom: 10px; }
+    .feat-body { font-size: 14px; line-height: 1.8; color: var(--color-muted); }
 
-    /* ===== Languages ===== */
+    /* =========================================
+       STORY
+    ========================================= */
+    .jl-story { background: var(--color-text); color: #fff; overflow: hidden; }
+    .jl-story-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 72px; align-items: center;
+    }
+    .jl-story-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 700; letter-spacing: .2em;
+      color: var(--color-accent); text-transform: uppercase; margin-bottom: 16px;
+    }
+    .jl-story-label::before {
+      content: ''; display: block;
+      width: 18px; height: 2px; background: var(--color-accent);
+    }
+    .jl-story-title {
+      font-family: var(--font-heading);
+      font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.45; margin-bottom: 24px;
+    }
+    .jl-story-title .accent { color: var(--color-accent); }
+    .jl-story-body { font-size: 14px; color: rgba(255,255,255,.72); line-height: 1.95; margin-bottom: 14px; }
+    .jl-story-body strong { color: #fff; }
+    .jl-story-quote {
+      border-left: 3px solid var(--color-accent);
+      padding: 16px 20px;
+      background: rgba(255,255,255,.05);
+      border-radius: 0 8px 8px 0; margin-top: 24px;
+    }
+    .jl-story-quote p { font-family: var(--font-heading); font-size: 14px; color: rgba(255,255,255,.85); line-height: 1.7; }
+    .jl-story-quote cite { display: block; font-size: 12px; color: rgba(255,255,255,.45); margin-top: 8px; font-style: normal; }
+    .jl-story-facts { display: flex; flex-direction: column; gap: 16px; }
+    .jl-fact-card {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius-md);
+      padding: 22px 24px; display: flex; gap: 16px; align-items: flex-start;
+      transition: background .3s, border-color .3s;
+    }
+    .jl-fact-card:hover { background: rgba(255,255,255,.11); border-color: rgba(251,174,23,.3); }
+    .jl-fact-num {
+      font-family: var(--font-heading);
+      font-size: 30px; font-weight: 700;
+      color: var(--color-accent); line-height: 1; flex-shrink: 0;
+    }
+    .jl-fact-label { font-size: 10px; font-weight: 700; color: rgba(255,255,255,.45); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 4px; }
+    .jl-fact-desc { font-size: 13px; color: rgba(255,255,255,.68); line-height: 1.6; }
+
+    /* =========================================
+       LANGUAGES
+    ========================================= */
     .lang-section {
       background: var(--color-surface);
       border-top: 1px solid var(--color-border);
       border-bottom: 1px solid var(--color-border);
     }
-    .lang-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-    .lang-badges {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
+    .lang-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .lang-badges { display: flex; flex-direction: column; gap: 12px; }
     .lang-badge-row {
-      display: flex;
-      align-items: center;
-      gap: 16px;
+      display: flex; align-items: center; gap: 16px;
       background: var(--color-bg);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-md);
-      padding: 16px 20px;
+      padding: 14px 18px;
+      transition: border-color .25s, transform .35s cubic-bezier(.22,1,.36,1), box-shadow .25s;
+    }
+    .lang-badge-row:hover {
+      border-color: rgba(251,174,23,.45);
+      transform: translateX(6px);
+      box-shadow: -4px 0 0 var(--color-accent);
     }
     .lang-badge-flag {
-      font-size: 24px;
-      line-height: 1;
-      flex-shrink: 0;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(251,174,23,.12);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-heading); font-size: 11px; font-weight: 700;
+      color: var(--color-accent); flex-shrink: 0;
     }
     .lang-badge-info { flex: 1; }
-    .lang-badge-name {
-      font-weight: 700;
-      font-size: 15px;
-      margin-bottom: 2px;
-    }
-    .lang-badge-desc {
-      font-size: 12px;
-      color: var(--color-muted);
-    }
+    .lang-badge-name { font-weight: 700; font-size: 15px; margin-bottom: 2px; }
+    .lang-badge-desc { font-size: 12px; color: var(--color-muted); }
     .lang-badge-tag {
-      font-size: 11px;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 99px;
-      background: rgba(251,174,23,.12);
-      color: var(--color-accent);
-      border: 1px solid rgba(251,174,23,.3);
-      white-space: nowrap;
+      font-size: 11px; font-weight: 700;
+      padding: 3px 10px; border-radius: 99px;
+      background: rgba(251,174,23,.12); color: var(--color-accent);
+      border: 1px solid rgba(251,174,23,.3); white-space: nowrap;
     }
 
-    /* ===== Quiz Section ===== */
-    .quiz-section {
-      background: var(--color-bg);
-    }
-    .quiz-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
+    /* =========================================
+       QUIZ
+    ========================================= */
+    .quiz-section { background: var(--color-bg); }
+    .quiz-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
     .quiz-demo {
       background: var(--color-surface);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-md);
       padding: 28px;
+      box-shadow: 0 8px 40px rgba(0,0,0,.07);
     }
-    .quiz-demo-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .1em;
-      color: var(--color-muted);
-      margin-bottom: 16px;
-      text-transform: uppercase;
-    }
-    .quiz-demo-q {
-      font-family: var(--font-heading);
-      font-size: 15px;
-      margin-bottom: 16px;
-      line-height: 1.5;
-    }
-    .quiz-demo-choices {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+    .quiz-demo-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; color: var(--color-muted); margin-bottom: 16px; text-transform: uppercase; }
+    .quiz-demo-q { font-family: var(--font-heading); font-size: 15px; margin-bottom: 16px; line-height: 1.5; }
+    .quiz-demo-choices { display: flex; flex-direction: column; gap: 8px; }
     .quiz-demo-choice {
-      padding: 10px 16px;
-      border-radius: 8px;
+      padding: 10px 16px; border-radius: 8px;
       border: 1.5px solid var(--color-border);
-      font-size: 13px;
-      font-weight: 700;
-      background: var(--color-bg);
+      font-size: 13px; font-weight: 700; background: var(--color-bg);
+      transition: border-color .2s, background .2s;
     }
+    .quiz-demo-choice:not(.correct):hover { border-color: var(--color-border); }
     .quiz-demo-choice.correct {
       border-color: var(--color-accent);
-      background: rgba(251,174,23,.1);
-      color: var(--color-accent);
+      background: rgba(251,174,23,.1); color: var(--color-accent);
     }
-    .badge-row {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-      flex-wrap: wrap;
-    }
+    .badge-row { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
     .badge-item {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
+      width: 44px; height: 44px; border-radius: 50%;
       background: rgba(251,174,23,.15);
       border: 2px solid rgba(251,174,23,.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       color: var(--color-accent);
+      transition: transform .25s;
     }
-    .badge-item.locked {
-      background: var(--color-surface);
-      border-color: var(--color-border);
-      color: var(--color-border);
-    }
-    .badge-item i { width: 22px; height: 22px; }
+    .badge-item:hover { transform: scale(1.15); }
+    .badge-item.locked { background: var(--color-surface); border-color: var(--color-border); color: var(--color-border); }
+    .badge-item i { width: 20px; height: 20px; }
 
-    /* ===== CTA ===== */
+    /* =========================================
+       CTA
+    ========================================= */
     .jl-cta {
       background: linear-gradient(160deg, rgba(251,174,23,.08) 0%, transparent 100%);
       border-top: 1px solid var(--color-border);
     }
-    .jl-cta-inner {
-      text-align: center;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    .jl-cta-btns {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 32px;
-    }
+    .jl-cta-inner { text-align: center; max-width: 640px; margin: 0 auto; }
+    .jl-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 32px; }
 
-    /* ===== Responsive ===== */
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
     @media (max-width: 768px) {
-      .jl-hero-inner,
-      .lang-inner,
-      .quiz-inner { grid-template-columns: 1fr; gap: 40px; }
-      .feat-grid   { grid-template-columns: 1fr; }
+      .jl-hero-inner, .jl-story-inner, .lang-inner, .quiz-inner { grid-template-columns: 1fr; gap: 40px; }
+      .feat-grid { grid-template-columns: 1fr; }
       .jl-hero-visual { display: none; }
       .jl-cta-btns { flex-direction: column; align-items: center; }
+      .jl-stats { flex-wrap: wrap; }
+      .jl-stat { min-width: 50%; border-bottom: 1px solid rgba(255,255,255,.08); }
     }
   </style>
 </head>
@@ -345,11 +476,18 @@
     <nav>
       <a href="index.html" class="nav-logo">トモスマ<span>.</span></a>
       <ul class="nav-links">
-        <li><a href="index.html#philosophy" data-i18n="nav.about">トモスマについて</a></li>
-        <li><a href="products.html"         data-i18n="nav.products">プロダクト</a></li>
-        <li><a href="events.html"           data-i18n="nav.events">イベント</a></li>
-        <li><a href="news.html"             data-i18n="nav.news">News</a></li>
-        <li><a href="contact.html"          data-i18n="nav.contact">Contact</a></li>
+        <li><a href="index.html#philosophy">トモスマについて</a></li>
+        <li class="nav-dropdown">
+          <a href="index.html#service" class="nav-dropdown-trigger">活動内容 <i data-lucide="chevron-down" style="width:13px;height:13px;"></i></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="index.html#service">SNS発信</a></li>
+            <li><a href="products.html" class="active">APP開発</a></li>
+            <li><a href="events.html">イベント開催</a></li>
+          </ul>
+        </li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="message.html">代表メッセージ</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
       <a href="products.html" class="nav-back" style="display:inline-flex;align-items:center;gap:6px;padding:9px 20px;border-radius:99px;border:1.5px solid var(--color-border);font-size:13px;font-weight:700;color:var(--color-muted);transition:all .2s;white-space:nowrap;" onmouseover="this.style.borderColor='var(--color-accent)';this.style.color='var(--color-accent)'" onmouseout="this.style.borderColor='var(--color-border)';this.style.color='var(--color-muted)'" data-i18n="jl.back">← プロダクト一覧へ</a>
       <div class="lang-toggle" role="group" aria-label="言語切り替え">
@@ -371,14 +509,16 @@
     <div class="mobile-menu-overlay" id="mobile-overlay"></div>
     <div class="mobile-menu-panel">
       <ul class="mobile-menu-links">
-        <li><a href="index.html#philosophy" class="mobile-link" data-i18n="nav.about">トモスマについて</a></li>
-        <li><a href="products.html"         class="mobile-link" data-i18n="nav.products">プロダクト</a></li>
+        <li><a href="index.html#philosophy" class="mobile-link">トモスマについて</a></li>
+        <li><a href="message.html" class="mobile-link"><i data-lucide="message-square" style="width:16px;height:16px;margin-right:6px;vertical-align:-2px;"></i>代表メッセージ</a></li>
         <hr class="mobile-menu-divider">
-        <li><a href="events.html"           class="mobile-link" data-i18n="nav.events">イベント</a></li>
-        <li><a href="news.html"             class="mobile-link" data-i18n="nav.news">News</a></li>
-        <li><a href="contact.html"          class="mobile-link" data-i18n="nav.contact">Contact</a></li>
+        <p style="font-size:11px;font-weight:700;color:var(--color-muted);padding:6px 20px 2px;letter-spacing:.08em;">活動内容</p>
+        <li><a href="index.html#service" class="mobile-link"><i data-lucide="instagram" style="width:16px;height:16px;margin-right:6px;vertical-align:-2px;"></i>SNS発信</a></li>
+        <li><a href="products.html" class="mobile-link active"><i data-lucide="smartphone" style="width:16px;height:16px;margin-right:6px;vertical-align:-2px;"></i>APP開発</a></li>
+        <li><a href="events.html" class="mobile-link"><i data-lucide="calendar" style="width:16px;height:16px;margin-right:6px;vertical-align:-2px;"></i>イベント開催</a></li>
         <hr class="mobile-menu-divider">
-        <li><a href="products.html" class="mobile-link" data-i18n="jl.back">← プロダクト一覧へ</a></li>
+        <li><a href="news.html" class="mobile-link"><i data-lucide="newspaper" style="width:16px;height:16px;margin-right:6px;vertical-align:-2px;"></i>News</a></li>
+        <li><a href="contact.html" class="mobile-link"><i data-lucide="mail" style="width:16px;height:16px;margin-right:6px;vertical-align:-2px;"></i>Contact</a></li>
       </ul>
       <div class="mobile-menu-cta">
         <a href="recruit.html" class="btn btn-primary mobile-link" data-i18n="nav.join_btn">仲間になる</a>
@@ -388,82 +528,176 @@
 
   <main>
 
-    <!-- ===== Hero ===== -->
+    <!-- ===== HERO ===== -->
     <section class="jl-hero">
       <div class="container">
         <div class="jl-hero-inner">
           <div>
-            <p class="jl-hero-badge">
+            <p class="jl-hero-badge hero-reveal hero-reveal-d1">
               <i data-lucide="smartphone" style="width:14px;height:14px;"></i>
               <span data-i18n="jl.hero.badge">App — iOS 近日公開</span>
             </p>
-            <h1 class="jl-hero-title" data-i18n-html="jl.hero.title">技能実習生のための<br>日本生活ガイドアプリ</h1>
-            <p class="jl-hero-subtitle" data-i18n="jl.hero.subtitle">ゴミ分別・職場ルール・あいさつ・安全——日本語＋ベトナム語で、いつでも・どこでも確認できます。</p>
-            <div class="jl-hero-btns">
+            <h1 class="jl-hero-title hero-reveal hero-reveal-d2" data-i18n-html="jl.hero.title">技能実習生のための<br>日本生活ガイドアプリ</h1>
+            <p class="jl-hero-subtitle hero-reveal hero-reveal-d3" data-i18n="jl.hero.subtitle">ゴミ分別・職場ルール・あいさつ・安全——4言語で、いつでも・どこでも確認できます。</p>
+            <div class="jl-hero-btns hero-reveal hero-reveal-d4">
               <a href="https://japanlife.vercel.app" target="_blank" rel="noopener" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:8px;">
                 <i data-lucide="globe" style="width:16px;height:16px;"></i>
                 <span data-i18n="jl.hero.btn.try">Web版を試す</span>
               </a>
-              <span class="btn-outline" style="cursor:default;opacity:.65;">
+              <span class="btn-outline" style="cursor:default;opacity:.6;">
                 <i data-lucide="apple" style="width:16px;height:16px;"></i>
                 <span data-i18n="jl.hero.btn.dl">iOS App（近日公開）</span>
               </span>
             </div>
           </div>
-          <div class="jl-hero-visual">
-            <div class="jl-phone-mockup">
-              <div class="jl-phone-inner">
-                <div class="jl-phone-logo">
-                  JapanLife
-                  <span>日本生活ガイド</span>
-                </div>
-                <div class="jl-phone-cats">
-                  <div class="jl-phone-cat">
-                    <i data-lucide="trash-2" style="width:20px;height:20px;display:block;margin:0 auto 4px;"></i>
-                    ゴミ分別
+
+          <!-- ---- PHONE MOCKUP ---- -->
+          <div class="jl-hero-visual hero-reveal hero-reveal-d3">
+            <div class="jl-phone-wrap" id="jl-phone-wrap">
+              <div class="jl-phone-bg-blob"></div>
+              <div class="jl-phone-mockup">
+                <div class="jl-phone-screen">
+
+                  <!-- always-visible top -->
+                  <div class="ps-statusbar">
+                    <span class="ps-sb-time">9:41</span>
+                    <div class="ps-sb-icons">
+                      <i data-lucide="signal" style="width:11px;height:11px;"></i>
+                      <i data-lucide="wifi"   style="width:11px;height:11px;"></i>
+                      <i data-lucide="battery-full" style="width:11px;height:11px;"></i>
+                    </div>
                   </div>
-                  <div class="jl-phone-cat">
-                    <i data-lucide="briefcase" style="width:20px;height:20px;display:block;margin:0 auto 4px;"></i>
-                    職場ルール
+                  <div class="ps-header">
+                    <div class="ps-header-row">
+                      <span class="ps-logo">JapanLife<span class="ps-logo-sub">日本生活ガイド</span></span>
+                    </div>
+                    <div class="ps-lang-row">
+                      <span class="ps-lang-btn active">やさしい</span>
+                      <span class="ps-lang-btn">日本語</span>
+                      <span class="ps-lang-btn">VN</span>
+                      <span class="ps-lang-btn">EN</span>
+                    </div>
                   </div>
-                  <div class="jl-phone-cat">
-                    <i data-lucide="hand-metal" style="width:20px;height:20px;display:block;margin:0 auto 4px;"></i>
-                    あいさつ
-                  </div>
-                  <div class="jl-phone-cat">
-                    <i data-lucide="shield-alert" style="width:20px;height:20px;display:block;margin:0 auto 4px;"></i>
-                    安全・緊急
-                  </div>
-                </div>
-              </div>
+
+                  <!-- animated screens — panels live here only -->
+                  <div class="ps-screens">
+
+                    <!-- Panel A: ホーム -->
+                    <div class="ps-panel ps-panel-a">
+                      <div class="ps-home-content">
+                        <p class="ps-welcome"><strong>ようこそ！</strong><br>日本での生活を一緒に学ぼう。</p>
+                        <div class="ps-cats">
+                          <div class="ps-cat">
+                            <div class="ps-cat-icon"><i data-lucide="trash-2"></i></div>
+                            <div class="ps-cat-label">ゴミ分別</div>
+                            <div class="ps-cat-sub">Garbage</div>
+                          </div>
+                          <div class="ps-cat">
+                            <div class="ps-cat-icon"><i data-lucide="briefcase"></i></div>
+                            <div class="ps-cat-label">職場ルール</div>
+                            <div class="ps-cat-sub">Workplace</div>
+                          </div>
+                          <div class="ps-cat">
+                            <div class="ps-cat-icon"><i data-lucide="message-circle"></i></div>
+                            <div class="ps-cat-label">あいさつ</div>
+                            <div class="ps-cat-sub">Greetings</div>
+                          </div>
+                          <div class="ps-cat">
+                            <div class="ps-cat-icon"><i data-lucide="shield-alert"></i></div>
+                            <div class="ps-cat-label">安全・緊急</div>
+                            <div class="ps-cat-sub">Emergency</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="ps-nav">
+                        <div class="ps-nav-item active"><i data-lucide="home"></i>ホーム</div>
+                        <div class="ps-nav-item"><i data-lucide="layers"></i>クイズ</div>
+                        <div class="ps-nav-item"><i data-lucide="user"></i>マイページ</div>
+                      </div>
+                    </div>
+
+                    <!-- Panel B: クイズ -->
+                    <div class="ps-panel ps-panel-b">
+                      <div class="ps-quiz-content">
+                        <span class="ps-quiz-chip">Quiz — ゴミ分別</span>
+                        <p class="ps-quiz-q">ペットボトルを捨てるとき、どうしますか？</p>
+                        <div class="ps-quiz-choices">
+                          <div class="ps-quiz-choice correct">
+                            <i data-lucide="check-circle" style="width:10px;height:10px;vertical-align:middle;margin-right:3px;"></i>
+                            キャップとラベルを外してから捨てる
+                          </div>
+                          <div class="ps-quiz-choice">そのまま燃えるゴミに捨てる</div>
+                          <div class="ps-quiz-choice">ビンと一緒に捨てる</div>
+                        </div>
+                        <div class="ps-quiz-badges">
+                          <div class="ps-badge"><i data-lucide="award"></i></div>
+                          <div class="ps-badge"><i data-lucide="award"></i></div>
+                          <div class="ps-badge locked"><i data-lucide="award"></i></div>
+                          <div class="ps-badge locked"><i data-lucide="award"></i></div>
+                        </div>
+                      </div>
+                      <div class="ps-nav">
+                        <div class="ps-nav-item"><i data-lucide="home"></i>ホーム</div>
+                        <div class="ps-nav-item active"><i data-lucide="layers"></i>クイズ</div>
+                        <div class="ps-nav-item"><i data-lucide="user"></i>マイページ</div>
+                      </div>
+                    </div>
+
+                  </div><!-- /ps-screens -->
+                </div><!-- /jl-phone-screen -->
+              </div><!-- /jl-phone-mockup -->
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== Features ===== -->
+    <!-- ===== STATS STRIP ===== -->
+    <div class="jl-stats">
+      <div class="jl-stat">
+        <div class="jl-stat-num" data-count="4">4</div>
+        <div class="jl-stat-label">言語対応</div>
+      </div>
+      <div class="jl-stat">
+        <div class="jl-stat-num" data-count="4">4</div>
+        <div class="jl-stat-label">カテゴリ</div>
+      </div>
+      <div class="jl-stat">
+        <div class="jl-stat-num">Quiz</div>
+        <div class="jl-stat-label">クイズ機能</div>
+      </div>
+      <div class="jl-stat">
+        <div class="jl-stat-num">Badge</div>
+        <div class="jl-stat-label">バッジシステム</div>
+      </div>
+      <div class="jl-stat">
+        <div class="jl-stat-num">無料</div>
+        <div class="jl-stat-label">すべて無料</div>
+      </div>
+    </div>
+
+    <!-- ===== FEATURES ===== -->
     <section class="section" style="background:var(--color-bg);">
       <div class="container">
-        <p class="section-label" data-i18n="jl.feat.label">Features</p>
-        <h2 class="section-title" data-i18n-html="jl.feat.title">4つのカテゴリで<br>日本生活をナビゲート</h2>
+        <p class="section-label" data-animate data-i18n="jl.feat.label">Features</p>
+        <h2 class="section-title" data-animate data-delay="1" data-i18n-html="jl.feat.title">4つのカテゴリで<br>日本生活をナビゲート</h2>
         <div class="feat-grid">
-          <div class="feat-card">
+          <div class="feat-card" data-animate data-delay="1">
             <div class="feat-icon"><i data-lucide="trash-2"></i></div>
             <h3 class="feat-title" data-i18n="jl.feat.c1.title">ゴミの分別</h3>
             <p class="feat-body" data-i18n="jl.feat.c1.body">燃えるゴミ・ペットボトル・粗大ゴミの捨て方を、地域ルールとともに解説。</p>
           </div>
-          <div class="feat-card">
+          <div class="feat-card" data-animate data-delay="2">
             <div class="feat-icon"><i data-lucide="briefcase"></i></div>
             <h3 class="feat-title" data-i18n="jl.feat.c2.title">職場のルール</h3>
             <p class="feat-body" data-i18n="jl.feat.c2.body">ほうれんそう・あいさつ・ミスの対応など、職場で必要なマナーをわかりやすく。</p>
           </div>
-          <div class="feat-card">
+          <div class="feat-card" data-animate data-delay="3">
             <div class="feat-icon"><i data-lucide="message-circle"></i></div>
             <h3 class="feat-title" data-i18n="jl.feat.c3.title">あいさつ・敬語</h3>
             <p class="feat-body" data-i18n="jl.feat.c3.body">基本フレーズ5選・お辞儀の角度など、日常と職場で使える表現を網羅。</p>
           </div>
-          <div class="feat-card">
+          <div class="feat-card" data-animate data-delay="4">
             <div class="feat-icon"><i data-lucide="shield-alert"></i></div>
             <h3 class="feat-title" data-i18n="jl.feat.c4.title">安全・緊急対応</h3>
             <p class="feat-body" data-i18n="jl.feat.c4.body">119番・110番の使い方、地震のときの行動など、いざというときの対応を確認。</p>
@@ -472,42 +706,89 @@
       </div>
     </section>
 
-    <!-- ===== Languages ===== -->
+    <!-- ===== STORY ===== -->
+    <section class="section jl-story">
+      <div class="container">
+        <div class="jl-story-inner">
+          <div data-animate>
+            <p class="jl-story-label">Why we built this</p>
+            <h2 class="jl-story-title">
+              「来た初日に、<span class="accent">何もわからなかった」</span><br>その声から生まれた。
+            </h2>
+            <p class="jl-story-body">
+              代表・渡辺が入国後講習センターを訪問したとき、技能実習生の多くが<strong>「ゴミの捨て方がわからない」「職場でどう挨拶すればいいか誰も教えてくれない」</strong>という、小さくても積み重なる困りごとを抱えていることに気づいた。
+            </p>
+            <p class="jl-story-body">
+              言語の壁は、単語や文法の問題ではない。<strong>「いつ・何を・どうすれば正解なのか」がわからないまま一人で抱える孤独感</strong>こそが問題だ。
+            </p>
+            <div class="jl-story-quote">
+              <p>「技能実習生が日本社会に最初に出会う場所を、もっと温かくしたい。」</p>
+              <cite>— 渡辺 瑛太 / トモスマ代表</cite>
+            </div>
+          </div>
+          <div class="jl-story-facts">
+            <div class="jl-fact-card" data-animate data-delay="1">
+              <div class="jl-fact-num">5</div>
+              <div>
+                <div class="jl-fact-label">Interview</div>
+                <div class="jl-fact-desc">YUIME・GTN・JICE・グローバルアイ・CINGA の5団体にインタビューを実施。現場の実態から機能を設計。</div>
+              </div>
+            </div>
+            <div class="jl-fact-card" data-animate data-delay="2">
+              <div class="jl-fact-num">1ヶ月</div>
+              <div>
+                <div class="jl-fact-label">Field Access</div>
+                <div class="jl-fact-desc">NPO法人グローバルアイが運営する入国後講習フィールドで、実習生と直接関わりながら開発。</div>
+              </div>
+            </div>
+            <div class="jl-fact-card" data-animate data-delay="3">
+              <div class="jl-fact-num">4</div>
+              <div>
+                <div class="jl-fact-label">Languages</div>
+                <div class="jl-fact-desc">やさしい日本語・日本語・ベトナム語・Englishの4言語で、どんな学習レベルの実習生にも届くように。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LANGUAGES ===== -->
     <section class="section lang-section">
       <div class="container">
         <div class="lang-inner">
-          <div>
+          <div data-animate>
             <p class="section-label" data-i18n="jl.lang.label">Languages</p>
             <h2 class="section-title" style="font-size:clamp(24px,3.5vw,36px);" data-i18n="jl.lang.title">4つの言語で学べる</h2>
             <p class="section-body" data-i18n="jl.lang.body">やさしい日本語・日本語・ベトナム語・Englishの4言語に対応。学習レベルや母語に合わせて切り替えられます。</p>
           </div>
           <div class="lang-badges">
-            <div class="lang-badge-row">
-              <span class="lang-badge-flag">JP</span>
+            <div class="lang-badge-row" data-animate data-delay="1">
+              <div class="lang-badge-flag">JP</div>
               <div class="lang-badge-info">
                 <p class="lang-badge-name">やさしい日本語</p>
                 <p class="lang-badge-desc">ふりがな付き・短い文体で読みやすい</p>
               </div>
               <span class="lang-badge-tag">やさしい</span>
             </div>
-            <div class="lang-badge-row">
-              <span class="lang-badge-flag">JP</span>
+            <div class="lang-badge-row" data-animate data-delay="2">
+              <div class="lang-badge-flag">JP</div>
               <div class="lang-badge-info">
                 <p class="lang-badge-name">日本語</p>
                 <p class="lang-badge-desc">標準的な日本語で詳しく学べる</p>
               </div>
               <span class="lang-badge-tag">日本語</span>
             </div>
-            <div class="lang-badge-row">
-              <span class="lang-badge-flag">VN</span>
+            <div class="lang-badge-row" data-animate data-delay="3">
+              <div class="lang-badge-flag">VN</div>
               <div class="lang-badge-info">
                 <p class="lang-badge-name">Tiếng Việt</p>
                 <p class="lang-badge-desc">ベトナム語で内容を確認</p>
               </div>
               <span class="lang-badge-tag">Vietnamese</span>
             </div>
-            <div class="lang-badge-row">
-              <span class="lang-badge-flag">EN</span>
+            <div class="lang-badge-row" data-animate data-delay="4">
+              <div class="lang-badge-flag">EN</div>
               <div class="lang-badge-info">
                 <p class="lang-badge-name">English</p>
                 <p class="lang-badge-desc">Explanations in easy English</p>
@@ -519,11 +800,11 @@
       </div>
     </section>
 
-    <!-- ===== Quiz & Badge ===== -->
+    <!-- ===== QUIZ & BADGE ===== -->
     <section class="section quiz-section">
       <div class="container">
         <div class="quiz-inner">
-          <div class="quiz-demo">
+          <div class="quiz-demo" data-animate>
             <p class="quiz-demo-label">Quiz — ゴミ分別</p>
             <p class="quiz-demo-q">ペットボトルを捨てるとき、どうするのが正しいですか？</p>
             <div class="quiz-demo-choices">
@@ -542,8 +823,8 @@
               <div class="badge-item locked"><i data-lucide="award"></i></div>
             </div>
           </div>
-          <div>
-            <p class="section-label" data-i18n="jl.quiz.label">Quiz & Badge</p>
+          <div data-animate data-delay="2">
+            <p class="section-label" data-i18n="jl.quiz.label">Quiz &amp; Badge</p>
             <h2 class="section-title" style="font-size:clamp(24px,3.5vw,36px);" data-i18n="jl.quiz.title">クイズとバッジで続けられる</h2>
             <p class="section-body" data-i18n="jl.quiz.body">カテゴリごとのクイズでその日の学びを確認。バッジを集めながら、毎日少しずつ続けられる設計です。</p>
           </div>
@@ -554,8 +835,8 @@
     <!-- ===== CTA ===== -->
     <section class="section jl-cta">
       <div class="container">
-        <div class="jl-cta-inner">
-          <p class="section-label" data-i18n="jl.cta.label">Download</p>
+        <div class="jl-cta-inner" data-animate>
+          <p class="section-label" data-i18n="jl.cta.label">Try it now</p>
           <h2 class="section-title" data-i18n="jl.cta.title">無料で使えます</h2>
           <p class="section-body" data-i18n="jl.cta.body">インストール不要のWebアプリ版で今すぐ体験できます。iOSネイティブアプリは近日公開予定。</p>
           <div class="jl-cta-btns">
@@ -589,7 +870,7 @@
       </ul>
     </div>
     <div class="footer-bottom">
-      <span data-i18n="footer.copy">© 2026 トモスマ（With Smile & Beyond）</span>
+      <span data-i18n="footer.copy">© 2026 トモスマ（With Smile &amp; Beyond）</span>
       <span data-i18n="footer.founder">代表：渡辺 瑛太</span>
     </div>
   </footer>
@@ -599,16 +880,70 @@
   <script>
     lucide.createIcons();
 
-    /* ---- ハンバーガーメニュー ---- */
+    /* ---- hamburger ---- */
     const hamburgerBtn = document.getElementById('hamburger-btn');
     const mobileMenu   = document.getElementById('mobile-menu');
     const overlay      = document.getElementById('mobile-overlay');
-    function openMenu()  { mobileMenu.classList.add('open'); hamburgerBtn.classList.add('open'); document.body.style.overflow = 'hidden'; }
-    function closeMenu() { mobileMenu.classList.remove('open'); hamburgerBtn.classList.remove('open'); document.body.style.overflow = ''; }
-    hamburgerBtn.addEventListener('click', () => { mobileMenu.classList.contains('open') ? closeMenu() : openMenu(); });
+    const openMenu  = () => { mobileMenu.classList.add('open'); hamburgerBtn.classList.add('open'); document.body.style.overflow='hidden'; };
+    const closeMenu = () => { mobileMenu.classList.remove('open'); hamburgerBtn.classList.remove('open'); document.body.style.overflow=''; };
+    hamburgerBtn.addEventListener('click', () => mobileMenu.classList.contains('open') ? closeMenu() : openMenu());
     overlay.addEventListener('click', closeMenu);
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+    document.addEventListener('keydown', e => { if (e.key==='Escape') closeMenu(); });
     document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMenu));
+
+    /* ---- scroll animation (Apple-style) ---- */
+    document.documentElement.classList.add('js-ready');
+
+    const scrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          scrollObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('[data-animate]').forEach(el => scrollObserver.observe(el));
+
+    /* ---- stats strip: count-up on enter ---- */
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.querySelectorAll('[data-count]').forEach(el => {
+          const target = parseInt(el.dataset.count, 10);
+          let start = null;
+          const duration = 1200;
+          const tick = (ts) => {
+            if (!start) start = ts;
+            const p = Math.min((ts - start) / duration, 1);
+            const ease = 1 - Math.pow(1 - p, 3);
+            el.textContent = Math.round(ease * target);
+            if (p < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        });
+        countObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.5 });
+
+    const statsEl = document.querySelector('.jl-stats');
+    if (statsEl) countObserver.observe(statsEl);
+
+    /* ---- phone parallax (subtle, Apple-style) ---- */
+    const phoneWrap = document.getElementById('jl-phone-wrap');
+    if (phoneWrap && window.matchMedia('(min-width: 769px)').matches) {
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (ticking) return;
+        requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          const offset  = scrollY * 0.06;
+          phoneWrap.style.transform = `translateY(${offset}px)`;
+          ticking = false;
+        });
+        ticking = true;
+      }, { passive: true });
+    }
   </script>
 
 </body>
