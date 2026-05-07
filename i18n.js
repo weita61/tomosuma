@@ -20,6 +20,8 @@ const I18N = {
     'nav.japanlife':  'JapanLifeアプリ',
     'nav.products':   'プロダクト',
     'nav.about':      'トモスマについて',
+    'nav.message':    '代表メッセージ',
+    'nav.sponsor':    '支援する',
 
     /* ─── japanlife.html ─── */
     'jl.back':           '← プロダクト一覧へ',
@@ -281,6 +283,8 @@ const I18N = {
     'nav.japanlife':  'JapanLife App',
     'nav.products':   'Products',
     'nav.about':      'About',
+    'nav.message':    'Message',
+    'nav.sponsor':    'Support',
 
     /* ─── japanlife.html ─── */
     'jl.back':           '← Back to Products',
@@ -542,6 +546,8 @@ const I18N = {
     'nav.japanlife':  'JapanLife App',
     'nav.products':   'ផលិតផល',
     'nav.about':      'អំពីយើង',
+    'nav.message':    'សារពីប្រធាន',
+    'nav.sponsor':    'គាំទ្រ',
 
     /* ─── japanlife.html ─── */
     'jl.back':           '← ត្រឡប់ទៅផលិតផល',
@@ -801,6 +807,8 @@ const I18N = {
     'nav.japanlife':  'Ứng dụng JapanLife',
     'nav.products':   'Sản phẩm',
     'nav.about':      'Về chúng tôi',
+    'nav.message':    'Thông điệp',
+    'nav.sponsor':    'Hỗ trợ',
 
     /* ─── japanlife.html ─── */
     'jl.back':           '← Về Sản phẩm',

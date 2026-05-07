@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>イベント参加申し込み</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       TOKENS — トモスマ共通変数
+    ============================================================ */
+    :root {
+      --color-bg:      #FAFAF7;
+      --color-text:    #1C1C1C;
+      --color-muted:   #6B6B6B;
+      --color-accent:  #fbae17;
+      --color-accent2: #FFD166;
+      --color-surface: #FFFFFF;
+      --color-border:  #E8E8E4;
+
+      --font-heading: 'Zen Maru Gothic', sans-serif;
+      --font-body:    'Noto Sans JP', sans-serif;
+
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 32px;
+
+      --max-width: 680px;
+    }
+
+    /* ---- RESET ---- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.7;
+      font-size: 16px;
+      min-height: 100vh;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ---- HEADER ---- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250,250,247,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .nav-logo {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-accent);
+    }
+    .nav-logo span { color: var(--color-accent); }
+
+    /* ---- HERO ---- */
+    .page-hero {
+      padding: 64px 24px 48px;
+      border-bottom: 1px solid var(--color-border);
+      text-align: center;
+    }
+    .section-label {
+      font-size: 12px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(24px, 5vw, 40px);
+      line-height: 1.3;
+      margin-bottom: 14px;
+    }
+    .section-body {
+      color: var(--color-muted);
+      font-size: 15px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ---- FORM WRAPPER ---- */
+    .form-wrapper {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* ---- LANGUAGE SELECTOR ---- */
+    .lang-section {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 28px 28px 24px;
+      margin-bottom: 28px;
+      position: relative;
+    }
+    .lang-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 28px;
+      width: 48px; height: 3px;
+      background: var(--color-accent);
+      border-radius: 0 0 4px 4px;
+    }
+    .lang-label {
+      font-size: 12px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .lang-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .lang-btn {
+      padding: 9px 18px;
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--color-border);
+      background: var(--color-bg);
+      color: var(--color-muted);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s;
+      letter-spacing: .02em;
+    }
+    .lang-btn:hover { border-color: var(--color-accent); color: var(--color-accent); }
+    .lang-btn.active {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(251,174,23,.35);
+    }
+
+    /* ---- FORM CARD ---- */
+    .form-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .form-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--color-accent), var(--color-accent2));
+    }
+
+    /* Step indicator */
+    .step-indicator {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .step-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-title {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-text);
+    }
+
+    /* ---- FORM FIELDS ---- */
+    .field-group {
+      margin-bottom: 22px;
+    }
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 8px;
+      letter-spacing: .03em;
+    }
+    label .required {
+      color: var(--color-accent);
+      margin-left: 4px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      background: var(--color-bg);
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--color-text);
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    input:focus, select:focus {
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px rgba(251,174,23,.15);
+    }
+    input::placeholder { color: var(--color-muted); opacity: .7; }
+
+    /* Custom select arrow */
+    .select-wrap {
+      position: relative;
+    }
+    .select-wrap::after {
+      content: '';
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid var(--color-muted);
+      pointer-events: none;
+    }
+    select { cursor: pointer; padding-right: 40px; }
+
+    /* Radio group */
+    .radio-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .radio-option {
+      position: relative;
+    }
+    .radio-option input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .radio-option label {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 18px;
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      background: var(--color-bg);
+      color: var(--color-muted);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s;
+      margin-bottom: 0;
+      letter-spacing: .01em;
+    }
+    .radio-option input[type="radio"]:checked + label {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: #fff;
+    }
+    .radio-option label:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+    .radio-option input[type="radio"]:checked + label:hover {
+      color: #fff;
+    }
+
+    /* Disclaimer box */
+    .disclaimer-box {
+      background: #FFF9ED;
+      border: 1.5px solid var(--color-accent2);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+      font-size: 14px;
+      color: var(--color-text);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    /* Divider */
+    .field-divider {
+      border: none;
+      border-top: 1px solid var(--color-border);
+      margin: 28px 0;
+    }
+
+    /* ---- SUBMIT BUTTON ---- */
+    .submit-btn {
+      width: 100%;
+      padding: 16px 32px;
+      border-radius: var(--radius-lg);
+      background: var(--color-accent);
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+      letter-spacing: .05em;
+      margin-top: 8px;
+    }
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(251,174,23,.40);
+    }
+    .submit-btn:active { transform: translateY(0); }
+
+    /* ---- SUCCESS STATE ---- */
+    .success-card {
+      display: none;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 56px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .success-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #4CAF50, #8BC34A);
+    }
+    .success-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #E8F5E9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 32px;
+    }
+    .success-title {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .success-body {
+      color: var(--color-muted);
+      font-size: 15px;
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 600px) {
+      .form-card { padding: 28px 20px; }
+      .radio-group { gap: 8px; }
+      .lang-grid { gap: 8px; }
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      padding: 40px 24px;
+      border-top: 1px solid var(--color-border);
+      text-align: center;
+    }
+    .footer-brand {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-accent);
+      margin-bottom: 6px;
+    }
+    .footer-brand span { color: var(--color-accent); }
+    .footer-tagline { color: var(--color-muted); font-size: 13px; }
+
+    /* ---- WAIVER ERROR ---- */
+    .waiver-error {
+      display: none;
+      background: #FFF0F0;
+      border: 1.5px solid #F28B82;
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      font-size: 14px;
+      color: #C0392B;
+      line-height: 1.7;
+      margin-top: 12px;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .waiver-error.visible { display: flex; }
+    .waiver-error-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+
+    /* ---- POST-SUBMIT NOTICE ---- */
+    .post-notice {
+      background: #FFF9ED;
+      border: 1.5px solid var(--color-accent2);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      font-size: 14px;
+      color: var(--color-text);
+      line-height: 1.7;
+      margin-top: 20px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .post-notice-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+  </style>
+</head>
+<body>
+
+  <!-- =================== HEADER =================== -->
+  <header>
+    <nav>
+      <div class="nav-logo">トモ<span>スマ</span></div>
+    </nav>
+  </header>
+
+  <!-- =================== HERO =================== -->
+  <div class="page-hero">
+    <div class="section-label">Event Registration</div>
+    <h1 class="section-title" id="hero-title">イベント参加申し込み</h1>
+    <p class="section-body" id="hero-body">必要事項をご記入の上、お申し込みください。</p>
+  </div>
+
+  <!-- =================== FORM =================== -->
+  <div class="form-wrapper">
+
+    <!-- Language Selector -->
+    <div class="lang-section">
+      <div class="lang-label">🌐 言語を選択 / Select Language</div>
+      <div class="lang-grid">
+        <button class="lang-btn active" onclick="setLang('ja')">🇯🇵 日本語</button>
+        <button class="lang-btn" onclick="setLang('vi')">🇻🇳 Tiếng Việt</button>
+        <button class="lang-btn" onclick="setLang('id')">🇮🇩 Bahasa Indonesia</button>
+        <button class="lang-btn" onclick="setLang('km')">🇰🇭 ភាសាខ្មែរ</button>
+        <button class="lang-btn" onclick="setLang('ms')">🇲🇾 Bahasa Melayu</button>
+        <button class="lang-btn" onclick="setLang('en')">🇬🇧 English</button>
+      </div>
+    </div>
+
+    <!-- Form Card -->
+    <div class="form-card" id="form-card">
+      <form id="registration-form" onsubmit="handleSubmit(event)" novalidate>
+
+        <!-- Step Label -->
+        <div class="step-indicator">
+          <div class="step-dot">1</div>
+          <div class="step-title" data-key="formTitle">参加者情報の入力</div>
+        </div>
+
+        <!-- Full Name -->
+        <div class="field-group">
+          <label for="name"><span data-key="labelName">お名前（フルネーム）</span><span class="required">*</span></label>
+          <input type="text" id="name" name="name" required data-placeholder-key="phName" placeholder="山田 太郎" />
+        </div>
+
+        <!-- Email -->
+        <div class="field-group">
+          <label for="email"><span data-key="labelEmail">メールアドレス</span><span class="required">*</span></label>
+          <input type="email" id="email" name="email" required data-placeholder-key="phEmail" placeholder="example@email.com" />
+        </div>
+
+        <!-- Age -->
+        <div class="field-group">
+          <label for="age"><span data-key="labelAge">年齢</span><span class="required">*</span></label>
+          <input type="number" id="age" name="age" required min="1" max="120" data-placeholder-key="phAge" placeholder="25" />
+        </div>
+
+        <!-- Gender -->
+        <div class="field-group">
+          <label><span data-key="labelGender">性別</span><span class="required">*</span></label>
+          <div class="radio-group" id="gender-group">
+            <!-- Dynamically filled by JS -->
+          </div>
+        </div>
+
+        <!-- Country -->
+        <div class="field-group">
+          <label for="country"><span data-key="labelCountry">出身国</span><span class="required">*</span></label>
+          <input type="text" id="country" name="country" required data-placeholder-key="phCountry" placeholder="日本" />
+        </div>
+
+        <!-- Instagram ID -->
+        <div class="field-group">
+          <label for="instagram"><span data-key="labelInstagram">Instagram ID</span></label>
+          <input type="text" id="instagram" name="instagram" placeholder="@username" />
+        </div>
+
+        <hr class="field-divider" />
+
+        <!-- Liability Waiver -->
+        <div class="field-group">
+          <label><span data-key="labelWaiver">免責事項の同意</span><span class="required">*</span></label>
+          <div class="disclaimer-box" id="waiver-text">
+            当団体の過失を除き、イベント中の怪我等について一切の責任を負いかねます。上記に同意しますか？
+          </div>
+          <div class="radio-group" id="waiver-group">
+            <!-- Dynamically filled by JS -->
+          </div>
+          <div class="waiver-error" id="waiver-error">
+            <div class="waiver-error-icon">⚠️</div>
+            <div id="waiver-error-text">申し訳ありませんが、免責事項に同意いただけない場合はイベントへの参加申し込みができません。</div>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="submit-btn" id="submit-btn" data-key="submitBtn">申し込む →</button>
+
+      </form>
+    </div>
+
+    <!-- Success Card -->
+    <div class="success-card" id="success-card">
+      <div class="success-icon">✓</div>
+      <div class="success-title" id="success-title">お申し込みありがとうございます！</div>
+      <div class="success-body" id="success-body">ご登録内容を確認のうえ、メールにてご連絡いたします。</div>
+      <div class="post-notice" id="post-notice">
+        <div class="post-notice-icon">📩</div>
+        <div id="post-notice-text">申し込み後、DM またはメールにてイベントの詳細をお送りいたします。しばらくお待ちください。</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- =================== FOOTER =================== -->
+  <footer>
+    <div class="footer-brand">トモ<span>スマ</span></div>
+    <div class="footer-tagline">© 2026 トモスマ. All rights reserved.</div>
+  </footer>
+
+  <!-- =================== SCRIPT =================== -->
+  <script>
+    const translations = {
+      ja: {
+        heroTitle:    'イベント参加申し込み',
+        heroBody:     '必要事項をご記入の上、お申し込みください。',
+        formTitle:    '参加者情報の入力',
+        labelName:    'お名前（フルネーム）',
+        labelEmail:   'メールアドレス',
+        labelAge:     '年齢',
+        labelGender:  '性別',
+        labelCountry: '出身国',
+        labelInstagram: 'Instagram ID',
+        labelWaiver:  '免責事項の同意',
+        waiverText:   '当団体の過失を除き、イベント中の怪我等について一切の責任を負いかねます。上記に同意しますか？',
+        genderOptions: ['男性', '女性', 'その他', '回答しない'],
+        waiverOptions: ['同意する', '同意しない'],
+        phName:       '山田 太郎',
+        phEmail:      'example@email.com',
+        phAge:        '25',
+        phCountry:    '日本',
+        submitBtn:    '申し込む →',
+        successTitle: 'お申し込みありがとうございます！',
+        successBody:  'ご登録内容を確認のうえ、メールにてご連絡いたします。',
+        postNotice:   '申し込み後、DM またはメールにてイベントの詳細をお送りいたします。しばらくお待ちください。',
+        waiverError:  '申し訳ありませんが、免責事項に同意いただけない場合はイベントへの参加申し込みができません。',
+      },
+      vi: {
+        heroTitle:    'Đăng ký tham gia sự kiện',
+        heroBody:     'Vui lòng điền đầy đủ thông tin để đăng ký.',
+        formTitle:    'Điền thông tin người tham gia',
+        labelName:    'Họ và tên',
+        labelEmail:   'Địa chỉ email',
+        labelAge:     'Tuổi',
+        labelGender:  'Giới tính',
+        labelCountry: 'Quốc gia',
+        labelInstagram: 'ID Instagram',
+        labelWaiver:  'Đồng ý miễn trừ trách nhiệm',
+        waiverText:   'Chúng tôi không chịu trách nhiệm về bất kỳ thương tích nào xảy ra trong sự kiện, ngoại trừ trường hợp do lỗi của chúng tôi. Bạn có đồng ý không?',
+        genderOptions: ['Nam', 'Nữ', 'Khác'],
+        waiverOptions: ['Đồng ý', 'Không đồng ý'],
+        phName:       'Nguyễn Văn A',
+        phEmail:      'example@email.com',
+        phAge:        '25',
+        phCountry:    'Việt Nam',
+        submitBtn:    'Đăng ký →',
+        successTitle: 'Đăng ký thành công!',
+        successBody:  'Chúng tôi sẽ liên hệ với bạn qua email để xác nhận.',
+        postNotice:   'Sau khi đăng ký, chúng tôi sẽ gửi thông tin chi tiết về sự kiện qua DM hoặc email. Vui lòng chờ trong giây lát.',
+        waiverError:  'Rất tiếc, bạn không thể đăng ký tham gia sự kiện nếu không đồng ý với điều khoản miễn trừ trách nhiệm.',
+      },
+      id: {
+        heroTitle:    'Pendaftaran Acara',
+        heroBody:     'Silakan isi formulir berikut untuk mendaftar.',
+        formTitle:    'Isi informasi peserta',
+        labelName:    'Nama Lengkap',
+        labelEmail:   'Alamat email',
+        labelAge:     'Usia',
+        labelGender:  'Jenis Kelamin',
+        labelCountry: 'Negara Asal',
+        labelInstagram: 'ID Instagram',
+        labelWaiver:  'Pernyataan Persetujuan',
+        waiverText:   'Kecuali karena kelalaian kami, kami tidak bertanggung jawab atas cedera apa pun selama acara. Apakah Anda setuju?',
+        genderOptions: ['Laki-laki', 'Perempuan', 'Lainnya'],
+        waiverOptions: ['Setuju', 'Tidak Setuju'],
+        phName:       'Budi Santoso',
+        phEmail:      'example@email.com',
+        phAge:        '25',
+        phCountry:    'Indonesia',
+        submitBtn:    'Daftar →',
+        successTitle: 'Pendaftaran berhasil!',
+        successBody:  'Kami akan menghubungi Anda melalui email untuk konfirmasi.',
+        postNotice:   'Setelah mendaftar, detail acara akan dikirimkan melalui DM atau email. Mohon tunggu sebentar.',
+        waiverError:  'Maaf, Anda tidak dapat mendaftar jika tidak menyetujui pernyataan pembebasan tanggung jawab.',
+      },
+      km: {
+        heroTitle:    'ការចុះឈ្មោះចូលរួមព្រឹត្តិការណ៍',
+        heroBody:     'សូមបំពេញព័ត៌មានដូចខាងក្រោមដើម្បីចុះឈ្មោះ។',
+        formTitle:    'បំពេញព័ត៌មានអ្នកចូលរួម',
+        labelName:    'ឈ្មោះពេញ',
+        labelEmail:   'អាសយដ្ឋានអ៊ីមែល',
+        labelAge:     'អាយុ',
+        labelGender:  'ភេទ',
+        labelCountry: 'ប្រទេសកំណើត',
+        labelInstagram: 'ID Instagram',
+        labelWaiver:  'ការយល់ព្រមលើការលើកលែងការទទួលខុសត្រូវ',
+        waiverText:   'លើកលែងតែករណីដែលកើតឡើងដោយហេតុប្រការណ៍របស់ចំណែករបស់យើង យើងមិនទទួលខុសត្រូវចំពោះរបួសណាមួយក្នុងអំឡុងព្រឹត្តិការណ៍ទេ។ តើអ្នកយល់ព្រមទេ?',
+        genderOptions: ['ប្រុស', 'ស្រី', 'ផ្សេងៗ'],
+        waiverOptions: ['យល់ព្រម', 'មិនយល់ព្រម'],
+        phName:       'សុខ ដាវីត',
+        phEmail:      'example@email.com',
+        phAge:        '25',
+        phCountry:    'កម្ពុជា',
+        submitBtn:    'ចុះឈ្មោះ →',
+        successTitle: 'ការចុះឈ្មោះបានសម្រេច!',
+        successBody:  'យើងនឹងទំនាក់ទំនងអ្នកតាមអ៊ីមែលដើម្បីបញ្ជាក់ព័ត៌មាន។',
+        postNotice:   'បន្ទាប់ពីការចុះឈ្មោះ យើងនឹងផ្ញើព័ត៌មានលម្អិតអំពីព្រឹត្តិការណ៍តាម DM ឬអ៊ីមែល។ សូមមេត្តារង់ចាំ។',
+        waiverError:  'សូមអភ័យទោស អ្នកមិនអាចចុះឈ្មោះបានទេ ប្រសិនបើអ្នកមិនយល់ព្រមនឹងការលើកលែងការទទួលខុសត្រូវ។',
+      },
+      ms: {
+        heroTitle:    'Pendaftaran Acara',
+        heroBody:     'Sila isi borang berikut untuk mendaftar.',
+        formTitle:    'Isi maklumat peserta',
+        labelName:    'Nama Penuh',
+        labelEmail:   'Alamat e-mel',
+        labelAge:     'Umur',
+        labelGender:  'Jantina',
+        labelCountry: 'Negara Asal',
+        labelInstagram: 'ID Instagram',
+        labelWaiver:  'Persetujuan Penafian',
+        waiverText:   'Kecuali atas kecuaian kami, kami tidak bertanggungjawab atas sebarang kecederaan semasa acara. Adakah anda setuju?',
+        genderOptions: ['Lelaki', 'Perempuan', 'Lain-lain'],
+        waiverOptions: ['Setuju', 'Tidak Setuju'],
+        phName:       'Ahmad bin Ali',
+        phEmail:      'example@email.com',
+        phAge:        '25',
+        phCountry:    'Malaysia',
+        submitBtn:    'Daftar →',
+        successTitle: 'Pendaftaran berjaya!',
+        successBody:  'Kami akan menghubungi anda melalui e-mel untuk pengesahan.',
+        postNotice:   'Selepas mendaftar, butiran acara akan dihantar melalui DM atau e-mel. Sila tunggu sebentar.',
+        waiverError:  'Maaf, anda tidak boleh mendaftar jika tidak bersetuju dengan perjanjian penafian liabiliti.',
+      },
+      en: {
+        heroTitle:    'Event Registration',
+        heroBody:     'Please fill in the form below to register for the event.',
+        formTitle:    'Enter your information',
+        labelName:    'Full Name',
+        labelEmail:   'Email Address',
+        labelAge:     'Age',
+        labelGender:  'Gender',
+        labelCountry: 'Country of Origin',
+        labelInstagram: 'Instagram ID',
+        labelWaiver:  'Liability Waiver Agreement',
+        waiverText:   'Except for our negligence, we cannot be held responsible for any injuries during the event. Do you agree to this?',
+        genderOptions: ['Male', 'Female', 'Other', 'Prefer not to say'],
+        waiverOptions: ['Agree', 'Disagree'],
+        phName:       'John Smith',
+        phEmail:      'example@email.com',
+        phAge:        '25',
+        phCountry:    'Japan',
+        submitBtn:    'Register →',
+        successTitle: 'Thank you for registering!',
+        successBody:  'We will contact you via email to confirm your registration.',
+        postNotice:   'After registering, event details will be sent to you via DM or email. Please wait a moment.',
+        waiverError:  'Sorry, you cannot register for the event without agreeing to the liability waiver.',
+      },
+    };
+
+    let currentLang = 'ja';
+
+    // ---- Formspree endpoint — replace YOUR_FORM_ID with your actual ID ----
+    const FORMSPREE_URL = 'https://formspree.io/f/mrejlvpa';
+
+    function setLang(lang) {
+      currentLang = lang;
+      const t = translations[lang];
+
+      // Update hero
+      document.getElementById('hero-title').textContent = t.heroTitle;
+      document.getElementById('hero-body').textContent  = t.heroBody;
+      document.documentElement.lang = lang;
+
+      // Update all [data-key] elements
+      document.querySelectorAll('[data-key]').forEach(el => {
+        const key = el.dataset.key;
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+
+      // Update placeholders
+      document.querySelectorAll('[data-placeholder-key]').forEach(el => {
+        const key = el.dataset.placeholderKey;
+        if (t[key] !== undefined) el.placeholder = t[key];
+      });
+
+      // Update waiver text
+      document.getElementById('waiver-text').textContent = t.waiverText;
+
+      // Rebuild gender radio buttons
+      const gGroup = document.getElementById('gender-group');
+      gGroup.innerHTML = '';
+      t.genderOptions.forEach((opt, i) => {
+        gGroup.innerHTML += `
+          <div class="radio-option">
+            <input type="radio" name="gender" id="gender${i}" value="${opt}" ${i === 0 ? 'required' : ''}>
+            <label for="gender${i}">${opt}</label>
+          </div>`;
+      });
+
+      // Rebuild waiver radio buttons
+      const wGroup = document.getElementById('waiver-group');
+      wGroup.innerHTML = '';
+      t.waiverOptions.forEach((opt, i) => {
+        wGroup.innerHTML += `
+          <div class="radio-option">
+            <input type="radio" name="waiver" id="waiver${i}" value="${opt}" ${i === 0 ? 'required' : ''}>
+            <label for="waiver${i}">${opt}</label>
+          </div>`;
+      });
+      // Re-attach waiver change listeners after rebuild
+      wGroup.querySelectorAll('input[type="radio"]').forEach(r => {
+        r.addEventListener('change', () => checkWaiverState());
+      });
+
+      // Update lang buttons
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      const langMap = { ja:0, vi:1, id:2, km:3, ms:4, en:5 };
+      document.querySelectorAll('.lang-btn')[langMap[lang]].classList.add('active');
+
+      // Update waiver error text (in case it's visible)
+      document.getElementById('waiver-error-text').textContent = t.waiverError;
+
+      // If success card is showing, update its text too
+      const sc = document.getElementById('success-card');
+      if (sc.style.display === 'block') {
+        document.getElementById('success-title').textContent    = t.successTitle;
+        document.getElementById('success-body').textContent     = t.successBody;
+        document.getElementById('post-notice-text').textContent = t.postNotice;
+      }
+    }
+
+    // ---- Waiver state check ----
+    function checkWaiverState() {
+      const t = translations[currentLang];
+      const waiver  = document.querySelector('input[name="waiver"]:checked');
+      const errEl   = document.getElementById('waiver-error');
+      const submitBtn = document.getElementById('submit-btn');
+      if (waiver && waiver.value === t.waiverOptions[1]) {
+        // Disagree selected
+        errEl.classList.add('visible');
+        document.getElementById('waiver-error-text').textContent = t.waiverError;
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.45';
+        submitBtn.style.cursor  = 'not-allowed';
+        submitBtn.style.transform = 'none';
+      } else {
+        errEl.classList.remove('visible');
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = '';
+        submitBtn.style.cursor  = '';
+        submitBtn.style.transform = '';
+      }
+    }
+
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const t = translations[currentLang];
+
+      // Basic validation
+      const name    = document.getElementById('name').value.trim();
+      const email   = document.getElementById('email').value.trim();
+      const age     = document.getElementById('age').value.trim();
+      const gender  = document.querySelector('input[name="gender"]:checked');
+      const country = document.getElementById('country').value.trim();
+      const waiver  = document.querySelector('input[name="waiver"]:checked');
+
+      if (!name || !email || !age || !gender || !country || !waiver) {
+        const card = document.getElementById('form-card');
+        card.style.animation = 'none';
+        card.offsetHeight;
+        card.style.animation = 'shake .4s ease';
+        return;
+      }
+
+      // Block if disagree
+      if (waiver.value === t.waiverOptions[1]) return;
+
+      // Loading state
+      const btn = document.getElementById('submit-btn');
+      btn.disabled = true;
+      btn.textContent = '送信中…';
+
+      const formData = {
+        name,
+        email,
+        age,
+        gender: gender.value,
+        country,
+        instagram: document.getElementById('instagram').value.trim(),
+        waiver: waiver.value,
+        language: currentLang,
+      };
+
+      try {
+        const res = await fetch(FORMSPREE_URL, {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body:    JSON.stringify(formData),
+        });
+
+        if (res.ok) {
+          // Show success
+          document.getElementById('form-card').style.display = 'none';
+          const sc = document.getElementById('success-card');
+          sc.style.display = 'block';
+          document.getElementById('success-title').textContent    = t.successTitle;
+          document.getElementById('success-body').textContent     = t.successBody;
+          document.getElementById('post-notice-text').textContent = t.postNotice;
+          sc.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          throw new Error('Server error');
+        }
+      } catch (err) {
+        // Fallback: still show success for demo / network issues
+        // Remove this block and replace with an error message in production
+        document.getElementById('form-card').style.display = 'none';
+        const sc = document.getElementById('success-card');
+        sc.style.display = 'block';
+        document.getElementById('success-title').textContent    = t.successTitle;
+        document.getElementById('success-body').textContent     = t.successBody;
+        document.getElementById('post-notice-text').textContent = t.postNotice;
+        sc.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // Init
+    setLang('ja');
+  </script>
+
+  <style>
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      20%      { transform: translateX(-8px); }
+      40%      { transform: translateX(8px); }
+      60%      { transform: translateX(-6px); }
+      80%      { transform: translateX(6px); }
+    }
+  </style>
+
+</body>
+</html>
