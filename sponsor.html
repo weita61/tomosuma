@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>支援する｜トモスマ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ---- SPONSOR ONLY ---- */
+
+    .sponsor-hero {
+      padding: 100px 0 72px;
+      text-align: center;
+    }
+    .sponsor-hero .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-accent2);
+      color: var(--color-text);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 6px 18px;
+      border-radius: var(--radius-lg);
+      margin-bottom: 28px;
+    }
+    .sponsor-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(40px, 7vw, 68px);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .sponsor-hero h1 .accent { color: var(--color-accent); }
+    .sponsor-hero .hero-sub {
+      font-size: 17px;
+      color: var(--color-muted);
+      max-width: 520px;
+      margin: 0 auto 44px;
+      line-height: 1.8;
+    }
+
+    /* Funding goal bar */
+    .goal-bar-wrap {
+      max-width: 560px;
+      margin: 0 auto;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 28px 32px;
+      text-align: left;
+    }
+    .goal-label {
+      font-size: 13px;
+      color: var(--color-muted);
+      font-weight: 700;
+      letter-spacing: .06em;
+      margin-bottom: 10px;
+    }
+    .goal-amount {
+      font-family: var(--font-heading);
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--color-accent);
+      margin-bottom: 14px;
+    }
+    .goal-amount span {
+      font-size: 16px;
+      color: var(--color-muted);
+      font-family: var(--font-body);
+      margin-left: 6px;
+    }
+    .goal-track {
+      height: 8px;
+      background: var(--color-border);
+      border-radius: 99px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+    .goal-track-fill {
+      height: 100%;
+      background: var(--color-accent);
+      border-radius: 99px;
+      width: 0%;
+      transition: width 1.2s ease;
+    }
+    .goal-note {
+      font-size: 12px;
+      color: var(--color-muted);
+    }
+
+    /* Why section */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .why-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 32px 28px;
+    }
+    .why-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(251,174,23,.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .why-title {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .why-body {
+      font-size: 14px;
+      color: var(--color-muted);
+      line-height: 1.85;
+    }
+
+    /* Fund usage */
+    .usage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .usage-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 28px 24px;
+    }
+    .usage-pct {
+      font-family: var(--font-heading);
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--color-accent);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .usage-name {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .usage-amount {
+      font-size: 13px;
+      color: var(--color-muted);
+      margin-bottom: 8px;
+    }
+    .usage-desc {
+      font-size: 13px;
+      color: var(--color-muted);
+      line-height: 1.7;
+    }
+
+    /* Plans */
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .plan-card {
+      background: var(--color-surface);
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+    }
+    .plan-card.featured {
+      border-color: var(--color-accent);
+    }
+    .plan-badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--color-accent);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 99px;
+      white-space: nowrap;
+      letter-spacing: .06em;
+    }
+    .plan-type {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+    }
+    .plan-name {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .plan-price {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1;
+    }
+    .plan-price span {
+      font-size: 14px;
+      font-family: var(--font-body);
+      color: var(--color-muted);
+      margin-left: 4px;
+    }
+    .plan-divider {
+      height: 1px;
+      background: var(--color-border);
+    }
+    .plan-benefits {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .plan-benefits li {
+      font-size: 14px;
+      color: var(--color-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.6;
+    }
+    .plan-benefits li::before {
+      content: "";
+      display: block;
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(251,174,23,.15);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23fbae17' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      margin-top: 2px;
+    }
+    .plan-cta {
+      margin-top: auto;
+    }
+
+    /* CTA section */
+    .sponsor-cta {
+      background: var(--color-text);
+      color: #fff;
+      border-radius: var(--radius-lg);
+      margin: 0 24px;
+      padding: 80px 64px;
+      text-align: center;
+    }
+    .sponsor-cta .section-label { color: var(--color-accent); }
+    .sponsor-cta h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(26px, 5vw, 44px);
+      color: #fff;
+      margin-bottom: 14px;
+    }
+    .sponsor-cta p { color: rgba(255,255,255,.75); font-size: 16px; margin-bottom: 36px; }
+
+    @media (max-width: 768px) {
+      .sponsor-cta { margin: 0 12px; padding: 56px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <nav>
+      <a href="index.html" class="nav-logo">トモスマ<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#philosophy">トモスマについて</a></li>
+        <li><a href="index.html#service">活動内容</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="message.html">代表メッセージ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="lang-toggle" role="group" aria-label="言語切り替え">
+        <button class="lang-btn" data-lang="ja">JP</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="km">KH</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="vi">VI</button>
+      </div>
+      <button class="hamburger" id="hamburger-btn" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- モバイルメニュー -->
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-overlay" id="mobile-overlay"></div>
+    <div class="mobile-menu-panel">
+      <ul class="mobile-menu-links">
+        <li><a href="index.html#philosophy" class="mobile-link">トモスマについて</a></li>
+        <li><a href="message.html" class="mobile-link"><i data-lucide="message-square" style="width:16px;height:16px;margin-right:6px;vertical-align:-2px;"></i>代表メッセージ</a></li>
+        <hr class="mobile-menu-divider">
+        <li><a href="index.html#service" class="mobile-link"><i data-lucide="layout-grid" style="width:16px;height:16px;margin-right:6px;vertical-align:-2px;"></i>活動内容</a></li>
+        <hr class="mobile-menu-divider">
+        <li><a href="news.html" class="mobile-link"><i data-lucide="newspaper" style="width:16px;height:16px;margin-right:6px;vertical-align:-2px;"></i>News</a></li>
+        <li><a href="contact.html" class="mobile-link"><i data-lucide="mail" style="width:16px;height:16px;margin-right:6px;vertical-align:-2px;"></i>Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="sponsor-hero">
+      <div class="container">
+        <p class="hero-badge">
+          <i data-lucide="heart-handshake" style="width:14px;height:14px;"></i>
+          協賛・寄付のご案内
+        </p>
+        <h1>共に、<span class="accent">灯そう。</span></h1>
+        <p class="hero-sub">技能実習生と日本人が対等に関わり合える社会へ。<br>あなたの支援が、笑顔の現場をつくります。</p>
+        <a href="contact.html" class="btn btn-primary" style="font-size:16px;padding:15px 40px;">支援について問い合わせる</a>
+
+        <div class="goal-bar-wrap" style="margin-top: 48px;">
+          <p class="goal-label">2026年度 資金調達目標</p>
+          <div class="goal-amount">200<span>万円</span></div>
+          <div class="goal-track"><div class="goal-track-fill" id="goal-fill"></div></div>
+          <p class="goal-note">イベント開催・広報・運営費に充当。NPO法人グローバルアイを母体とした透明な資金管理を行います。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY -->
+    <section class="section">
+      <div class="container">
+        <p class="section-label">Why Support</p>
+        <h2 class="section-title">なぜ、今支援が必要か</h2>
+        <p class="section-body">日本に暮らす技能実習生は約36万人。言語・文化・制度の壁の中で孤立しがちな現実があります。トモスマはその壁を、イベントと発信で取り除こうとしています。</p>
+
+        <div class="why-grid">
+          <div class="why-card">
+            <div class="why-icon">
+              <i data-lucide="users" style="width:24px;height:24px;color:var(--color-accent);"></i>
+            </div>
+            <h3 class="why-title">日本に約36万人いる技能実習生</h3>
+            <p class="why-body">在日技能実習生は約36万人（2023年時点）。言語・文化・制度の壁から、地域コミュニティとの接点を持てていない人も少なくありません。「笑顔でいられる場所」を、もっとつくれるはずです。</p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">
+              <i data-lucide="landmark" style="width:24px;height:24px;color:var(--color-accent);"></i>
+            </div>
+            <h3 class="why-title">需要が高まる時代背景</h3>
+            <p class="why-body">政府が推進する成田空港の拡張・ハブ空港化により、千葉県・成田市エリアの国際都市化が加速します。外国人労働者・定住者が増えるほど、多文化共生の場への需要は高まります。トモスマはその需要に、活動で応えます。</p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">
+              <i data-lucide="tv" style="width:24px;height:24px;color:var(--color-accent);"></i>
+            </div>
+            <h3 class="why-title">実績と発信力</h3>
+            <p class="why-body">2026年5月、グローバルアイ管理寮での交流活動に千葉のローカルテレビが取材。活動は確実に社会から注目されています。SNS・noteによる透明な発信で、支援者への説明責任を担保します。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUND USAGE -->
+    <section class="section" style="background:var(--color-surface); padding: var(--section-gap) 0;">
+      <div class="container">
+        <p class="section-label">Use of Funds</p>
+        <h2 class="section-title">資金の使い道</h2>
+        <p class="section-body">目標額200万円は、2026年度の活動全体に充当します。用途は以下の通りです。</p>
+
+        <div class="usage-grid">
+          <div class="usage-card">
+            <div class="usage-pct">60<span style="font-size:20px;font-family:var(--font-body);">%</span></div>
+            <div class="usage-name">大規模イベント費</div>
+            <div class="usage-amount">120万円</div>
+            <div class="usage-desc">会場費・設備・飲食・交通費。月1回の大規模交流イベント（年10回）を開催するための費用です。</div>
+          </div>
+          <div class="usage-card">
+            <div class="usage-pct">16<span style="font-size:20px;font-family:var(--font-body);">%</span></div>
+            <div class="usage-name">小規模イベント費</div>
+            <div class="usage-amount">33万円</div>
+            <div class="usage-desc">備品・消耗品・交通費。月2回の小規模スポーツ交流（年22回）を支えます。</div>
+          </div>
+          <div class="usage-card">
+            <div class="usage-pct">10<span style="font-size:20px;font-family:var(--font-body);">%</span></div>
+            <div class="usage-name">広報・コンテンツ制作</div>
+            <div class="usage-amount">20万円</div>
+            <div class="usage-desc">撮影・編集・SNS運用費。活動の透明性と発信力を支えます。</div>
+          </div>
+          <div class="usage-card">
+            <div class="usage-pct">14<span style="font-size:20px;font-family:var(--font-body);">%</span></div>
+            <div class="usage-name">運営費</div>
+            <div class="usage-amount">27万円</div>
+            <div class="usage-desc">通信費・備品・雑費。活動基盤を維持するための費用です。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLANS -->
+    <section class="section">
+      <div class="container">
+        <p class="section-label">Support Plans</p>
+        <h2 class="section-title">支援の種類</h2>
+        <p class="section-body">企業・団体向けの協賛プランと、個人の方向けのサポーター制度があります。いずれもお気軽にお問い合わせください。</p>
+
+        <div class="plans-grid">
+
+          <!-- 年間スポンサー -->
+          <div class="plan-card featured">
+            <div class="plan-badge">おすすめ</div>
+            <p class="plan-type">企業・団体向け</p>
+            <div class="plan-name">年間スポンサー</div>
+            <div class="plan-price">50万円<span>〜 / 年</span></div>
+            <div class="plan-divider"></div>
+            <ul class="plan-benefits">
+              <li>HPへの企業ロゴ掲載</li>
+              <li>SNS・noteへのスポンサー表記</li>
+              <li>代表との定期対話（月1〜2回程度）</li>
+              <li>イベントへの社員招待（要相談・企画次第）</li>
+              <li>コラボイベント企画の優先相談</li>
+            </ul>
+            <div class="plan-cta">
+              <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;">問い合わせる</a>
+            </div>
+          </div>
+
+          <!-- イベント単発協賛 -->
+          <div class="plan-card">
+            <p class="plan-type">企業・団体向け</p>
+            <div class="plan-name">イベント単発協賛</div>
+            <div class="plan-price">5万円<span>〜 / イベント</span></div>
+            <div class="plan-divider"></div>
+            <ul class="plan-benefits">
+              <li>該当イベントでの企業ロゴ掲載</li>
+              <li>SNS・noteへの協賛表記</li>
+              <li>イベントへの社員招待（要相談・企画次第）</li>
+              <li>コラボ開催の場合は内容を共同設計</li>
+            </ul>
+            <div class="plan-cta">
+              <a href="contact.html" class="btn btn-outline" style="width:100%;justify-content:center;">問い合わせる</a>
+            </div>
+          </div>
+
+          <!-- 個人サポーター -->
+          <div class="plan-card">
+            <p class="plan-type">個人向け</p>
+            <div class="plan-name">個人サポーター</div>
+            <div class="plan-price">任意<span>金額</span></div>
+            <div class="plan-divider"></div>
+            <ul class="plan-benefits">
+              <li>SNS・noteでのサポーター表記（希望者）</li>
+              <li>イベントへの優先案内</li>
+              <li>少額からでも歓迎（金額不問）</li>
+            </ul>
+            <div class="plan-cta">
+              <a href="contact.html" class="btn btn-outline" style="width:100%;justify-content:center;">問い合わせる</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="padding-bottom:0;">
+      <div class="sponsor-cta">
+        <p class="section-label">Contact</p>
+        <h2>まず、話しましょう。</h2>
+        <p>金額・形式は柔軟に対応します。<br>「話を聞いてみたい」だけでも歓迎です。</p>
+        <a href="contact.html" class="btn btn-white" style="font-size:16px;padding:15px 40px;">お問い合わせはこちら</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">トモスマ<span>.</span></div>
+        <p class="footer-tagline" data-i18n="footer.tagline">どこにいても、笑顔と「共にある」未来を創る。</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="index.html#philosophy">トモスマについて</a></li>
+        <li><a href="index.html#service">活動内容</a></li>
+        <li><a href="events.html">イベント</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="message.html">代表メッセージ</a></li>
+        <li><a href="sponsor.html">支援する</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer.copy">© 2026 トモスマ（With Smile & Beyond）</span>
+      <span data-i18n="footer.founder">代表：渡辺 瑛太</span>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="i18n.js"></script>
+  <script>
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+
+    /* ゴールバーアニメーション */
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('goal-fill').style.width = '0%';
+      }, 400);
+    });
+
+    /* ハンバーガーメニュー */
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu   = document.getElementById('mobile-menu');
+    const overlay      = document.getElementById('mobile-overlay');
+    function openMenu()  { mobileMenu.classList.add('open'); hamburgerBtn.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeMenu() { mobileMenu.classList.remove('open'); hamburgerBtn.classList.remove('open'); document.body.style.overflow = ''; }
+    hamburgerBtn.addEventListener('click', () => { mobileMenu.classList.contains('open') ? closeMenu() : openMenu(); });
+    overlay.addEventListener('click', closeMenu);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+    document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMenu));
+  </script>
+</body>
+</html>
