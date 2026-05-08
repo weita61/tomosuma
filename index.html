@@ -143,7 +143,7 @@
     /* ============================================================
        HERO
     ============================================================ */
-    #hero { padding: 120px 0 80px; text-align: center; }
+    #hero { padding: 120px 0 80px; text-align: center; position: relative; overflow: hidden; }
     .hero-badge {
       display: inline-block; background: var(--color-accent2); color: var(--color-text);
       font-size: 13px; font-weight: 700; padding: 6px 18px;
@@ -153,6 +153,8 @@
     .hero-title .accent { color: var(--color-accent); }
     .hero-subtitle { font-size: 18px; color: var(--color-muted); max-width: 560px; margin: 0 auto 48px; }
     .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    #hero-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+    #hero .container { position: relative; z-index: 1; }
     .hero-visual {
       margin-top: 64px; width: 100%;
       display: flex; align-items: center; justify-content: center;
@@ -476,9 +478,11 @@
         <li><a href="#philosophy" class="mobile-link"><span data-i18n="nav.about">トモスマについて</span></a></li>
         <li><a href="message.html" class="mobile-link"><i data-lucide="message-square" style="width:16px;height:16px;margin-right:6px;vertical-align:-2px;"></i>代表メッセージ</a></li>
         <hr class="mobile-menu-divider">
-        <li><a href="#service" class="mobile-link"><i data-lucide="layout-grid" style="width:16px;height:16px;margin-right:6px;vertical-align:-2px;"></i><span data-i18n="nav.service">活動内容</span></a></li>
+        <li><a href="#service" class="mobile-link"><i data-lucide="layout-grid" style="width:16px;height:16px;margin-right:6px;vertical-align:-2px;"></i>活動内容</a></li>
+        <li><a href="events.html" class="mobile-link"><i data-lucide="calendar" style="width:16px;height:16px;margin-right:6px;vertical-align:-2px;"></i>イベント</a></li>
         <hr class="mobile-menu-divider">
         <li><a href="news.html" class="mobile-link"><i data-lucide="newspaper" style="width:16px;height:16px;margin-right:6px;vertical-align:-2px;"></i>News</a></li>
+        <li><a href="sponsor.html" class="mobile-link"><i data-lucide="heart-handshake" style="width:16px;height:16px;margin-right:6px;vertical-align:-2px;"></i>支援する</a></li>
         <li><a href="contact.html" class="mobile-link"><i data-lucide="mail" style="width:16px;height:16px;margin-right:6px;vertical-align:-2px;"></i>Contact</a></li>
       </ul>
       <div class="mobile-menu-cta">
@@ -489,6 +493,7 @@
   <main>
     <!-- HERO -->
     <section id="hero">
+      <canvas id="hero-canvas"></canvas>
       <div class="container">
         <p class="hero-badge"><i data-lucide="globe" style="width:14px;height:14px;margin-right:6px;"></i><span data-i18n="hero.badge">With Smile &amp; Beyond — 2026年3月 設立</span></p>
         <h1 class="hero-title" data-i18n-html="hero.title">
@@ -496,7 +501,7 @@
           笑顔と<span class="accent">「共にある」</span><br>
           未来を創る。
         </h1>
-        <p class="hero-subtitle" data-i18n="hero.subtitle">テクノロジーと人のつながりで、世界中の笑顔を守り、未来を灯すプロジェクト。</p>
+        <p class="hero-subtitle" data-i18n="hero.subtitle">イベントと発信を通じて、技能実習生と日本人が対等につながれる場をつくる活動。</p>
         <div class="hero-actions">
           <a href="#service" class="btn btn-primary" data-i18n="hero.btn.service">活動を見る</a>
         </div>
@@ -526,14 +531,14 @@
           <div class="philosophy-card">
             <div class="card-number">02</div>
             <h3 class="card-title" data-i18n="phil.c2.title">共に（トモに）× Smile</h3>
-            <span class="tag" style="margin-bottom:16px;" data-i18n="phil.c2.tag">テクノロジー・イノベーション</span>
-            <p class="card-body" data-i18n="phil.c2.body">アプリ開発を通じて、言語・文化・距離の壁を越えたつながりをテクノロジーで実現します。</p>
+            <span class="tag" style="margin-bottom:16px;" data-i18n="phil.c2.tag">テクノロジー・ツール</span>
+            <p class="card-body" data-i18n="phil.c2.body">アプリをはじめとしたテクノロジーをツールとして活用しながら、言語・文化の壁を越えた日常的なつながりを育てていきます。</p>
           </div>
           <div class="philosophy-card">
             <div class="card-number">03</div>
             <h3 class="card-title" data-i18n="phil.c3.title">灯す（トモす）× Smile</h3>
-            <span class="tag" style="margin-bottom:16px;" data-i18n="phil.c3.tag">ソーシャル・デザイン</span>
-            <p class="card-body" data-i18n="phil.c3.body">政策提言・難民支援へと展開し、社会構造そのものを変えることで、より広範な笑顔を守り続けます。</p>
+            <span class="tag" style="margin-bottom:16px;" data-i18n="phil.c3.tag">発信・ソーシャル</span>
+            <p class="card-body" data-i18n="phil.c3.body">活動の現場をSNS・noteで発信し、多文化共生への関心と共感を社会に広げます。現場の声が、社会を動かす灯になる。</p>
           </div>
         </div>
       </div>
@@ -736,6 +741,7 @@
       <div>
         <p class="footer-brand">トモスマ<span>.</span></p>
         <p class="footer-tagline" data-i18n="footer.tagline">どこにいても、笑顔と「共にある」未来を創る。</p>
+        <p style="font-size:12px;color:var(--color-muted);margin-top:4px;">千葉県成田市拠点 · 2026年3月1日 設立</p>
       </div>
       <ul class="footer-links">
         <li><a href="index.html#philosophy"><span data-i18n="nav.about">トモスマについて</span></a></li>
@@ -788,6 +794,7 @@
     </div>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script src="i18n.js"></script>
   <script>
@@ -837,6 +844,50 @@
     document.getElementById('prof-close').addEventListener('click', closeProf);
     profOverlay.addEventListener('click', (e) => { if (e.target === profOverlay) closeProf(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeProf(); });
+
+    // three.js パーティクル（heroセクション背景）
+    (function() {
+      const canvas = document.getElementById('hero-canvas');
+      if (!canvas || typeof THREE === 'undefined') return;
+      const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: false });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 1000);
+      camera.position.z = 5;
+      const N = 2500;
+      const pos = new Float32Array(N * 3);
+      for (let i = 0; i < N; i++) {
+        pos[i * 3]     = (Math.random() - 0.5) * 20;
+        pos[i * 3 + 1] = (Math.random() - 0.5) * 20;
+        pos[i * 3 + 2] = (Math.random() - 0.5) * 20;
+      }
+      const geo = new THREE.BufferGeometry();
+      geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+      const mat = new THREE.PointsMaterial({ size: 0.05, color: 0xff6b6b, transparent: true, opacity: 0.55, sizeAttenuation: true });
+      const pts = new THREE.Points(geo, mat);
+      scene.add(pts);
+      function resize() {
+        const sec = document.getElementById('hero');
+        const w = sec.clientWidth, h = sec.clientHeight;
+        renderer.setSize(w, h, false);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+      }
+      resize();
+      window.addEventListener('resize', resize);
+      let scrollY = 0;
+      window.addEventListener('scroll', function() { scrollY = window.scrollY; }, { passive: true });
+      let t = 0;
+      (function animate() {
+        requestAnimationFrame(animate);
+        t += 0.003;
+        const sf = scrollY / (window.innerHeight || 700);
+        pts.rotation.y = t * 0.25 + sf * 0.6;
+        pts.rotation.x = t * 0.08 + sf * 0.15;
+        camera.position.z = 5 - sf * 3;
+        renderer.render(scene, camera);
+      })();
+    })();
   </script>
 
 </body>

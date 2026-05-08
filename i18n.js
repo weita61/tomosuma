@@ -59,9 +59,9 @@ const I18N = {
     'app.btn':      'アプリの詳細を見る →',
 
     /* ─── index.html — ヒーロー ─── */
-    'hero.badge':    'With Smile & Beyond — 2026年3月 設立',
+    'hero.badge':    'With Smile & Beyond — 2026年3月1日 設立',
     'hero.title':    'どこにいても、<br>笑顔と<span class="accent">「共にある」</span><br>未来を創る。',
-    'hero.subtitle': 'テクノロジーと人のつながりで、世界中の笑顔を守り、未来を灯すプロジェクト。',
+    'hero.subtitle': 'イベントと発信を通じて、技能実習生と日本人が対等につながれる場をつくる活動。',
     'hero.btn.service': '活動を見る',
     'hero.btn.join':    '仲間になる',
     'hero.visual':      '[ Hero Image / Movie — 後で差し替え ]',
@@ -74,11 +74,11 @@ const I18N = {
     'phil.c1.tag':   'コミュニティ・アクション',
     'phil.c1.body':  'スポーツイベント・多文化交流会を通じ、言語や立場の壁を越えて「対等な友」としての一生モノの絆を築く場を提供します。',
     'phil.c2.title': '共に（トモに）× Smile',
-    'phil.c2.tag':   'テクノロジー・イノベーション',
-    'phil.c2.body':  'アプリ開発を通じて、言語・文化・距離の壁を越えたつながりをテクノロジーで実現します。',
+    'phil.c2.tag':   'テクノロジー・ツール',
+    'phil.c2.body':  'アプリをはじめとしたテクノロジーをツールとして活用しながら、言語・文化の壁を越えた日常的なつながりを育てていきます。',
     'phil.c3.title': '灯す（トモす）× Smile',
-    'phil.c3.tag':   'ソーシャル・デザイン',
-    'phil.c3.body':  '政策提言・難民支援へと展開し、社会構造そのものを変えることで、より広範な笑顔を守り続けます。',
+    'phil.c3.tag':   '発信・ソーシャル',
+    'phil.c3.body':  '活動の現場をSNS・noteで発信し、多文化共生への関心と共感を社会に広げます。現場の声が、社会を動かす灯になる。',
 
     /* ─── サービス ─── */
     'svc.label':    'Our Activities',
@@ -322,9 +322,9 @@ const I18N = {
     'app.btn':      'Learn More →',
 
     /* ─── index.html — ヒーロー ─── */
-    'hero.badge':    'With Smile & Beyond — Founded March 2026',
+    'hero.badge':    'With Smile & Beyond — Founded March 1, 2026',
     'hero.title':    'Wherever you are,<br>a future full of smiles<br>and <span class="accent">"being together."</span>',
-    'hero.subtitle': 'A project that uses technology and human connection to protect smiles and light the future worldwide.',
+    'hero.subtitle': 'Creating spaces where foreign workers and Japanese people connect as equals — through events and storytelling.',
     'hero.btn.service': 'See Our Activities',
     'hero.btn.join':    'Join Us',
     'hero.visual':      '[ Hero Image / Movie — Coming Soon ]',
@@ -337,11 +337,11 @@ const I18N = {
     'phil.c1.tag':   'Community & Action',
     'phil.c1.body':  'Through sports events and multicultural gatherings, we build lifelong bonds as equals — transcending language and background.',
     'phil.c2.title': 'Together (Tomoni) × Smile',
-    'phil.c2.tag':   'Technology & Innovation',
-    'phil.c2.body':  'Through app development, we use technology to create connections that transcend language, culture, and distance.',
+    'phil.c2.tag':   'Technology as a Tool',
+    'phil.c2.body':  'We use apps and technology as tools to nurture everyday connections across language and cultural barriers.',
     'phil.c3.title': 'Light (Tomosu) × Smile',
-    'phil.c3.tag':   'Social Design',
-    'phil.c3.body':  'By advocating for policy change and supporting refugees, we reshape social structures to protect smiles on a wider scale.',
+    'phil.c3.tag':   'Outreach & Social',
+    'phil.c3.body':  'We share the real stories of our events via SNS and note, spreading awareness of multicultural coexistence in society.',
 
     /* ─── サービス ─── */
     'svc.label':    'Our Activities',
@@ -585,7 +585,7 @@ const I18N = {
     /* ─── ហេរ៉ូ ─── */
     'hero.badge':    'With Smile & Beyond — បង្កើតឡើងខែមីនា ២០២៦',
     'hero.title':    'គ្រប់ទីកន្លែង<br>អនាគតពោរពេញដោយស្នាម<br>និង<span class="accent">«ការរួបរួម»</span>',
-    'hero.subtitle': 'គម្រោងប្រើបច្ចេកវិទ្យា និងទំនាក់ទំនងមនុស្ស ដើម្បីការពារស្នាម និងបំភ្លឺអនាគតពេញពិភពលោក',
+    'hero.subtitle': 'ការបង្កើតទំនាក់ទំនងស្មើរគ្នារវាងកម្មករបរទេស និងជនជាតិជប៉ុន — តាមរយៈព្រឹត្តិការណ៍ និងការផ្សព្វផ្សាយ',
     'hero.btn.service': 'មើលសកម្មភាព',
     'hero.btn.join':    'ក្លាយជាសមាជិក',
     'hero.visual':      '[ រូបភាព / វីដេអូ — នឹងដាក់ក្រោយ ]',
@@ -598,11 +598,11 @@ const I18N = {
     'phil.c1.tag':   'សហគមន៍ & សកម្មភាព',
     'phil.c1.body':  'តាមរយៈព្រឹត្តិការណ៍កីឡា និងការប្រជុំពហុវប្បធម៌ យើងបង្កើតចំណងជើងមិត្តភាពពេញមួយជីវិត ហួសពីរបាំងភាសា',
     'phil.c2.title': 'រួមគ្នា (Tomoni) × Smile',
-    'phil.c2.tag':   'បច្ចេកវិទ្យា & នវានុវត្តន៍',
-    'phil.c2.body':  'តាមរយៈការអភិវឌ្ឍន៍កម្មវិធី យើងប្រើប្រាស់បច្ចេកវិទ្យា ដើម្បីភ្ជាប់មនុស្សឆ្លងកាត់ភាសា វប្បធម៌ និងចម្ងាយ',
+    'phil.c2.tag':   'បច្ចេកវិទ្យាជាឧបករណ៍',
+    'phil.c2.body':  'យើងប្រើប្រាស់កម្មវិធី និងបច្ចេកវិទ្យាជាឧបករណ៍ ដើម្បីជំរុញទំនាក់ទំនងប្រចាំថ្ងៃ ឆ្លងកាត់របាំភាសា និងវប្បធម៌',
     'phil.c3.title': 'ភ្លឺ (Tomosu) × Smile',
-    'phil.c3.tag':   'ការរចនាសង្គម',
-    'phil.c3.body':  'តាមរយៈការតស៊ូមតិ និងជំនួយជនភៀសខ្លួន យើងផ្លាស់ប្តូររចនាសម្ព័ន្ធសង្គម ដើម្បីការពារស្នាមកាន់តែទូលំទូលាយ',
+    'phil.c3.tag':   'ការផ្សព្វផ្សាយ & សង្គម',
+    'phil.c3.body':  'យើងចែករំលែករឿងរ៉ាវពិតប្រាកដតាម SNS និង note ដើម្បីពង្រីកការយល់ដឹងអំពីការរួមរស់ពហុវប្បធម៌ក្នុងសង្គម',
 
     /* ─── សេវា ─── */
     'svc.label':    'សកម្មភាព',
@@ -846,7 +846,7 @@ const I18N = {
     /* ─── Hero ─── */
     'hero.badge':    'With Smile & Beyond — Thành lập tháng 3/2026',
     'hero.title':    'Dù bạn ở đâu,<br>tương lai tràn đầy nụ cười<br>và <span class="accent">«cùng nhau»</span>',
-    'hero.subtitle': 'Dự án dùng công nghệ và kết nối con người để bảo vệ nụ cười và thắp sáng tương lai toàn cầu',
+    'hero.subtitle': 'Tạo không gian kết nối bình đẳng giữa lao động nước ngoài và người Nhật — thông qua sự kiện và chia sẻ câu chuyện',
     'hero.btn.service': 'Xem hoạt động',
     'hero.btn.join':    'Trở thành thành viên',
     'hero.visual':      '[ Hình ảnh / Video — Sẽ cập nhật sau ]',
@@ -859,11 +859,11 @@ const I18N = {
     'phil.c1.tag':   'Cộng đồng & Hành động',
     'phil.c1.body':  'Qua các sự kiện thể thao và giao lưu đa văn hóa, chúng tôi xây dựng tình bạn bền vững vượt rào cản ngôn ngữ',
     'phil.c2.title': 'Cùng nhau (Tomoni) × Smile',
-    'phil.c2.tag':   'Công nghệ & Đổi mới',
-    'phil.c2.body':  'Thông qua phát triển ứng dụng, chúng tôi dùng công nghệ tạo ra kết nối vượt qua rào cản ngôn ngữ, văn hóa và khoảng cách.',
+    'phil.c2.tag':   'Công nghệ là Công cụ',
+    'phil.c2.body':  'Chúng tôi dùng ứng dụng và công nghệ như công cụ để nuôi dưỡng kết nối hàng ngày vượt qua rào cản ngôn ngữ và văn hóa.',
     'phil.c3.title': 'Thắp sáng (Tomosu) × Smile',
-    'phil.c3.tag':   'Thiết kế Xã hội',
-    'phil.c3.body':  'Qua vận động chính sách và hỗ trợ người tị nạn, chúng tôi thay đổi cấu trúc xã hội để bảo vệ nụ cười rộng rãi hơn',
+    'phil.c3.tag':   'Truyền thông & Xã hội',
+    'phil.c3.body':  'Chúng tôi chia sẻ câu chuyện thực tế qua SNS và note, lan rộng nhận thức về chung sống đa văn hóa trong xã hội.',
 
     /* ─── Service ─── */
     'svc.label':    'Hoạt động',
