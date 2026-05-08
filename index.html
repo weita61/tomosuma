@@ -829,7 +829,6 @@
     </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script src="i18n.js"></script>
   <script>
@@ -880,47 +879,91 @@
     profOverlay.addEventListener('click', (e) => { if (e.target === profOverlay) closeProf(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeProf(); });
 
-    // three.js パーティクル（heroセクション背景）
+    // Canvas 2D パーティクル＋コネクション（heroセクション背景）
     (function() {
       const canvas = document.getElementById('hero-canvas');
-      if (!canvas || typeof THREE === 'undefined') return;
-      const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: false });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 1000);
-      camera.position.z = 5;
-      const N = 2500;
-      const pos = new Float32Array(N * 3);
-      for (let i = 0; i < N; i++) {
-        pos[i * 3]     = (Math.random() - 0.5) * 20;
-        pos[i * 3 + 1] = (Math.random() - 0.5) * 20;
-        pos[i * 3 + 2] = (Math.random() - 0.5) * 20;
-      }
-      const geo = new THREE.BufferGeometry();
-      geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-      const mat = new THREE.PointsMaterial({ size: 0.05, color: 0xff6b6b, transparent: true, opacity: 0.55, sizeAttenuation: true });
-      const pts = new THREE.Points(geo, mat);
-      scene.add(pts);
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+      const section = document.getElementById('hero');
+      let W, H;
       function resize() {
-        const sec = document.getElementById('hero');
-        const w = sec.clientWidth, h = sec.clientHeight;
-        renderer.setSize(w, h, false);
-        camera.aspect = w / h;
-        camera.updateProjectionMatrix();
+        W = canvas.width  = section.clientWidth;
+        H = canvas.height = section.clientHeight;
       }
       resize();
       window.addEventListener('resize', resize);
+
+      const N = 75;
+      const C = '255,107,107';
+      const LINK = 130;
+      const PULL = 110;
+
+      const pts = Array.from({ length: N }, function() {
+        return {
+          x:  Math.random() * W,
+          y:  Math.random() * H,
+          vx: (Math.random() - 0.5) * 0.5,
+          vy: (Math.random() - 0.5) * 0.5,
+          r:  Math.random() * 1.5 + 1
+        };
+      });
+
+      const mouse = { x: -999, y: -999 };
+      section.addEventListener('mousemove', function(e) {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+      });
+      section.addEventListener('mouseleave', function() { mouse.x = -999; });
+
       let scrollY = 0;
       window.addEventListener('scroll', function() { scrollY = window.scrollY; }, { passive: true });
-      let t = 0;
-      (function animate() {
-        requestAnimationFrame(animate);
-        t += 0.003;
-        const sf = scrollY / (window.innerHeight || 700);
-        pts.rotation.y = t * 0.25 + sf * 0.6;
-        pts.rotation.x = t * 0.08 + sf * 0.15;
-        camera.position.z = 5 - sf * 3;
-        renderer.render(scene, camera);
+
+      (function draw() {
+        requestAnimationFrame(draw);
+        ctx.clearRect(0, 0, W, H);
+        const sf = Math.min(scrollY / (window.innerHeight || 700), 1);
+
+        pts.forEach(function(p) {
+          const dx = mouse.x - p.x, dy = mouse.y - p.y;
+          const md = Math.sqrt(dx * dx + dy * dy);
+          if (md < PULL && md > 0) {
+            p.vx += (dx / md) * 0.08;
+            p.vy += (dy / md) * 0.08;
+          }
+          p.vx *= 0.97; p.vy *= 0.97;
+          const spd = Math.sqrt(p.vx*p.vx + p.vy*p.vy);
+          if (spd > 1.8) { p.vx = p.vx/spd*1.8; p.vy = p.vy/spd*1.8; }
+          p.x += p.vx + sf * 0.4;
+          p.y += p.vy - sf * 0.6;
+          if (p.x < 0) p.x = W;
+          if (p.x > W) p.x = 0;
+          if (p.y < 0) p.y = H;
+          if (p.y > H) p.y = 0;
+        });
+
+        for (var i = 0; i < N; i++) {
+          for (var j = i + 1; j < N; j++) {
+            const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+            const d = Math.sqrt(dx*dx + dy*dy);
+            if (d < LINK) {
+              ctx.beginPath();
+              ctx.moveTo(pts[i].x, pts[i].y);
+              ctx.lineTo(pts[j].x, pts[j].y);
+              ctx.strokeStyle = 'rgba(' + C + ',' + ((1 - d/LINK) * 0.25) + ')';
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            }
+          }
+        }
+
+        pts.forEach(function(p) {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(' + C + ',0.75)';
+          ctx.fill();
+        });
       })();
     })();
   </script>
