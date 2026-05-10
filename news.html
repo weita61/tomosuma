@@ -276,9 +276,9 @@
           </div>
           <div class="blog-card-footer">
             <span class="blog-author">
-              <span class="blog-author-icon">👤</span>${post.author}
+              ${post.author}
             </span>
-            <span class="blog-readtime">📖 ${post.readTime}</span>
+            <span class="blog-readtime">${post.readTime}</span>
           </div>
         </article>
       `).join('');
@@ -298,8 +298,8 @@
       document.getElementById('article-title').textContent = post.title;
 
       document.getElementById('article-info').innerHTML =
-        `<span class="article-author"><span class="article-author-icon">👤</span>${post.author}</span>
-         <span>📖 ${post.readTime}</span>`;
+        `<span class="article-author">${post.author}</span>
+         <span>${post.readTime}</span>`;
 
       // アイキャッチ
       const ec = document.getElementById('article-eyecatch');

@@ -22,7 +22,7 @@ const BLOG_DATA = [
   },
   {
     id: 1,
-    date: "2026-03-19",
+    date: "2026-03-01",
     category: "お知らせ",
     eyecatch: "assets/tomosuma-logo.png",
     title: "トモスマ 公式サイトをオープンしました",
