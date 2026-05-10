@@ -196,6 +196,11 @@ footer {
 }
 .footer-links a { font-size: 14px; color: var(--color-muted); transition: color .2s; }
 .footer-links a:hover { color: var(--color-accent); }
+.footer-links .footer-sponsor a {
+  background: var(--color-accent); color: #fff;
+  padding: 5px 16px; border-radius: 99px; font-weight: 700;
+}
+.footer-links .footer-sponsor a:hover { color: #fff; opacity: .85; }
 .footer-bottom {
   max-width: var(--max-width);
   margin: 40px auto 0;
